@@ -1,17 +1,18 @@
-// <copyright file="MyNewModuleEvent.cs" company="ITANEO">
+// <copyright file="MyNewModuleCommand.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-namespace Hexalith.MyNewModule.Events.MyNewModules;
+namespace Hexalith.MyNewModule.Commands.MyNewModules;
 
+using Hexalith.MyNewModule.Events;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>
-/// Base event for mynewmodule operations.
+/// Base command for mynewmodule operations.
 /// </summary>
 /// <param name="Id">The identifier of the mynewmodule.</param>
 [PolymorphicSerialization]
-public abstract partial record MyNewModuleEvent(string Id)
+public abstract partial record MyNewModuleCommand(string Id)
 {
     /// <summary>
     /// Gets the aggregate identifier.

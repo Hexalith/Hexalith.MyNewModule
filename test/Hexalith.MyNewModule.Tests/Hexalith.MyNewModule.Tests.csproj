@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Hexalith.Domains.Abstractions" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Moq" />
     <PackageReference Include="Shouldly" />
@@ -15,5 +16,16 @@
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Hexalith.MyNewModule.Aggregates\Hexalith.MyNewModule.Aggregates.csproj" />
+    <ProjectReference Include="..\..\src\Hexalith.MyNewModule.Commands\Hexalith.MyNewModule.Commands.csproj" />
+    <ProjectReference Include="..\..\src\Hexalith.MyNewModule.Events\Hexalith.MyNewModule.Events.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domains\Events\" />
+    <Folder Include="Domains\Commands\" />
   </ItemGroup>
 </Project>

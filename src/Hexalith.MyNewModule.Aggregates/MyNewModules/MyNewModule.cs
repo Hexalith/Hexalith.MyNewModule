@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.MyNewModule.MyNewModules;
+namespace Hexalith.MyNewModule.Aggregates.MyNewModules;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -11,8 +11,7 @@ using System.Runtime.Serialization;
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
 using Hexalith.MyNewModule.Events;
-
-using Manhole.Events.MyNewModules;
+using Hexalith.MyNewModule.Events.MyNewModules;
 
 /// <summary>
 /// Represents a mynewmodule.
@@ -87,21 +86,21 @@ public sealed record MyNewModule(
 
     private ApplyResult ApplyEvent(MyNewModuleAdded e) => !(this as IDomainAggregate).IsInitialized()
         ? ApplyResult.Success(new MyNewModule(e), [e])
-        : ApplyResult.Error(this, "The mynewmodule already exists.");
+        : ApplyResult.Error(this, "The MyNewModule already exists.");
 
     private ApplyResult ApplyEvent(MyNewModuleDescriptionChanged e) => Comments == e.Comments && Name == e.Name
-            ? ApplyResult.Error(this, "The mynewmodule name and description is already set to the specified value.")
+            ? ApplyResult.Error(this, "The MyNewModule name and description are already set to the specified values.")
             : ApplyResult.Success(this with { Comments = e.Comments, Name = e.Name }, [e]);
 
     private ApplyResult ApplyEvent(MyNewModuleDisabled e) => Disabled
-            ? ApplyResult.Error(this, "The mynewmodule is already disabled.")
+            ? ApplyResult.Error(this, "The MyNewModule is already disabled.")
             : ApplyResult.Success(this with { Disabled = true }, [e]);
 
     private ApplyResult ApplyEvent(MyNewModuleEnabled e) => Disabled
             ? ApplyResult.Success(this with { Disabled = false }, [e])
-            : ApplyResult.Error(this, "The mynewmodule is already enabled.");
+            : ApplyResult.Error(this, "The MyNewModule is already enabled.");
 
     private ApplyResult ApplyEvent(MyNewModulePriorityWeightChanged e) => PriorityWeight == e.PriorityWeight
-            ? ApplyResult.Error(this, "The mynewmodule priority weight is already set to the specified value.")
+            ? ApplyResult.Error(this, "The MyNewModule priority weight is already set to the specified value.")
             : ApplyResult.Success(this with { PriorityWeight = e.PriorityWeight }, [e]);
 }

@@ -175,6 +175,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Aggreg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Events", "src\Hexalith.MyNewModule.Events\Hexalith.MyNewModule.Events.csproj", "{845E6054-8FB1-7180-15A0-FF344E1A3E6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Localizations", "src\Hexalith.MyNewModule.Localizations\Hexalith.MyNewModule.Localizations.csproj", "{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Commands", "src\Hexalith.MyNewModule.Commands\Hexalith.MyNewModule.Commands.csproj", "{5544B885-A273-5E51-F344-97939F8B3ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -209,6 +213,14 @@ Global
 		{845E6054-8FB1-7180-15A0-FF344E1A3E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845E6054-8FB1-7180-15A0-FF344E1A3E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845E6054-8FB1-7180-15A0-FF344E1A3E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5544B885-A273-5E51-F344-97939F8B3ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5544B885-A273-5E51-F344-97939F8B3ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5544B885-A273-5E51-F344-97939F8B3ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5544B885-A273-5E51-F344-97939F8B3ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -238,6 +250,8 @@ Global
 		{94173C1F-F164-7F46-05F1-55CADD2F14B9} = {DA4446BE-296C-40E4-B0FF-05F9AF0F2502}
 		{9F54ED2E-BCCC-85E4-FA93-02B560DE0394} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{845E6054-8FB1-7180-15A0-FF344E1A3E6D} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
+		{9C9A95E5-D2E6-91EB-5DF8-E892713761F6} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
+		{5544B885-A273-5E51-F344-97939F8B3ECF} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}
