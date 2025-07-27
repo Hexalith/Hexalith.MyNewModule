@@ -21,7 +21,7 @@ app.Builder.Configuration.AddUserSecrets<Program>();
 if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 {
     _ = app
-        .AddProject<Projects.HexalithApp_WebServer>("mynewpackageweb")
+        .AddProject<Projects.HexalithApp_WebServer>("MyNewModuleweb")
         .WithEnvironmentFromConfiguration("APP_API_TOKEN")
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Id", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Secret", false)
@@ -42,7 +42,7 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 if (app.IsProjectEnabled<Projects.HexalithApp_ApiServer>())
 {
     _ = app
-        .AddProject<Projects.HexalithApp_ApiServer>("mynewpackageapi")
+        .AddProject<Projects.HexalithApp_ApiServer>("MyNewModuleapi")
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Id", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Secret", false)
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__TenantId", false)

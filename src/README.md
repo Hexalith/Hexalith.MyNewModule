@@ -1,3 +1,3 @@
-# Application Source code
+# Application Nuget Packages
 
-Add your package projects here.
+Add your module nuget package projects here.
