@@ -4,7 +4,7 @@
 // </copyright>
 namespace Hexalith.MyNewModule.Commands.MyNewModules;
 
-using Hexalith.MyNewModule.Events;
+using Hexalith.MyNewModule.Aggregates;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>

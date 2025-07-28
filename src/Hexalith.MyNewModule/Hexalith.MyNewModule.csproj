@@ -3,11 +3,17 @@
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="ValueObjects\**" />
+    <EmbeddedResource Remove="ValueObjects\**" />
+    <None Remove="ValueObjects\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Hexalith.Domains.Abstractions" />
     <PackageReference Include="Hexalith.PolymorphicSerializations" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hexalith.MyNewModule.Aggregates.Abstractions\Hexalith.MyNewModule.Aggregates.Abstractions.csproj" />
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="EventsHandlers\" />
   </ItemGroup>
 </Project>

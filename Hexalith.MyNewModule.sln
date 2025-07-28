@@ -179,6 +179,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Locali
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Commands", "src\Hexalith.MyNewModule.Commands\Hexalith.MyNewModule.Commands.csproj", "{5544B885-A273-5E51-F344-97939F8B3ECF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule", "src\Hexalith.MyNewModule\Hexalith.MyNewModule.csproj", "{D4EEF58D-0946-3FD4-4810-37991879B726}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Requests", "src\Hexalith.MyNewModule.Requests\Hexalith.MyNewModule.Requests.csproj", "{33B39EB3-4E33-DC54-1B6E-B35F63729224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Aggregates.Abstractions", "src\Hexalith.MyNewModule.Aggregates.Abstractions\Hexalith.MyNewModule.Aggregates.Abstractions.csproj", "{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +227,18 @@ Global
 		{5544B885-A273-5E51-F344-97939F8B3ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5544B885-A273-5E51-F344-97939F8B3ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5544B885-A273-5E51-F344-97939F8B3ECF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4EEF58D-0946-3FD4-4810-37991879B726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4EEF58D-0946-3FD4-4810-37991879B726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4EEF58D-0946-3FD4-4810-37991879B726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4EEF58D-0946-3FD4-4810-37991879B726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B39EB3-4E33-DC54-1B6E-B35F63729224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B39EB3-4E33-DC54-1B6E-B35F63729224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B39EB3-4E33-DC54-1B6E-B35F63729224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B39EB3-4E33-DC54-1B6E-B35F63729224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -252,6 +270,9 @@ Global
 		{845E6054-8FB1-7180-15A0-FF344E1A3E6D} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{9C9A95E5-D2E6-91EB-5DF8-E892713761F6} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{5544B885-A273-5E51-F344-97939F8B3ECF} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
+		{D4EEF58D-0946-3FD4-4810-37991879B726} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
+		{33B39EB3-4E33-DC54-1B6E-B35F63729224} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
+		{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}

@@ -1,26 +1,28 @@
-// <copyright file="MyNewModuleEvent.cs" company="ITANEO">
+// <copyright file="MyNewModuleRequest.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-namespace Hexalith.MyNewModule.Events.MyNewModules;
+namespace Hexalith.Documents.Requests.MyNewModules;
+
+using System.Runtime.Serialization;
 
 using Hexalith.MyNewModule.Aggregates;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>
-/// Base event for mynewmodule operations.
+/// Represents a base class for document commands.
 /// </summary>
-/// <param name="Id">The identifier of the mynewmodule.</param>
+/// <param name="Id">The aggregate ID of the document command.</param>
 [PolymorphicSerialization]
-public abstract partial record MyNewModuleEvent(string Id)
+public abstract partial record MyNewModuleRequest([property: DataMember(Order = 1)] string Id)
 {
     /// <summary>
-    /// Gets the aggregate identifier.
+    /// Gets the aggregate ID of the document command.
     /// </summary>
     public string AggregateId => Id;
 
     /// <summary>
-    /// Gets the aggregate name.
+    /// Gets the aggregate name of the document command.
     /// </summary>
     public static string AggregateName => MyNewModuleDomainHelper.MyNewModuleAggregateName;
 }

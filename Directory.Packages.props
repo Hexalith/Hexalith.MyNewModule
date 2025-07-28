@@ -14,4 +14,7 @@
   <ItemGroup>
     <!-- Define packages versions for this module. -->
   </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="Hexalith.Application.Abstractions" Version="1.70.11" />
+  </ItemGroup>
 </Project>

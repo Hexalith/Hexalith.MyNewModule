@@ -6,8 +6,8 @@
 namespace Hexalith.MyNewModule.Tests.Domains.Aggregates;
 
 using Hexalith.Domains.Results;
+using Hexalith.MyNewModule.Aggregates;
 using Hexalith.MyNewModule.Aggregates.MyNewModules;
-using Hexalith.MyNewModule.Events;
 using Hexalith.MyNewModule.Events.MyNewModules;
 
 using Shouldly;

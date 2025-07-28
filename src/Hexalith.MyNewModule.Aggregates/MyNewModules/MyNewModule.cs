@@ -10,7 +10,8 @@ using System.Runtime.Serialization;
 
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
-using Hexalith.MyNewModule.Events;
+using Hexalith.MyNewModule.Aggregates;
+
 using Hexalith.MyNewModule.Events.MyNewModules;
 
 /// <summary>

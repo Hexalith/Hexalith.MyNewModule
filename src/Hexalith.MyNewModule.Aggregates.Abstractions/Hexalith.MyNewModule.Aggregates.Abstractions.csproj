@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Hexalith.MyNewModule.Aggregates</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Hexalith.Domains.Abstractions" />
+    <PackageReference Include="Hexalith.PolymorphicSerializations" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="all" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hexalith.MyNewModule.Aggregates.Abstractions\Hexalith.MyNewModule.Aggregates.Abstractions.csproj" />
   </ItemGroup>
 </Project>

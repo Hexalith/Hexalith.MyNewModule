@@ -3,9 +3,10 @@
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Hexalith.Application.Abstractions" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hexalith.MyNewModule.Aggregates.Abstractions\Hexalith.MyNewModule.Aggregates.Abstractions.csproj" />
+    <ProjectReference Include="..\Hexalith.MyNewModule.Aggregates\Hexalith.MyNewModule.Aggregates.csproj" />
   </ItemGroup>
 </Project>
