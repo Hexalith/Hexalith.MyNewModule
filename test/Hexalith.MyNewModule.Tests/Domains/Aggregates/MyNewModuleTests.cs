@@ -64,7 +64,7 @@ public class MyNewModuleTests
     public void ShouldDisableModuleWhenApplyingDisabledEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var disabledEvent = new MyNewModuleDisabled("test-id");
 
         // Act
@@ -84,7 +84,7 @@ public class MyNewModuleTests
     public void ShouldEnableDisabledModuleWhenApplyingEnabledEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, true);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
         var enabledEvent = new MyNewModuleEnabled("test-id");
 
         // Act
@@ -104,7 +104,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenAddingToAlreadyInitializedAggregate()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var addedEvent = new MyNewModuleAdded("test-id", "Another Module", "Another Description", 2.0m);
 
         // Act
@@ -122,7 +122,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenDisablingAlreadyDisabledModule()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, true);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
         var disabledEvent = new MyNewModuleDisabled("test-id");
 
         // Act
@@ -141,7 +141,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenEnablingAlreadyEnabledModule()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var enabledEvent = new MyNewModuleEnabled("test-id");
 
         // Act
@@ -160,7 +160,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenSettingSameDescription()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "Test Module", "Test Description");
 
         // Act
@@ -179,7 +179,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenSettingSamePriorityWeight()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var priorityWeightChangedEvent = new MyNewModulePriorityWeightChanged("test-id", 1.5m);
 
         // Act
@@ -198,7 +198,7 @@ public class MyNewModuleTests
     public void ShouldReturnCorrectAggregateId()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
 
         // Act & Assert
         aggregate.AggregateId.ShouldBe("test-id");
@@ -211,7 +211,7 @@ public class MyNewModuleTests
     public void ShouldReturnCorrectAggregateName()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
 
         // Act & Assert
         aggregate.AggregateName.ShouldBe(MyNewModuleDomainHelper.MyNewModuleAggregateName);
@@ -224,7 +224,7 @@ public class MyNewModuleTests
     public void ShouldReturnInvalidEventWhenApplyingNonMyNewModuleEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         object invalidEvent = new();
 
         // Act
@@ -243,7 +243,7 @@ public class MyNewModuleTests
     public void ShouldReturnNotEnabledWhenApplyingEventsToDisabledModule()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, true);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "New Name", "New Description");
 
         // Act
@@ -281,7 +281,7 @@ public class MyNewModuleTests
     public void ShouldThrowArgumentNullExceptionWhenApplyCalledWithNull()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
 
         // Act & Assert
         _ = Should.Throw<ArgumentNullException>(() => aggregate.Apply(null!));
@@ -303,7 +303,7 @@ public class MyNewModuleTests
     public void ShouldUpdateDescriptionWhenApplyingDescriptionChangedEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Old Name", "Old Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Old Name", "Old Description", 1.5m, null, null, false);
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "New Name", "New Description");
 
         // Act
@@ -325,7 +325,7 @@ public class MyNewModuleTests
     public void ShouldUpdatePriorityWeightWhenApplyingPriorityWeightChangedEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, false);
+        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var priorityWeightChangedEvent = new MyNewModulePriorityWeightChanged("test-id", 2.5m);
 
         // Act

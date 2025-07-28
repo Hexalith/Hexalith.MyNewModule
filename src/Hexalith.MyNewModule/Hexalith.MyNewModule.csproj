@@ -8,6 +8,7 @@
     <None Remove="ValueObjects\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Hexalith.Application" />
     <PackageReference Include="Hexalith.Domains.Abstractions" />
     <PackageReference Include="Hexalith.PolymorphicSerializations" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="all" />
@@ -15,10 +16,9 @@
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
     <Folder Include="EventHandlers\" />
-    <Folder Include="RequestHandlers\" />
-    <Folder Include="ProjectionHandlers\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hexalith.MyNewModule.Aggregates\Hexalith.MyNewModule.Aggregates.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModule.Commands\Hexalith.MyNewModule.Commands.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModule.Events\Hexalith.MyNewModule.Events.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModule.Requests\Hexalith.MyNewModule.Requests.csproj" />
