@@ -14,6 +14,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
-    <Folder Include="EventsHandlers\" />
+    <Folder Include="EventHandlers\" />
+    <Folder Include="RequestHandlers\" />
+    <Folder Include="ProjectionHandlers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hexalith.MyNewModule.Commands\Hexalith.MyNewModule.Commands.csproj" />
+    <ProjectReference Include="..\Hexalith.MyNewModule.Events\Hexalith.MyNewModule.Events.csproj" />
+    <ProjectReference Include="..\Hexalith.MyNewModule.Requests\Hexalith.MyNewModule.Requests.csproj" />
   </ItemGroup>
 </Project>

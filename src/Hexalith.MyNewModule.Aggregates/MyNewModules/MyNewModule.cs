@@ -11,7 +11,8 @@ using System.Runtime.Serialization;
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
 using Hexalith.MyNewModule.Aggregates;
-
+using Hexalith.MyNewModule.Aggregates.Enums;
+using Hexalith.MyNewModule.Aggregates.ValueObjects;
 using Hexalith.MyNewModule.Events.MyNewModules;
 
 /// <summary>
@@ -21,6 +22,8 @@ using Hexalith.MyNewModule.Events.MyNewModules;
 /// <param name="Name">The mynewmodule name.</param>
 /// <param name="Comments">The mynewmodule description.</param>
 /// <param name="PriorityWeight">The mynewmodule priority weight.</param>
+/// <param name="Position">The mynewmodule geographical position.</param>
+/// <param name="Temperature"> The mynewmodule temperature.</param>
 /// <param name="Disabled">The mynewmodule disabled status.</param>
 [DataContract]
 public sealed record MyNewModule(
@@ -28,13 +31,15 @@ public sealed record MyNewModule(
     [property: DataMember(Order = 2)] string Name,
     [property: DataMember(Order = 3)] string? Comments,
     [property: DataMember(Order = 4)] decimal PriorityWeight,
-    [property: DataMember(Order = 5)] bool Disabled) : IDomainAggregate
+    [property: DataMember(Order = 5)] GeographicalPosition? Position,
+    [property: DataMember(Order = 6)] Temperature? Temperature,
+    [property: DataMember(Order = 7)] bool Disabled) : IDomainAggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MyNewModule"/> class.
     /// </summary>
     public MyNewModule()
-        : this(string.Empty, string.Empty, string.Empty, 0, false)
+        : this(string.Empty, string.Empty, string.Empty, 0, null, null, false)
     {
     }
 
@@ -48,6 +53,8 @@ public sealed record MyNewModule(
             added.Name,
             added.Comments,
             added.PriorityWeight,
+            null,
+            null,
             false)
     {
     }
@@ -79,6 +86,7 @@ public sealed record MyNewModule(
                 MyNewModuleDisabled e => ApplyEvent(e),
                 MyNewModuleEnabled e => ApplyEvent(e),
                 MyNewModulePriorityWeightChanged e => ApplyEvent(e),
+                MyNewModulePriorityGeographicalPositionChanged e => ApplyEvent(e),
                 MyNewModuleEvent => ApplyResult.NotImplemented(this),
                 _ => ApplyResult.InvalidEvent(this, domainEvent),
             };
@@ -104,4 +112,8 @@ public sealed record MyNewModule(
     private ApplyResult ApplyEvent(MyNewModulePriorityWeightChanged e) => PriorityWeight == e.PriorityWeight
             ? ApplyResult.Error(this, "The MyNewModule priority weight is already set to the specified value.")
             : ApplyResult.Success(this with { PriorityWeight = e.PriorityWeight }, [e]);
+
+    private ApplyResult ApplyEvent(MyNewModulePriorityGeographicalPositionChanged e) => Position == e.Position && Temperature == e.Temperature
+            ? ApplyResult.Error(this, "The MyNewModule geographical position and temperature is already set to the specified value.")
+            : ApplyResult.Success(this with { Position = e.Position, Temperature = Temperature }, [e]);
 }

@@ -59,5 +59,59 @@ namespace Hexalith.MyNewModule.Localizations {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geographical position must be valid..
+        /// </summary>
+        public static string GeographicalPositionMustBeValid {
+            get {
+                return ResourceManager.GetString("GeographicalPositionMustBeValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latitude must be between {0} and {1} degrees..
+        /// </summary>
+        public static string LatitudeMustBeInRange {
+            get {
+                return ResourceManager.GetString("LatitudeMustBeInRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latitude must not be null..
+        /// </summary>
+        public static string LatitudeMustBeNotNull {
+            get {
+                return ResourceManager.GetString("LatitudeMustBeNotNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude must be between {0} and {1} degrees..
+        /// </summary>
+        public static string LongitudeMustBeInRange {
+            get {
+                return ResourceManager.GetString("LongitudeMustBeInRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude must not be null..
+        /// </summary>
+        public static string LongitudeMustBeNotNull {
+            get {
+                return ResourceManager.GetString("LongitudeMustBeNotNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature must be not null when geographical position is defined..
+        /// </summary>
+        public static string TemperatureMustBeNotNull {
+            get {
+                return ResourceManager.GetString("TemperatureMustBeNotNull", resourceCulture);
+            }
+        }
     }
 }
