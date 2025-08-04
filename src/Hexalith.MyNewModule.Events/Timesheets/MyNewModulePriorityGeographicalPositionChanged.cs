@@ -1,4 +1,4 @@
-// <copyright file="MyNewModulePriorityGeographicalPositionChanged.cs" company="ITANEO">
+// <copyright file="MyNewModulePrioritySubmissionPeriod Changed.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -14,11 +14,11 @@ using Hexalith.PolymorphicSerializations;
 /// Event raised when a mynewmodule priority weight is changed.
 /// </summary>
 /// <param name="Id">The identifier of the mynewmodule.</param>
-/// <param name="Position">The new geographical position of the mynewmodule.</param>
+/// <param name="SubmissionPeriod ">The new geographical position of the mynewmodule.</param>
 /// <param name="Temperature">The new temperature of the mynewmodule.</param>
 [PolymorphicSerialization]
-public partial record MyNewModulePriorityGeographicalPositionChanged(
+public partial record MyNewModulePrioritySubmissionPeriod Changed(
     string Id,
-    [property: DataMember(Order = 2)] GeographicalPosition? Position,
-    [property: DataMember(Order = 3)] Temperature? Temperature)
+    [property: DataMember(Order = 2)] SubmissionPeriod ? SubmissionPeriod ,
+    [property: DataMember(Order = 3)] TimeSheetStatus? Temperature)
     : MyNewModuleEvent(Id);

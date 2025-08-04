@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.MyNewModule.Events.MyNewModules;
-using Hexalith.MyNewModule.Requests.MyNewModules;
+using Hexalith.MyNewModule.Requests.Timesheets;
 
 /// <summary>
 /// Abstract base class for handling updates to MyNewModule projections based on events.

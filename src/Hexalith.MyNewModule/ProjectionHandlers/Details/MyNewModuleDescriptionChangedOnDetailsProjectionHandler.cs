@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Projections;
 using Hexalith.MyNewModule.Events.MyNewModules;
-using Hexalith.MyNewModule.Requests.MyNewModules;
+using Hexalith.MyNewModule.Requests.Timesheets;
 
 /// <summary>
 /// Handles the projection update when a warehouse description is changed.

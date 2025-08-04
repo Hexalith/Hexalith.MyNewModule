@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Requests;
 using Hexalith.MyNewModule.Aggregates;
-using Hexalith.MyNewModule.Aggregates.MyNewModules;
+using Hexalith.MyNewModule.Aggregates.Timesheets;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>
@@ -21,7 +21,7 @@ using Hexalith.PolymorphicSerializations;
 public partial record GetMyNewModuleExports(
     [property: DataMember(Order = 1)] int Skip,
     [property: DataMember(Order = 2)] int Take,
-    [property: DataMember(Order = 3)] IEnumerable<MyNewModule> Results)
+    [property: DataMember(Order = 3)] IEnumerable<Timesheet> Results)
     : IChunkableRequest
 {
     /// <summary>
@@ -62,5 +62,5 @@ public partial record GetMyNewModuleExports(
             : throw new InvalidRequestChunkException();
 
     /// <inheritdoc/>
-    public ICollectionRequest CreateResults(IEnumerable<object> results) => this with { Results = (IEnumerable<MyNewModule>)results };
+    public ICollectionRequest CreateResults(IEnumerable<object> results) => this with { Results = (IEnumerable<Timesheet>)results };
 }

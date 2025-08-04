@@ -7,7 +7,7 @@ namespace Hexalith.MyNewModule.Tests.Domains.Aggregates;
 
 using Hexalith.Domains.Results;
 using Hexalith.MyNewModule.Aggregates;
-using Hexalith.MyNewModule.Aggregates.MyNewModules;
+using Hexalith.MyNewModule.Aggregates.Timesheets;
 using Hexalith.MyNewModule.Events.MyNewModules;
 
 using Shouldly;
@@ -26,7 +26,7 @@ public class MyNewModuleTests
     public void ShouldApplyAddedEventToUninitializedAggregate()
     {
         // Arrange
-        var aggregate = new MyNewModule();
+        var aggregate = new Timesheet();
         var addedEvent = new MyNewModuleAdded("test-id", "Test Module", "Test Description", 1.5m);
 
         // Act
@@ -47,13 +47,13 @@ public class MyNewModuleTests
         var addedEvent = new MyNewModuleAdded("test-id", "Test Module", "Test Description", 1.5m);
 
         // Act
-        var myNewModule = new MyNewModule(addedEvent);
+        var myNewModule = new Timesheet(addedEvent);
 
         // Assert
         myNewModule.Id.ShouldBe("test-id");
         myNewModule.Name.ShouldBe("Test Module");
         myNewModule.Comments.ShouldBe("Test Description");
-        myNewModule.PriorityWeight.ShouldBe(1.5m);
+        myNewModule.WorkerId.ShouldBe(1.5m);
         myNewModule.Disabled.ShouldBeFalse();
     }
 
@@ -64,7 +64,7 @@ public class MyNewModuleTests
     public void ShouldDisableModuleWhenApplyingDisabledEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var disabledEvent = new MyNewModuleDisabled("test-id");
 
         // Act
@@ -73,8 +73,8 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
-        ((MyNewModule)result.Aggregate).Disabled.ShouldBeTrue();
+        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
+        ((Timesheet)result.Aggregate).Disabled.ShouldBeTrue();
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class MyNewModuleTests
     public void ShouldEnableDisabledModuleWhenApplyingEnabledEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
         var enabledEvent = new MyNewModuleEnabled("test-id");
 
         // Act
@@ -93,8 +93,8 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
-        ((MyNewModule)result.Aggregate).Disabled.ShouldBeFalse();
+        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
+        ((Timesheet)result.Aggregate).Disabled.ShouldBeFalse();
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenAddingToAlreadyInitializedAggregate()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var addedEvent = new MyNewModuleAdded("test-id", "Another Module", "Another Description", 2.0m);
 
         // Act
@@ -122,7 +122,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenDisablingAlreadyDisabledModule()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
         var disabledEvent = new MyNewModuleDisabled("test-id");
 
         // Act
@@ -141,7 +141,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenEnablingAlreadyEnabledModule()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var enabledEvent = new MyNewModuleEnabled("test-id");
 
         // Act
@@ -160,7 +160,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenSettingSameDescription()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "Test Module", "Test Description");
 
         // Act
@@ -179,7 +179,7 @@ public class MyNewModuleTests
     public void ShouldFailWhenSettingSamePriorityWeight()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var priorityWeightChangedEvent = new MyNewModulePriorityWeightChanged("test-id", 1.5m);
 
         // Act
@@ -198,7 +198,7 @@ public class MyNewModuleTests
     public void ShouldReturnCorrectAggregateId()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
 
         // Act & Assert
         aggregate.AggregateId.ShouldBe("test-id");
@@ -211,7 +211,7 @@ public class MyNewModuleTests
     public void ShouldReturnCorrectAggregateName()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
 
         // Act & Assert
         aggregate.AggregateName.ShouldBe(MyNewModuleDomainHelper.MyNewModuleAggregateName);
@@ -224,7 +224,7 @@ public class MyNewModuleTests
     public void ShouldReturnInvalidEventWhenApplyingNonMyNewModuleEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         object invalidEvent = new();
 
         // Act
@@ -243,7 +243,7 @@ public class MyNewModuleTests
     public void ShouldReturnNotEnabledWhenApplyingEventsToDisabledModule()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, true);
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "New Name", "New Description");
 
         // Act
@@ -262,7 +262,7 @@ public class MyNewModuleTests
     public void ShouldReturnNotInitializedWhenApplyingEventsToUninitializedAggregate()
     {
         // Arrange
-        var aggregate = new MyNewModule();
+        var aggregate = new Timesheet();
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "New Name", "New Description");
 
         // Act
@@ -281,7 +281,7 @@ public class MyNewModuleTests
     public void ShouldThrowArgumentNullExceptionWhenApplyCalledWithNull()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
 
         // Act & Assert
         _ = Should.Throw<ArgumentNullException>(() => aggregate.Apply(null!));
@@ -294,7 +294,7 @@ public class MyNewModuleTests
     public void ShouldThrowArgumentNullExceptionWhenConstructorCalledWithNullEvent() =>
 
         // Arrange & Act & Assert
-        Should.Throw<ArgumentNullException>(() => new MyNewModule(null!));
+        Should.Throw<ArgumentNullException>(() => new Timesheet(null!));
 
     /// <summary>
     /// Test that applying a MyNewModuleDescriptionChanged event updates the name and comments.
@@ -303,7 +303,7 @@ public class MyNewModuleTests
     public void ShouldUpdateDescriptionWhenApplyingDescriptionChangedEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Old Name", "Old Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Old Name", "Old Description", 1.5m, null, null, false);
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "New Name", "New Description");
 
         // Act
@@ -312,8 +312,8 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
-        var updatedModule = (MyNewModule)result.Aggregate;
+        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
+        var updatedModule = (Timesheet)result.Aggregate;
         updatedModule.Name.ShouldBe("New Name");
         updatedModule.Comments.ShouldBe("New Description");
     }
@@ -325,7 +325,7 @@ public class MyNewModuleTests
     public void ShouldUpdatePriorityWeightWhenApplyingPriorityWeightChangedEvent()
     {
         // Arrange
-        var aggregate = new MyNewModule("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
+        var aggregate = new Timesheet("test-id", "Test Module", "Test Description", 1.5m, null, null, false);
         var priorityWeightChangedEvent = new MyNewModulePriorityWeightChanged("test-id", 2.5m);
 
         // Act
@@ -334,7 +334,7 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
-        ((MyNewModule)result.Aggregate).PriorityWeight.ShouldBe(2.5m);
+        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
+        ((Timesheet)result.Aggregate).WorkerId.ShouldBe(2.5m);
     }
 }

@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Requests;
 using Hexalith.MyNewModule.Aggregates;
-using Hexalith.MyNewModule.Requests.MyNewModules;
+using Hexalith.MyNewModule.Requests.Timesheets;
 using Hexalith.PolymorphicSerializations;
 
 /// <summary>

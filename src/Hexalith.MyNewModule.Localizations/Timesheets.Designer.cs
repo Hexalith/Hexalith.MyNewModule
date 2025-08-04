@@ -22,14 +22,14 @@ namespace Hexalith.MyNewModule.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MyNewModule {
+    public class Timesheets {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MyNewModule() {
+        internal Timesheets() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hexalith.MyNewModule.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.MyNewModule.Localizations.MyNewModule", typeof(MyNewModule).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.MyNewModule.Localizations.Timesheets", typeof(Timesheets).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,38 @@ namespace Hexalith.MyNewModule.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Geographical position must be valid..
+        ///   Looks up a localized string similar to Submission period must be valid..
         /// </summary>
-        public static string GeographicalPositionMustBeValid {
+        public static string SubmissionPeriod_MustBeValid {
             get {
-                return ResourceManager.GetString("GeographicalPositionMustBeValid", resourceCulture);
+                return ResourceManager.GetString("SubmissionPeriod MustBeValid", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Latitude must be between {0} and {1} degrees..
+        ///   Looks up a localized string similar to Submission period end date must not be before the start date..
         /// </summary>
-        public static string LatitudeMustBeInRange {
+        public static string SubmissionPeriodEndDateAfterStartDate {
             get {
-                return ResourceManager.GetString("LatitudeMustBeInRange", resourceCulture);
+                return ResourceManager.GetString("SubmissionPeriodEndDateAfterStartDate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Latitude must not be null..
+        ///   Looks up a localized string similar to The submission period end date is required..
         /// </summary>
-        public static string LatitudeMustBeNotNull {
+        public static string SubmissionPeriodEndDateRequired {
             get {
-                return ResourceManager.GetString("LatitudeMustBeNotNull", resourceCulture);
+                return ResourceManager.GetString("SubmissionPeriodEndDateRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Longitude must be between {0} and {1} degrees..
+        ///   Looks up a localized string similar to The submission period start date is required..
         /// </summary>
-        public static string LongitudeMustBeInRange {
+        public static string SubmissionPeriodStartDateRequired {
             get {
-                return ResourceManager.GetString("LongitudeMustBeInRange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Longitude must not be null..
-        /// </summary>
-        public static string LongitudeMustBeNotNull {
-            get {
-                return ResourceManager.GetString("LongitudeMustBeNotNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Temperature must be not null when geographical position is defined..
-        /// </summary>
-        public static string TemperatureMustBeNotNull {
-            get {
-                return ResourceManager.GetString("TemperatureMustBeNotNull", resourceCulture);
+                return ResourceManager.GetString("SubmissionPeriodStartDateRequired", resourceCulture);
             }
         }
     }

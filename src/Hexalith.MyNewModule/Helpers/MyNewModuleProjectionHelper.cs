@@ -7,12 +7,12 @@ namespace Hexalith.MyNewModule.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Requests;
 using Hexalith.Domain.Events;
-using Hexalith.MyNewModule.Aggregates.MyNewModules;
+using Hexalith.MyNewModule.Aggregates.Timesheets;
 using Hexalith.MyNewModule.Events.MyNewModules;
 using Hexalith.MyNewModule.ProjectionHandlers.Details;
 using Hexalith.MyNewModule.ProjectionHandlers.Summaries;
 using Hexalith.MyNewModule.RequestHandlers;
-using Hexalith.MyNewModule.Requests.MyNewModules;
+using Hexalith.MyNewModule.Requests.Timesheets;
 
 using Manhole.Requests.MyNewModules;
 
@@ -60,7 +60,7 @@ public static class MyNewModuleProjectionHelper
         services.TryAddScoped<IRequestHandler<GetMyNewModuleDetails>, GetMyNewModuleDetailsHandler>();
         services.TryAddScoped<IRequestHandler<GetMyNewModuleSummaries>, GetFilteredCollectionHandler<GetMyNewModuleSummaries, MyNewModuleSummaryViewModel>>();
         services.TryAddScoped<IRequestHandler<GetMyNewModuleIds>, GetAggregateIdsRequestHandler<GetMyNewModuleIds>>();
-        services.TryAddScoped<IRequestHandler<GetMyNewModuleExports>, GetExportsRequestHandler<GetMyNewModuleExports, MyNewModule>>();
+        services.TryAddScoped<IRequestHandler<GetMyNewModuleExports>, GetExportsRequestHandler<GetMyNewModuleExports, Timesheet>>();
         return services;
     }
 }

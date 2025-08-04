@@ -117,22 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LatitudeMustBeInRange" xml:space="preserve">
-    <value>Latitude must be between {0} and {1} degrees.</value>
+  <data name="SubmissionPeriodStartDateRequired" xml:space="preserve">
+    <value>The submission period start date is required.</value>
   </data>
-  <data name="LongitudeMustBeInRange" xml:space="preserve">
-    <value>Longitude must be between {0} and {1} degrees.</value>
+  <data name="SubmissionPeriodEndDateAfterStartDate" xml:space="preserve">
+    <value>Submission period end date must not be before the start date.</value>
   </data>
-  <data name="LatitudeMustBeNotNull" xml:space="preserve">
-    <value>Latitude must not be null.</value>
+  <data name="SubmissionPeriod MustBeValid" xml:space="preserve">
+    <value>Submission period must be valid.</value>
   </data>
-  <data name="LongitudeMustBeNotNull" xml:space="preserve">
-    <value>Longitude must not be null.</value>
-  </data>
-  <data name="GeographicalPositionMustBeValid" xml:space="preserve">
-    <value>Geographical position must be valid.</value>
-  </data>
-  <data name="TemperatureMustBeNotNull" xml:space="preserve">
-    <value>Temperature must be not null when geographical position is defined.</value>
+  <data name="SubmissionPeriodEndDateRequired" xml:space="preserve">
+    <value>The submission period end date is required.</value>
   </data>
 </root>
