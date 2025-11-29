@@ -7,7 +7,6 @@ namespace Hexalith.MyNewModule.Tests.Domains.Aggregates;
 
 using Hexalith.Domains.Results;
 using Hexalith.MyNewModule.Aggregates;
-using Hexalith.MyNewModule.Aggregates.Timesheets;
 using Hexalith.MyNewModule.Events.MyNewModules;
 
 using Shouldly;
@@ -26,7 +25,7 @@ public class MyNewModuleTests
     public void ShouldApplyAddedEventToUninitializedAggregate()
     {
         // Arrange
-        var aggregate = new Timesheet();
+        var aggregate = new MyNewModule();
         var addedEvent = new MyNewModuleAdded("test-id", "Test Module", "Test Description", 1.5m);
 
         // Act
@@ -47,7 +46,7 @@ public class MyNewModuleTests
         var addedEvent = new MyNewModuleAdded("test-id", "Test Module", "Test Description", 1.5m);
 
         // Act
-        var myNewModule = new Timesheet(addedEvent);
+        var myNewModule = new MyNewModule(addedEvent);
 
         // Assert
         myNewModule.Id.ShouldBe("test-id");
@@ -73,8 +72,8 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
-        ((Timesheet)result.Aggregate).Disabled.ShouldBeTrue();
+        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
+        ((MyNewModule)result.Aggregate).Disabled.ShouldBeTrue();
     }
 
     /// <summary>
@@ -93,8 +92,8 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
-        ((Timesheet)result.Aggregate).Disabled.ShouldBeFalse();
+        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
+        ((MyNewModule)result.Aggregate).Disabled.ShouldBeFalse();
     }
 
     /// <summary>
@@ -262,7 +261,7 @@ public class MyNewModuleTests
     public void ShouldReturnNotInitializedWhenApplyingEventsToUninitializedAggregate()
     {
         // Arrange
-        var aggregate = new Timesheet();
+        var aggregate = new MyNewModule();
         var descriptionChangedEvent = new MyNewModuleDescriptionChanged("test-id", "New Name", "New Description");
 
         // Act
@@ -294,7 +293,7 @@ public class MyNewModuleTests
     public void ShouldThrowArgumentNullExceptionWhenConstructorCalledWithNullEvent() =>
 
         // Arrange & Act & Assert
-        Should.Throw<ArgumentNullException>(() => new Timesheet(null!));
+        Should.Throw<ArgumentNullException>(() => new MyNewModule(null!));
 
     /// <summary>
     /// Test that applying a MyNewModuleDescriptionChanged event updates the name and comments.
@@ -312,8 +311,8 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
-        var updatedModule = (Timesheet)result.Aggregate;
+        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
+        var updatedModule = (MyNewModule)result.Aggregate;
         updatedModule.Name.ShouldBe("New Name");
         updatedModule.Comments.ShouldBe("New Description");
     }
@@ -334,7 +333,7 @@ public class MyNewModuleTests
         // Assert
         _ = result.ShouldNotBeNull();
         _ = result.ShouldBeOfType<ApplyResult>();
-        _ = result.Aggregate.ShouldBeOfType<Timesheet>();
-        ((Timesheet)result.Aggregate).WorkerId.ShouldBe(2.5m);
+        _ = result.Aggregate.ShouldBeOfType<MyNewModule>();
+        ((MyNewModule)result.Aggregate).WorkerId.ShouldBe(2.5m);
     }
 }

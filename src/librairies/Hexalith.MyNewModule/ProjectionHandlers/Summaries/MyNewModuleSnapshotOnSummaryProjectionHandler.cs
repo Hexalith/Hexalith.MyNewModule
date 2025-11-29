@@ -11,7 +11,6 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Domain.Events;
 using Hexalith.MyNewModule.Aggregates;
-using Hexalith.MyNewModule.Aggregates.Timesheets;
 using Hexalith.MyNewModule.Requests.Timesheets;
 
 /// <summary>
@@ -35,7 +34,7 @@ public class MyNewModuleSnapshotOnSummaryProjectionHandler(IProjectionFactory<My
             .GetStateAsync(metadata.AggregateGlobalId, cancellationToken)
             .ConfigureAwait(false);
 
-        Timesheet warehouse = baseEvent.GetAggregate<Timesheet>();
+        MyNewModule warehouse = baseEvent.GetAggregate<MyNewModule>();
         MyNewModuleSummaryViewModel newValue = new(warehouse.Id, warehouse.Name, warehouse.WorkerId, warehouse.Disabled);
         if (currentValue is not null && currentValue == newValue)
         {

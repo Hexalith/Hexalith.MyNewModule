@@ -25,10 +25,10 @@ public class SubmissionPeriodValidator : AbstractValidator<SubmissionPeriod>
     public SubmissionPeriodValidator(IStringLocalizer<Labels> localizer)
     {
         ArgumentNullException.ThrowIfNull(localizer);
-        RuleFor(x => x.StartDate)
+        _ = RuleFor(x => x.StartDate)
             .NotEmpty()
             .WithMessage(localizer[Labels.SubmissionPeriodStartDateRequired]);
-        RuleFor(x => x.EndDate)
+        _ = RuleFor(x => x.EndDate)
             .NotEmpty()
             .WithMessage(localizer[Labels.SubmissionPeriodEndDateRequired])
             .GreaterThanOrEqualTo(x => x.StartDate)
