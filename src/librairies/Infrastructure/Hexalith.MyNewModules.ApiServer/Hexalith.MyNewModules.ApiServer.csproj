@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Hexalith.Infrastructure.ClientAppOnServer" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\Hexalith.MyNewModules.Abstractions\Hexalith.MyNewModules.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Application\Hexalith.MyNewModule\Hexalith.MyNewModules.csproj" />
+      <ProjectReference Include="..\..\Application\Hexalith.MyNewModules.Requests\Hexalith.MyNewModules.Requests.csproj" />
+      <ProjectReference Include="..\..\Domain\Hexalith.MyNewModules.Events\Hexalith.MyNewModules.Events.csproj" />
+      <ProjectReference Include="..\Hexalith.MyNewModules.Servers\Hexalith.MyNewModules.Servers.csproj" />
+    </ItemGroup>
+</Project>

@@ -19,7 +19,7 @@
 
   <PropertyGroup>
     <Product>Hexalith.MyNewModule</Product>
-    <RepositoryUrl>https://github.com/Hexalith/Hexalith.MyNewModule.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Hexalith/Hexalith.MyNewModules.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Hexalith/Hexalith.MyNewModule</PackageProjectUrl>
     <PackageTags>hexalith;</PackageTags>
     <Description>Hexalith MyNewModule Module</Description>

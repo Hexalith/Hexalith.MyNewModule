@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Hexalith.Infrastructure.ClientAppOnWasm" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Application\Hexalith.MyNewModule\Hexalith.MyNewModules.csproj" />
+        <ProjectReference Include="..\..\Application\Hexalith.MyNewModules.Commands\Hexalith.MyNewModules.Commands.csproj" />
+        <ProjectReference Include="..\..\Application\Hexalith.MyNewModules.Requests\Hexalith.MyNewModules.Requests.csproj" />
+        <ProjectReference Include="..\..\Presentation\Hexalith.MyNewModules.UI.Pages\Hexalith.MyNewModules.UI.Pages.csproj" />
+    </ItemGroup>
+</Project>

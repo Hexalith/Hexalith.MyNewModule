@@ -9,8 +9,8 @@ using System;
 using System.Collections.Generic;
 
 using Hexalith.Application.Modules.Applications;
-using Hexalith.MyNewModule.Application;
-using Hexalith.MyNewModule.WebApp.Modules;
+using Hexalith.MyNewModules.Application;
+using Hexalith.MyNewModules.WebApp.Modules;
 using Hexalith.Security.WebApp;
 using Hexalith.UI.WebApp;
 

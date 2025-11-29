@@ -25,7 +25,7 @@ Add a build status topic with the following :
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
 
 [![Build status](https://github.com/Hexalith/Hexalith.MyNewModule/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.MyNewModule/actions)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModule.svg)](https://www.nuget.org/packages/Hexalith.MyNewModule)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModules.svg)](https://www.nuget.org/packages/Hexalith.MyNewModule)
 [![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.MyNewModule?include_prereleases&label=preview)](https://github.com/Hexalith/Hexalith.MyNewModule/pkgs/nuget/Hexalith.MyNewModule)
 
 DO NOT MODIFY DOCUMENTATION.ai.md FILE, IT CONTAINS AI INSTRUCTIONS!

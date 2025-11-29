@@ -9,8 +9,8 @@ using System;
 using System.Collections.Generic;
 
 using Hexalith.Application.Modules.Applications;
-using Hexalith.MyNewModule.ApiServer.Modules;
-using Hexalith.MyNewModule.Application;
+using Hexalith.MyNewModules.ApiServer.Modules;
+using Hexalith.MyNewModules.Application;
 using Hexalith.Security.ApiServer;
 using Hexalith.UI.ApiServer;
 
