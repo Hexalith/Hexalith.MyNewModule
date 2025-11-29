@@ -3,6 +3,11 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="MyNewModule.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MyNewModule.resx</DependentUpon>
+    </Compile>
     <Compile Update="Timesheets.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -10,6 +15,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="MyNewModule.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyNewModule.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Timesheets.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Timesheets.Designer.cs</LastGenOutput>

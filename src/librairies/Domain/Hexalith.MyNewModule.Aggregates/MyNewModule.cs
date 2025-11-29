@@ -1,6 +1,5 @@
-﻿// <copyright file="MyNewModule.cs" company="ITANEO">
-// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// <copyright file="MyNewModule.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.MyNewModule.Aggregates;
@@ -11,6 +10,7 @@ using System.Runtime.Serialization;
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
 using Hexalith.MyNewModule.Events.MyNewModules;
+using Hexalith.PolymorphicSerializations;
 
 /// <summary>
 /// Represents a mynewmodule.
@@ -19,7 +19,7 @@ using Hexalith.MyNewModule.Events.MyNewModules;
 /// <param name="Name">The mynewmodule name.</param>
 /// <param name="Comments">The mynewmodule description.</param>
 /// <param name="Disabled">The mynewmodule disabled status.</param>
-[DataContract]
+[PolymorphicSerialization]
 public sealed record MyNewModule(
     [property: DataMember(Order = 1)] string Id,
     [property: DataMember(Order = 2)] string Name,

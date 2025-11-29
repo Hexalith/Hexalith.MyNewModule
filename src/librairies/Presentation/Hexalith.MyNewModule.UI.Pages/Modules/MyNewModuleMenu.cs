@@ -5,7 +5,7 @@
 
 namespace Hexalith.MyNewModule.UI.Pages.Modules;
 
-using Hexalith.MyNewModule.Application;
+using Hexalith.MyNewModule.Abstractions;
 using Hexalith.UI.Components;
 using Hexalith.UI.Components.Icons;
 

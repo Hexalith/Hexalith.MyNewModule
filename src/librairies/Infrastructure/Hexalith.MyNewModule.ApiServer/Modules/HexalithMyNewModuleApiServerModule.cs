@@ -14,11 +14,14 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.MyNewModule.Abstractions;
+using Hexalith.MyNewModule.Aggregates;
 using Hexalith.MyNewModule.ApiServer.Controllers;
-
 using Hexalith.MyNewModule.Commands.Extensions;
+using Hexalith.MyNewModule.Events.Extensions;
+using Hexalith.MyNewModule.Helpers;
 using Hexalith.MyNewModule.Requests.Extensions;
-using Hexalith.MyNewModule.Servers.Helpers;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -26,24 +29,24 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
-/// The document construction site client module.
+/// The MyNewModule construction site client module.
 /// </summary>
-public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationModule, IDocumentModule
+public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationModule, IMyNewModuleModule
 {
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => DocumentModulePolicies.AuthorizationPolicies;
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyNewModuleModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
 
     /// <inheritdoc/>
-    public string Description => "Hexalith Document API Server module";
+    public string Description => "Hexalith MyNewModule API Server module";
 
     /// <inheritdoc/>
     public string Id => "Hexalith.MyNewModule.ApiServer";
 
     /// <inheritdoc/>
-    public string Name => "Hexalith Document API Server";
+    public string Name => "Hexalith MyNewModule API Server";
 
     /// <inheritdoc/>
     public int OrderWeight => 0;
@@ -67,18 +70,15 @@ public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationMo
         _ = services
             .ConfigureSettings<CosmosDbSettings>(configuration);
 
-        HexalithMyNewModuleAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleEventsSerialization.RegisterPolymorphicMappers();
         HexalithMyNewModuleCommandsSerialization.RegisterPolymorphicMappers();
         HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IDocumentModule, HexalithMyNewModuleApiServerModule>();
+        services.TryAddSingleton<IMyNewModuleModule, HexalithMyNewModuleApiServerModule>();
 
         // Add command handlers
-        _ = services
-            .AddDocumentManagement()
-            .AddMyNewModuletorage()
-            .AddMyNewModuleProjectionActorFactories();
+        _ = services.AddMyNewModule();
 
         _ = services
          .AddControllers()
@@ -99,42 +99,11 @@ public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationMo
             throw new ArgumentException($"{nameof(RegisterActors)} parameter must be an {nameof(ActorRegistrationCollection)}. Actual type : {actorCollection.GetType().Name}.", nameof(actorCollection));
         }
 
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DataManagementAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentContainerAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentInformationExtractionAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.MyNewModuletorageAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentTypeAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.FileTypeAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterAggregateRelationActor<DocumentContainer, Document>();
-        actorRegistrations.RegisterProjectionActor<DataManagement>();
-        actorRegistrations.RegisterProjectionActor<Document>();
-        actorRegistrations.RegisterProjectionActor<DocumentContainer>();
-        actorRegistrations.RegisterProjectionActor<DocumentInformationExtraction>();
-        actorRegistrations.RegisterProjectionActor<MyNewModuletorage>();
-        actorRegistrations.RegisterProjectionActor<DocumentType>();
-        actorRegistrations.RegisterProjectionActor<FileType>();
-        actorRegistrations.RegisterProjectionActor<DataManagementSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<DataManagementDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<MyNewModuleummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentContainerSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentContainerDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentInformationExtractionSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentInformationExtractionDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<MyNewModuletorageSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<MyNewModuletorageDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentTypeSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentTypeDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<FileTypeSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<FileTypeDetailsViewModel>();
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DataManagementAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentContainerAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentInformationExtractionAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.MyNewModuletorageAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentTypeAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.FileTypeAggregateName));
+        actorRegistrations.RegisterActor<DomainAggregateActor>(MyNewModuleDomainHelper.MyNewModuleAggregateName.ToAggregateActorName());
+        actorRegistrations.RegisterProjectionActor<MyNewModule>();
+        actorRegistrations.RegisterProjectionActor<MyNewModuleSummaryViewModel>();
+        actorRegistrations.RegisterProjectionActor<MyNewModuleDetailsViewModel>();
+        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(MyNewModuleDomainHelper.MyNewModuleAggregateName));
     }
 
     /// <inheritdoc/>

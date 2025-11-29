@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SubmissionPeriodStartDateRequired" xml:space="preserve">
-    <value>La date de début de la période est requise.</value>
+  <data name="Id" xml:space="preserve">
+    <value>Identifiant</value>
   </data>
-  <data name="SubmissionPeriodEndDateAfterStartDate" xml:space="preserve">
-    <value>La date de fin de la période de soumission ne doit pas être inférieure à la date de début.</value>
+  <data name="IdRequired" xml:space="preserve">
+    <value>Identifiant obligatoire</value>
   </data>
-  <data name="SubmissionPeriod MustBeValid" xml:space="preserve">
-    <value>La période de soumission doit être valide.</value>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
   </data>
-  <data name="SubmissionPeriodEndDateRequired" xml:space="preserve">
-    <value>La date de fin de la période est requise.</value>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Nom obligatoire</value>
   </data>
 </root>

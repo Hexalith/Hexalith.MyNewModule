@@ -12,6 +12,7 @@
     <PackageReference Include="Hexalith.Domains.Abstractions" />
     <PackageReference Include="Hexalith.PolymorphicSerializations" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
@@ -19,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Hexalith.MyNewModule.Aggregates\Hexalith.MyNewModule.Aggregates.csproj" />
+    <ProjectReference Include="..\Hexalith.MyNewModule.Abstractions\Hexalith.MyNewModule.Abstractions.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModule.Commands\Hexalith.MyNewModule.Commands.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.MyNewModule.Events\Hexalith.MyNewModule.Events.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModule.Requests\Hexalith.MyNewModule.Requests.csproj" />

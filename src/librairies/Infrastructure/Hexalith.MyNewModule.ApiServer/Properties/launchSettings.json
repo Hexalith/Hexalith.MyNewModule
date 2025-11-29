@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Document.Server": {
+    "MyNewModule.Server": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -1,6 +1,5 @@
-﻿// <copyright file="HexalithMyNewModuleWebAppModule.cs" company="ITANEO">
-// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithMyNewModuleWebAppModule.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.MyNewModule.WebApp.Modules;
@@ -9,11 +8,10 @@ using System.Collections.Generic;
 using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
-using Hexalith.MyNewModule.Abstractions.Extensions;
-using Hexalith.MyNewModule.Application.MyNewModule;
-using Hexalith.MyNewModule.Application.Helpers;
+using Hexalith.MyNewModule.Abstractions;
 using Hexalith.MyNewModule.Commands.Extensions;
-using Hexalith.MyNewModule.Projections.Helpers;
+using Hexalith.MyNewModule.Events.Extensions;
+using Hexalith.MyNewModule.Helpers;
 using Hexalith.MyNewModule.Requests.Extensions;
 using Hexalith.MyNewModule.UI.Pages.Modules;
 
@@ -22,24 +20,24 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
-/// The document construction site client module.
+/// The MyNewModule construction site client module.
 /// </summary>
-public class HexalithMyNewModuleWebAppModule : IWebAppApplicationModule, IDocumentModule
+public class HexalithMyNewModuleWebAppModule : IWebAppApplicationModule, IMyNewModuleModule
 {
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => DocumentModulePolicies.AuthorizationPolicies;
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyNewModuleModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
 
     /// <inheritdoc/>
-    public string Description => "Document client module";
+    public string Description => "MyNewModule client module";
 
     /// <inheritdoc/>
-    public string Id => "Hexalith.Document.Client";
+    public string Id => "Hexalith.MyNewModule.Client";
 
     /// <inheritdoc/>
-    public string Name => "Document client";
+    public string Name => "MyNewModule client";
 
     /// <inheritdoc/>
     public int OrderWeight => 0;
@@ -63,16 +61,16 @@ public class HexalithMyNewModuleWebAppModule : IWebAppApplicationModule, IDocume
     /// <param name="services">The service collection.</param>
     public static void AddServices(IServiceCollection services)
     {
-        HexalithMyNewModuleAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleEventsSerialization.RegisterPolymorphicMappers();
         HexalithMyNewModuleCommandsSerialization.RegisterPolymorphicMappers();
         HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IDocumentModule, HexalithMyNewModuleWebAppModule>();
+        services.TryAddSingleton<IMyNewModuleModule, HexalithMyNewModuleWebAppModule>();
 
         _ = services
             .AddMyNewModuleQueryServices()
-            .AddTransient(_ => DocumentMenu.Menu);
+            .AddTransient(_ => MyNewModuleMenu.Menu);
     }
 
     /// <inheritdoc/>

@@ -15,8 +15,10 @@
     <PackageVersion Include="Hexalith.Application" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Abstractions" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Modules" Version="1.71.0" />
+    <PackageVersion Include="Hexalith.Application.Modules.Abstractions" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Partitions.Abstractions" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Sessions.Abstractions" Version="1.71.0" />
+    <PackageVersion Include="Hexalith.Infrastructure.ClientAppOnWasm" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Infrastructure.ClientAppOnServer" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime.Partitions" Version="1.71.0" />

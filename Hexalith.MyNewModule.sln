@@ -217,6 +217,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.ApiSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.WebServer", "src\librairies\Infrastructure\Hexalith.MyNewModule.WebServer\Hexalith.MyNewModule.WebServer.csproj", "{9E60460E-E771-3CF0-5B6D-25C99992E94B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModule.Abstractions", "src\librairies\Application\Hexalith.MyNewModule.Abstractions\Hexalith.MyNewModule.Abstractions.csproj", "{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -295,6 +297,10 @@ Global
 		{9E60460E-E771-3CF0-5B6D-25C99992E94B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E60460E-E771-3CF0-5B6D-25C99992E94B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E60460E-E771-3CF0-5B6D-25C99992E94B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -340,6 +346,7 @@ Global
 		{E78768B7-AFEC-107A-A76F-10020383CFB4} = {F45EFB9A-727A-42CB-89EE-94CECC5904CB}
 		{30271EA4-5276-B97B-5883-5267AD8AF354} = {F45EFB9A-727A-42CB-89EE-94CECC5904CB}
 		{9E60460E-E771-3CF0-5B6D-25C99992E94B} = {F45EFB9A-727A-42CB-89EE-94CECC5904CB}
+		{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9} = {B94B9721-A8C0-4F11-BD0E-55ADC2BB6A0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}

@@ -19,17 +19,17 @@ namespace Hexalith.MyNewModule.Localizations {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Timesheets {
+    public class MyNewModule {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Timesheets() {
+        internal MyNewModule() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hexalith.MyNewModule.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.MyNewModule.Localizations.Timesheets", typeof(Timesheets).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hexalith.MyNewModule.Localizations.MyNewModule", typeof(MyNewModule).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,38 @@ namespace Hexalith.MyNewModule.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submission period must be valid..
+        ///   Looks up a localized string similar to Identifier.
         /// </summary>
-        public static string SubmissionPeriod_MustBeValid {
+        public static string Id {
             get {
-                return ResourceManager.GetString("SubmissionPeriod MustBeValid", resourceCulture);
+                return ResourceManager.GetString("Id", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submission period end date must not be before the start date..
+        ///   Looks up a localized string similar to Identifier required.
         /// </summary>
-        public static string SubmissionPeriodEndDateAfterStartDate {
+        public static string IdRequired {
             get {
-                return ResourceManager.GetString("SubmissionPeriodEndDateAfterStartDate", resourceCulture);
+                return ResourceManager.GetString("IdRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The submission period end date is required..
+        ///   Looks up a localized string similar to Name.
         /// </summary>
-        public static string SubmissionPeriodEndDateRequired {
+        public static string Name {
             get {
-                return ResourceManager.GetString("SubmissionPeriodEndDateRequired", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The submission period start date is required..
+        ///   Looks up a localized string similar to Name required.
         /// </summary>
-        public static string SubmissionPeriodStartDateRequired {
+        public static string NameRequired {
             get {
-                return ResourceManager.GetString("SubmissionPeriodStartDateRequired", resourceCulture);
+                return ResourceManager.GetString("NameRequired", resourceCulture);
             }
         }
     }
