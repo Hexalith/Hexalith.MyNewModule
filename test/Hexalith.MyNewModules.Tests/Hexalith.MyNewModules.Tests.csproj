@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Domains\Aggregates\" />
     <Folder Include="Domains\Events\" />
     <Folder Include="Domains\Commands\" />
   </ItemGroup>
