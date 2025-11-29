@@ -5,7 +5,7 @@
   "description": "Hexalith MyNewModule libraries",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hexalith/Hexalith.MyNewModule.git"
+    "url": "https://github.com/Hexalith/Hexalith.MyNewModules.git"
   },
   "release": {
     "branches": [ "main" ]
