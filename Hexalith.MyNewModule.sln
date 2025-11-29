@@ -24,10 +24,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E1479EA-06ED-4A69-8F50-F17804066FA6}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
-		src\HexalithDocumentsApiServerApplication.cs = src\HexalithDocumentsApiServerApplication.cs
-		src\HexalithDocumentsWebAppApplication.cs = src\HexalithDocumentsWebAppApplication.cs
-		src\HexalithDocumentsWebServerApplication.cs = src\HexalithDocumentsWebServerApplication.cs
 		src\README.md = src\README.md
+		src\HexalithMyNewModuleWebAppApplication.cs = src\HexalithMyNewModuleWebAppApplication.cs
+		src\HexalithMyNewModuleWebServerApplication.cs = src\HexalithMyNewModuleWebServerApplication.cs
+		src\HexalithMyNewModuleApiServerApplication.cs = src\HexalithMyNewModuleApiServerApplication.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EDB74E69-759C-4EC4-911B-DF6D777A6CFA}"
