@@ -14,6 +14,7 @@
   <ItemGroup>
     <PackageVersion Include="Hexalith.Application" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Abstractions" Version="1.71.0" />
+    <PackageVersion Include="Hexalith.Application.Organizations" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Modules" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Modules.Abstractions" Version="1.71.0" />
     <PackageVersion Include="Hexalith.Application.Partitions.Abstractions" Version="1.71.0" />

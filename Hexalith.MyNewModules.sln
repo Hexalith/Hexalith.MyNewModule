@@ -24,9 +24,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E1479EA-06ED-4A69-8F50-F17804066FA6}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
-		src\HexalithMyNewModuleApiServerApplication.cs = src\HexalithMyNewModuleApiServerApplication.cs
-		src\HexalithMyNewModuleWebAppApplication.cs = src\HexalithMyNewModuleWebAppApplication.cs
-		src\HexalithMyNewModuleWebServerApplication.cs = src\HexalithMyNewModuleWebServerApplication.cs
+		src\HexalithMyNewModulesApiServerApplication.cs = src\HexalithMyNewModulesApiServerApplication.cs
+		src\HexalithMyNewModulesWebAppApplication.cs = src\HexalithMyNewModulesWebAppApplication.cs
+		src\HexalithMyNewModulesWebServerApplication.cs = src\HexalithMyNewModulesWebServerApplication.cs
 		src\README.md = src\README.md
 	EndProjectSection
 EndProject
@@ -177,29 +177,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{9417
 		Hexalith.Builds\Samples\Module.Directory.Packages.props = Hexalith.Builds\Samples\Module.Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Aggregates", "src\librairies\Domain\Hexalith.MyNewModules.Aggregates\Hexalith.MyNewModules.Aggregates.csproj", "{9F54ED2E-BCCC-85E4-FA93-02B560DE0394}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Aggregates", "src\libraries\Domain\Hexalith.MyNewModules.Aggregates\Hexalith.MyNewModules.Aggregates.csproj", "{9F54ED2E-BCCC-85E4-FA93-02B560DE0394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Events", "src\librairies\Domain\Hexalith.MyNewModules.Events\Hexalith.MyNewModules.Events.csproj", "{845E6054-8FB1-7180-15A0-FF344E1A3E6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Events", "src\libraries\Domain\Hexalith.MyNewModules.Events\Hexalith.MyNewModules.Events.csproj", "{845E6054-8FB1-7180-15A0-FF344E1A3E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Localizations", "src\librairies\Domain\Hexalith.MyNewModules.Localizations\Hexalith.MyNewModules.Localizations.csproj", "{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Localizations", "src\libraries\Domain\Hexalith.MyNewModules.Localizations\Hexalith.MyNewModules.Localizations.csproj", "{9C9A95E5-D2E6-91EB-5DF8-E892713761F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Commands", "src\librairies\Application\Hexalith.MyNewModules.Commands\Hexalith.MyNewModules.Commands.csproj", "{5544B885-A273-5E51-F344-97939F8B3ECF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Commands", "src\libraries\Application\Hexalith.MyNewModules.Commands\Hexalith.MyNewModules.Commands.csproj", "{5544B885-A273-5E51-F344-97939F8B3ECF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Requests", "src\librairies\Application\Hexalith.MyNewModules.Requests\Hexalith.MyNewModules.Requests.csproj", "{33B39EB3-4E33-DC54-1B6E-B35F63729224}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Requests", "src\libraries\Application\Hexalith.MyNewModules.Requests\Hexalith.MyNewModules.Requests.csproj", "{33B39EB3-4E33-DC54-1B6E-B35F63729224}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Aggregates.Abstractions", "src\librairies\Domain\Hexalith.MyNewModules.Aggregates.Abstractions\Hexalith.MyNewModules.Aggregates.Abstractions.csproj", "{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Aggregates.Abstractions", "src\libraries\Domain\Hexalith.MyNewModules.Aggregates.Abstractions\Hexalith.MyNewModules.Aggregates.Abstractions.csproj", "{4307E01C-FCE0-9915-B7FE-4966FAD0CC7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{A1C3A77B-8195-4874-A9D3-853521C52DE8}"
 	ProjectSection(SolutionItems) = preProject
-		src\librairies\Directory.Build.props = src\librairies\Directory.Build.props
-		src\librairies\README.md = src\librairies\README.md
+		src\libraries\Directory.Build.props = src\libraries\Directory.Build.props
+		src\libraries\README.md = src\libraries\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{251DC073-3821-4D2F-A405-E11117783604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.UI.Components", "src\librairies\Presentation\Hexalith.MyNewModules.UI.Components\Hexalith.MyNewModules.UI.Components.csproj", "{069F04CA-0B73-23A2-9C33-3D59D6B79785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.UI.Components", "src\libraries\Presentation\Hexalith.MyNewModules.UI.Components\Hexalith.MyNewModules.UI.Components.csproj", "{069F04CA-0B73-23A2-9C33-3D59D6B79785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.UI.Pages", "src\librairies\Presentation\Hexalith.MyNewModules.UI.Pages\Hexalith.MyNewModules.UI.Pages.csproj", "{4218C750-BFE7-57C8-2DE1-C582904B47E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.UI.Pages", "src\libraries\Presentation\Hexalith.MyNewModules.UI.Pages\Hexalith.MyNewModules.UI.Pages.csproj", "{4218C750-BFE7-57C8-2DE1-C582904B47E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{7C32B344-9811-4343-9B81-0918335E4BB6}"
 EndProject
@@ -207,17 +207,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F45EFB9A-727A-42CB-89EE-94CECC5904CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Servers", "src\librairies\Infrastructure\Hexalith.MyNewModules.Servers\Hexalith.MyNewModules.Servers.csproj", "{EC8EA42F-E3B6-B52A-05E2-63AF9BA125E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Servers", "src\libraries\Infrastructure\Hexalith.MyNewModules.Servers\Hexalith.MyNewModules.Servers.csproj", "{EC8EA42F-E3B6-B52A-05E2-63AF9BA125E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.WebApp", "src\librairies\Infrastructure\Hexalith.MyNewModules.WebApp\Hexalith.MyNewModules.WebApp.csproj", "{E78768B7-AFEC-107A-A76F-10020383CFB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.WebApp", "src\libraries\Infrastructure\Hexalith.MyNewModules.WebApp\Hexalith.MyNewModules.WebApp.csproj", "{E78768B7-AFEC-107A-A76F-10020383CFB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.ApiServer", "src\librairies\Infrastructure\Hexalith.MyNewModules.ApiServer\Hexalith.MyNewModules.ApiServer.csproj", "{30271EA4-5276-B97B-5883-5267AD8AF354}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.ApiServer", "src\libraries\Infrastructure\Hexalith.MyNewModules.ApiServer\Hexalith.MyNewModules.ApiServer.csproj", "{30271EA4-5276-B97B-5883-5267AD8AF354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.WebServer", "src\librairies\Infrastructure\Hexalith.MyNewModules.WebServer\Hexalith.MyNewModules.WebServer.csproj", "{9E60460E-E771-3CF0-5B6D-25C99992E94B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.WebServer", "src\libraries\Infrastructure\Hexalith.MyNewModules.WebServer\Hexalith.MyNewModules.WebServer.csproj", "{9E60460E-E771-3CF0-5B6D-25C99992E94B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Abstractions", "src\librairies\Application\Hexalith.MyNewModules.Abstractions\Hexalith.MyNewModules.Abstractions.csproj", "{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules.Abstractions", "src\libraries\Application\Hexalith.MyNewModules.Abstractions\Hexalith.MyNewModules.Abstractions.csproj", "{D08013FD-C255-A5F3-30F0-3ACDD5FA71F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules", "src\librairies\Application\Hexalith.MyNewModules\Hexalith.MyNewModules.csproj", "{F29A0141-5C4D-C7A7-9F86-51E2E795BEF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.MyNewModules", "src\libraries\Application\Hexalith.MyNewModules\Hexalith.MyNewModules.csproj", "{F29A0141-5C4D-C7A7-9F86-51E2E795BEF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

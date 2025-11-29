@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.MyNewModules.Commands\Hexalith.MyNewModules.Commands.csproj" />
+    <ProjectReference Include="..\..\Application\Hexalith.MyNewModules\Hexalith.MyNewModules.csproj" />
+    <ProjectReference Include="..\Hexalith.MyNewModules.UI.Components\Hexalith.MyNewModules.UI.Components.csproj" />
+  </ItemGroup>
+
+</Project>

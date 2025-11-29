@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Hexalith.Application.Organizations" />
+        <PackageReference Include="Hexalith.Infrastructure.ClientAppOnServer" />
+        <PackageReference Include="Hexalith.Infrastructure.DaprRuntime" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\Hexalith.MyNewModules.Abstractions\Hexalith.MyNewModules.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Application\Hexalith.MyNewModules\Hexalith.MyNewModules.csproj" />
+      <ProjectReference Include="..\..\Presentation\Hexalith.MyNewModules.UI.Pages\Hexalith.MyNewModules.UI.Pages.csproj" />
+      <ProjectReference Include="..\Hexalith.MyNewModules.Servers\Hexalith.MyNewModules.Servers.csproj" />
+    </ItemGroup>
+</Project>
