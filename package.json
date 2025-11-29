@@ -1,11 +1,11 @@
 {
-  "name": "hexalith-MyNewModule",
+  "name": "hexalith-mynewmodule",
   "version": "0.0.0-development",
   "private": true,
   "description": "Hexalith MyNewModule libraries",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hexalith/Hexalith.MyNewModules.git"
+    "url": "https://github.com/Hexalith/Hexalith.MyNewModule.git"
   },
   "release": {
     "branches": [ "main" ]
