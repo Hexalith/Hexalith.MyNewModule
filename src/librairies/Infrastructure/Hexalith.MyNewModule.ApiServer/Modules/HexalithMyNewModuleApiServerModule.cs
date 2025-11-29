@@ -1,6 +1,5 @@
-﻿// <copyright file="HexalithMyNewModuleApiServerModule.cs" company="ITANEO">
-// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithMyNewModuleApiServerModule.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.MyNewModule.ApiServer.Modules;
@@ -11,31 +10,15 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Services;
-using Hexalith.MyNewModule.Abstractions.Extensions;
-using Hexalith.MyNewModule.Application.MyNewModule;
-using Hexalith.MyNewModule.Application.Helpers;
-using Hexalith.MyNewModule.Commands.Extensions;
-using Hexalith.MyNewModule.DataManagements;
-using Hexalith.MyNewModule.DocumentContainers;
-using Hexalith.MyNewModule.DocumentInformationExtractions;
-using Hexalith.MyNewModule.MyNewModule;
-using Hexalith.MyNewModule.MyNewModuletorages;
-using Hexalith.MyNewModule.DocumentTypes;
-using Hexalith.MyNewModule.FileTypes;
-using Hexalith.MyNewModule.Requests.DataManagements;
-using Hexalith.MyNewModule.Requests.DocumentContainers;
-using Hexalith.MyNewModule.Requests.DocumentInformationExtractions;
-using Hexalith.MyNewModule.Requests.MyNewModule;
-using Hexalith.MyNewModule.Requests.MyNewModuletorages;
-using Hexalith.MyNewModule.Requests.DocumentTypes;
-using Hexalith.MyNewModule.Requests.Extensions;
-using Hexalith.MyNewModule.Requests.FileTypes;
-using Hexalith.MyNewModule.Servers.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.MyNewModule.ApiServer.Controllers;
+
+using Hexalith.MyNewModule.Commands.Extensions;
+using Hexalith.MyNewModule.Requests.Extensions;
+using Hexalith.MyNewModule.Servers.Helpers;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;

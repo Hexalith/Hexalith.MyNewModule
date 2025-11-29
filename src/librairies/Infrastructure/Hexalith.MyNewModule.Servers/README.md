@@ -1,25 +1,25 @@
-# Document Commands
-This project contains the application commands for the Document application.
+# MyNewModule Commands
+This project contains the application commands for the MyNewModule application.
 
 ## Structure
 
-### Document Commands
-The Document commands handle operations related to document management:
-- Document creation and modification
-- Document metadata updates
-- Document state changes
+### MyNewModule Commands
+The MyNewModule commands handle operations related to MyNewModule management:
+- MyNewModule creation and modification
+- MyNewModule metadata updates
+- MyNewModule state changes
 - File attachments and uploads
 
-[Learn more about Document commands](./MyNewModule/README.md)
+[Learn more about MyNewModule commands](./MyNewModule/README.md)
 
-### Document Types Commands
-The Document Types commands handle operations related to document type definitions:
-- Document type creation and modification
+### MyNewModule Types Commands
+The MyNewModule Types commands handle operations related to MyNewModule type definitions:
+- MyNewModule type creation and modification
 - Field definitions and validations
-- Document type metadata management
-- Document type state workflows
+- MyNewModule type metadata management
+- MyNewModule type state workflows
 
-[Learn more about Document Types commands](./DocumentTypes/README.md)
+[Learn more about MyNewModule Types commands](./MyNewModuleTypes/README.md)
 
 ## Command Structure
 Each command in this project follows the CQRS pattern and includes:
@@ -35,4 +35,4 @@ These commands are used through the command bus and can be invoked from:
 - Background services
 - Integration processes
 
-The commands ensure consistency and maintain the business rules while performing operations on MyNewModule and document types.
+The commands ensure consistency and maintain the business rules while performing operations on MyNewModule and MyNewModule types.

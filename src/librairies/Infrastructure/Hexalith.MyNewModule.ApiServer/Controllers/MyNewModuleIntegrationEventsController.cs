@@ -1,6 +1,5 @@
-﻿// <copyright file="MyNewModuleIntegrationEventsController.cs" company="ITANEO">
-// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// <copyright file="MyNewModuleIntegrationEventsController.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.MyNewModule.ApiServer.Controllers;
@@ -58,7 +57,7 @@ public class MyNewModuleIntegrationEventsController(
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleDataManagementEventsAsync(MessageState eventState)
+    public static async Task<ActionResult> HandleDataManagementEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
                 DocumentDomainHelper.DataManagementAggregateName,
@@ -84,7 +83,7 @@ public class MyNewModuleIntegrationEventsController(
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleDocumentContainerEventsAsync(MessageState eventState)
+    public static async Task<ActionResult> HandleDocumentContainerEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
                 DocumentDomainHelper.DocumentContainerAggregateName,
@@ -108,7 +107,7 @@ public class MyNewModuleIntegrationEventsController(
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleDocumentEventsAsync(MessageState eventState)
+    public static async Task<ActionResult> HandleDocumentEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
                 DocumentDomainHelper.DocumentAggregateName,
@@ -132,34 +131,10 @@ public class MyNewModuleIntegrationEventsController(
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleDocumentInformationExtractionEventsAsync(MessageState eventState)
+    public static async Task<ActionResult> HandleDocumentInformationExtractionEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
                 DocumentDomainHelper.DocumentInformationExtractionAggregateName,
-                CancellationToken.None)
-             .ConfigureAwait(false);
-
-    /// <summary>
-    /// Processes document storage events asynchronously, managing physical storage and retrieval operations.
-    /// </summary>
-    /// <param name="eventState">The event state containing the message payload and metadata for processing.</param>
-    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation result:
-    /// - 200 OK if the event was processed successfully
-    /// - 400 Bad Request if the event data is invalid
-    /// - 500 Internal Server Error if processing fails.</returns>
-    [EventBusTopic(DocumentDomainHelper.MyNewModuletorageAggregateName)]
-    [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "15")]
-    [TopicMetadata("maxConcurrentSessions", "32")]
-    [HttpPost("MyNewModuletorage")]
-    [SwaggerOperation(Summary = "Handles document storage events", Description = "Processes document storage events and updates projections accordingly.")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
-    [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
-    [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleMyNewModuletorageEventsAsync(MessageState eventState)
-         => await HandleEventAsync(
-                eventState,
-                DocumentDomainHelper.MyNewModuletorageAggregateName,
                 CancellationToken.None)
              .ConfigureAwait(false);
 
@@ -180,7 +155,7 @@ public class MyNewModuleIntegrationEventsController(
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleDocumentTypeEventsAsync(MessageState eventState)
+    public static async Task<ActionResult> HandleDocumentTypeEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
                 DocumentDomainHelper.DocumentTypeAggregateName,
@@ -204,10 +179,34 @@ public class MyNewModuleIntegrationEventsController(
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleFileTypeEventsAsync(MessageState eventState)
+    public static async Task<ActionResult> HandleFileTypeEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
                 DocumentDomainHelper.FileTypeAggregateName,
+                CancellationToken.None)
+             .ConfigureAwait(false);
+
+    /// <summary>
+    /// Processes document storage events asynchronously, managing physical storage and retrieval operations.
+    /// </summary>
+    /// <param name="eventState">The event state containing the message payload and metadata for processing.</param>
+    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation result:
+    /// - 200 OK if the event was processed successfully
+    /// - 400 Bad Request if the event data is invalid
+    /// - 500 Internal Server Error if processing fails.</returns>
+    [EventBusTopic(DocumentDomainHelper.MyNewModuletorageAggregateName)]
+    [TopicMetadata("requireSessions", "true")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "15")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("MyNewModuletorage")]
+    [SwaggerOperation(Summary = "Handles document storage events", Description = "Processes document storage events and updates projections accordingly.")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
+    [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
+    public static async Task<ActionResult> HandleMyNewModuletorageEventsAsync(MessageState eventState)
+         => await HandleEventAsync(
+                eventState,
+                DocumentDomainHelper.MyNewModuletorageAggregateName,
                 CancellationToken.None)
              .ConfigureAwait(false);
 }
