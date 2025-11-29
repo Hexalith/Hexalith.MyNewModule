@@ -6,7 +6,7 @@ namespace Manhole.Requests.MyNewModules;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Documents.Requests.MyNewModules;
+using Hexalith.MyNewModule.Requests.MyNewModules;
 using Hexalith.Domains.ValueObjects;
 using Hexalith.PolymorphicSerializations;
 

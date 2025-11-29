@@ -14,19 +14,19 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
-using Hexalith.Documents.Application;
-using Hexalith.Documents.Application.Services;
-using Hexalith.Documents.DocumentContainers;
-using Hexalith.Documents.DocumentStorages;
-using Hexalith.Documents.DocumentTypes;
-using Hexalith.Documents.FileTypes;
-using Hexalith.Documents.ValueObjects;
+using Hexalith.MyNewModule.Application;
+using Hexalith.MyNewModule.Application.Services;
+using Hexalith.MyNewModule.DocumentContainers;
+using Hexalith.MyNewModule.MyNewModuletorages;
+using Hexalith.MyNewModule.DocumentTypes;
+using Hexalith.MyNewModule.FileTypes;
+using Hexalith.MyNewModule.ValueObjects;
 using Hexalith.Domain.Events;
 
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Service for uploading documents.
+/// Service for uploading MyNewModule.
 /// </summary>
 public partial class DocumentUploadService : IDocumentUploadService
 {
@@ -84,7 +84,7 @@ public partial class DocumentUploadService : IDocumentUploadService
         Task<DocumentType> documentTypeTask = GetDocumentTypeAsync(documentTypeId, session.PartitionId, cancellationToken);
         Task<FileType> fileTypeTask = GetFileTypeAsync(fileTypeId, session.PartitionId, cancellationToken);
         DocumentContainer container = await GetContainerAsync(documentContainerId, session.PartitionId, cancellationToken).ConfigureAwait(false);
-        DocumentStorage storage = await GetStorageAsync(container.DocumentStorageId, session.PartitionId, cancellationToken).ConfigureAwait(false);
+        MyNewModuletorage storage = await GetStorageAsync(container.MyNewModuletorageId, session.PartitionId, cancellationToken).ConfigureAwait(false);
         string path = Path.Combine(container.Path, documentId);
         FileType fileType = await fileTypeTask.ConfigureAwait(false);
         DocumentType documentType = await documentTypeTask.ConfigureAwait(false);
@@ -101,7 +101,7 @@ public partial class DocumentUploadService : IDocumentUploadService
             new("FilePath", path, true),
             new("FileContentType", fileType.ContentType, true),
             new("DocumentContainerId", documentContainerId, true),
-            new("DocumentStorageId", container.DocumentStorageId, true)];
+            new("MyNewModuletorageId", container.MyNewModuletorageId, true)];
 #pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
         await using IWritableFile file = await _writableFileProvider
             .CreateFileAsync(
@@ -159,15 +159,15 @@ public partial class DocumentUploadService : IDocumentUploadService
         return snapshot.GetAggregate<FileType>();
     }
 
-    private async Task<DocumentStorage> GetStorageAsync(string documentStorageId, string partitionId, CancellationToken cancellationToken)
+    private async Task<MyNewModuletorage> GetStorageAsync(string MyNewModuletorageId, string partitionId, CancellationToken cancellationToken)
     {
         string globalId = Metadata.CreateAggregateGlobalId(
             partitionId,
-            DocumentDomainHelper.DocumentStorageAggregateName,
-            documentStorageId);
+            DocumentDomainHelper.MyNewModuletorageAggregateName,
+            MyNewModuletorageId);
         SnapshotEvent? snapshot = await _aggregateService
-            .GetSnapshotAsync(DocumentDomainHelper.DocumentStorageAggregateName, globalId, cancellationToken)
-            .ConfigureAwait(false) ?? throw new InvalidOperationException($"Document storage '{documentStorageId}' not found.");
-        return snapshot.GetAggregate<DocumentStorage>();
+            .GetSnapshotAsync(DocumentDomainHelper.MyNewModuletorageAggregateName, globalId, cancellationToken)
+            .ConfigureAwait(false) ?? throw new InvalidOperationException($"Document storage '{MyNewModuletorageId}' not found.");
+        return snapshot.GetAggregate<MyNewModuletorage>();
     }
 }

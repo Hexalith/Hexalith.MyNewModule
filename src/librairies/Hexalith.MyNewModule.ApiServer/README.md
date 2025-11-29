@@ -1,2 +1,2 @@
-# Hexalith Documents API Server
+# Hexalith MyNewModule API Server
 

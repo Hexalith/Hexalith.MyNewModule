@@ -10,7 +10,7 @@ The Document commands handle operations related to document management:
 - Document state changes
 - File attachments and uploads
 
-[Learn more about Document commands](./Documents/README.md)
+[Learn more about Document commands](./MyNewModule/README.md)
 
 ### Document Types Commands
 The Document Types commands handle operations related to document type definitions:
@@ -35,4 +35,4 @@ These commands are used through the command bus and can be invoked from:
 - Background services
 - Integration processes
 
-The commands ensure consistency and maintain the business rules while performing operations on documents and document types.
+The commands ensure consistency and maintain the business rules while performing operations on MyNewModule and document types.

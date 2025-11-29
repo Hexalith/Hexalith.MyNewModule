@@ -8,7 +8,7 @@ namespace Hexalith.MyNewModule.Servers.Services;
 using System;
 using System.Threading;
 
-using Hexalith.Documents.Application.Services;
+using Hexalith.MyNewModule.Application.Services;
 
 /// <summary>
 /// Provides methods to interact with SharePoint storage.

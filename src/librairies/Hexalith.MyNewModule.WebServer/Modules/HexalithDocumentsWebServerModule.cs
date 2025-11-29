@@ -1,4 +1,4 @@
-﻿// <copyright file="HexalithDocumentsWebServerModule.cs" company="ITANEO">
+﻿// <copyright file="HexalithMyNewModuleWebServerModule.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -11,14 +11,14 @@ using System.Reflection;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Modules.Modules;
-using Hexalith.Documents.Abstractions.Extensions;
-using Hexalith.Documents.Application.Documents;
-using Hexalith.Documents.Application.Helpers;
-using Hexalith.Documents.Commands.Extensions;
-using Hexalith.Documents.Projections.Helpers;
-using Hexalith.Documents.Requests.Extensions;
-using Hexalith.Documents.Servers.Helpers;
-using Hexalith.Documents.UI.Pages.Modules;
+using Hexalith.MyNewModule.Abstractions.Extensions;
+using Hexalith.MyNewModule.Application.MyNewModule;
+using Hexalith.MyNewModule.Application.Helpers;
+using Hexalith.MyNewModule.Commands.Extensions;
+using Hexalith.MyNewModule.Projections.Helpers;
+using Hexalith.MyNewModule.Requests.Extensions;
+using Hexalith.MyNewModule.Servers.Helpers;
+using Hexalith.MyNewModule.UI.Pages.Modules;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.MyNewModule.WebServer.Controllers;
@@ -31,7 +31,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// <summary>
 /// The document construction site client module.
 /// </summary>
-public sealed class HexalithDocumentsWebServerModule : IWebServerApplicationModule, IDocumentModule
+public sealed class HexalithMyNewModuleWebServerModule : IWebServerApplicationModule, IDocumentModule
 {
     /// <inheritdoc/>
     public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => DocumentModulePolicies.AuthorizationPolicies;
@@ -64,7 +64,7 @@ public sealed class HexalithDocumentsWebServerModule : IWebServerApplicationModu
     /// <inheritdoc/>
     string IApplicationModule.Path => Path;
 
-    private static string Path => nameof(Documents);
+    private static string Path => nameof(MyNewModule);
 
     /// <summary>
     /// Adds services to the service collection.
@@ -78,19 +78,19 @@ public sealed class HexalithDocumentsWebServerModule : IWebServerApplicationModu
             .ConfigureSettings<CosmosDbSettings>(configuration);
 
         _ = services
-            .AddDocumentStorage()
-            .AddDocumentsCommandHandlers()
+            .AddMyNewModuletorage()
+            .AddMyNewModuleCommandHandlers()
             .AddDocumentEventValidators()
-            .AddDocumentsProjectionActorFactories()
-            .AddDocumentsRequestHandlers()
+            .AddMyNewModuleProjectionActorFactories()
+            .AddMyNewModuleRequestHandlers()
             .AddDocumentProjections();
 
-        HexalithDocumentsAbstractionsSerialization.RegisterPolymorphicMappers();
-        HexalithDocumentsCommandsSerialization.RegisterPolymorphicMappers();
-        HexalithDocumentsRequestsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleCommandsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IDocumentModule, HexalithDocumentsWebServerModule>();
+        services.TryAddSingleton<IDocumentModule, HexalithMyNewModuleWebServerModule>();
 
         _ = services.AddTransient(_ => DocumentMenu.Menu);
         _ = services.AddControllers().AddApplicationPart(typeof(DocumentFilesController).Assembly);

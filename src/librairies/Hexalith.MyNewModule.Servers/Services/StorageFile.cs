@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Documents.Application.Services;
+using Hexalith.MyNewModule.Application.Services;
 
 /// <summary>
 /// Represents a local storage file implementation.

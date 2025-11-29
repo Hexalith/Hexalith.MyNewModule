@@ -6,23 +6,6 @@
 namespace Hexalith.MyNewModule.Servers.Helpers;
 
 using Hexalith.Application.Services;
-using Hexalith.Documents.Application;
-using Hexalith.Documents.Application.Services;
-using Hexalith.Documents.DataManagements;
-using Hexalith.Documents.DocumentContainers;
-using Hexalith.Documents.DocumentInformationExtractions;
-using Hexalith.Documents.Documents;
-using Hexalith.Documents.DocumentStorages;
-using Hexalith.Documents.DocumentTypes;
-using Hexalith.Documents.FileTypes;
-using Hexalith.Documents.Projections.Helpers;
-using Hexalith.Documents.Requests.DataManagements;
-using Hexalith.Documents.Requests.DocumentContainers;
-using Hexalith.Documents.Requests.DocumentInformationExtractions;
-using Hexalith.Documents.Requests.Documents;
-using Hexalith.Documents.Requests.DocumentStorages;
-using Hexalith.Documents.Requests.DocumentTypes;
-using Hexalith.Documents.Requests.FileTypes;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.MyNewModule.Servers.Services;
@@ -30,9 +13,9 @@ using Hexalith.MyNewModule.Servers.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Class DocumentsWebApiHelpers.
+/// Class MyNewModuleWebApiHelpers.
 /// </summary>
-public static class DocumentsWebApiHelpers
+public static class MyNewModuleWebApiHelpers
 {
     /// <summary>
     /// Adds the document projection actor factories.
@@ -40,7 +23,7 @@ public static class DocumentsWebApiHelpers
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="ArgumentNullException">Thrown when services is null.</exception>
-    public static IServiceCollection AddDocumentsProjectionActorFactories(this IServiceCollection services)
+    public static IServiceCollection AddMyNewModuleProjectionActorFactories(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
         _ = services.AddTransient<IWritableFileProvider, WritableFileProvider>();
@@ -58,14 +41,14 @@ public static class DocumentsWebApiHelpers
         _ = services.AddActorProjectionFactory<DocumentTypeSummaryViewModel>();
         _ = services.AddActorProjectionFactory<DocumentTypeDetailsViewModel>();
         _ = services.AddActorProjectionFactory<Document>();
-        _ = services.AddActorProjectionFactory<DocumentSummaryViewModel>();
+        _ = services.AddActorProjectionFactory<MyNewModuleummaryViewModel>();
         _ = services.AddActorProjectionFactory<DocumentDetailsViewModel>();
         _ = services.AddActorProjectionFactory<DocumentContainer>();
         _ = services.AddActorProjectionFactory<DocumentContainerSummaryViewModel>();
         _ = services.AddActorProjectionFactory<DocumentContainerDetailsViewModel>();
-        _ = services.AddActorProjectionFactory<DocumentStorage>();
-        _ = services.AddActorProjectionFactory<DocumentStorageSummaryViewModel>();
-        _ = services.AddActorProjectionFactory<DocumentStorageDetailsViewModel>();
+        _ = services.AddActorProjectionFactory<MyNewModuletorage>();
+        _ = services.AddActorProjectionFactory<MyNewModuletorageSummaryViewModel>();
+        _ = services.AddActorProjectionFactory<MyNewModuletorageDetailsViewModel>();
         _ = services.AddActorProjectionFactory<DocumentInformationExtraction>();
         _ = services.AddActorProjectionFactory<DocumentInformationExtractionSummaryViewModel>();
         _ = services.AddActorProjectionFactory<DocumentInformationExtractionDetailsViewModel>();
@@ -78,7 +61,7 @@ public static class DocumentsWebApiHelpers
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="ArgumentNullException">Thrown when services is null.</exception>
-    public static IServiceCollection AddDocumentStorage(this IServiceCollection services)
+    public static IServiceCollection AddMyNewModuletorage(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
 

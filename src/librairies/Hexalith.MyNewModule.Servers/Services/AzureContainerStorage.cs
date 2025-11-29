@@ -9,7 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Documents.Application.Services;
+using Hexalith.MyNewModule.Application.Services;
 
 /// <summary>
 /// Provides methods to interact with Azure container storage.

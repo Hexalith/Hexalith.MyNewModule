@@ -9,8 +9,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Documents.Application.Services;
-using Hexalith.Documents.ValueObjects;
+using Hexalith.MyNewModule.Application.Services;
+using Hexalith.MyNewModule.ValueObjects;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +33,7 @@ public class WritableFileProvider : IWritableFileProvider, IReadableFileProvider
 
     /// <inheritdoc/>
     public async Task<IWritableFile> CreateFileAsync(
-        DocumentStorageType storageType,
+        MyNewModuletorageType storageType,
         string? connectionString,
         string path,
         string fileName,
@@ -45,45 +45,45 @@ public class WritableFileProvider : IWritableFileProvider, IReadableFileProvider
         ArgumentException.ThrowIfNullOrWhiteSpace(fileName);
         return storageType switch
         {
-            DocumentStorageType.AzureStorageContainer
+            MyNewModuletorageType.AzureStorageContainer
                 => await _serviceProvider.GetRequiredService<AzureContainerStorage>().CreateFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.OneDrive
+            MyNewModuletorageType.OneDrive
                 => await _serviceProvider.GetRequiredService<OneDriveStorage>().CreateFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.FileSystem
+            MyNewModuletorageType.FileSystem
                 => await _serviceProvider.GetRequiredService<FileSystemStorage>().CreateFileAsync(connectionString, path, fileName, tags, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.Dropbox
+            MyNewModuletorageType.Dropbox
                 => await _serviceProvider.GetRequiredService<DropboxStorage>().CreateFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.GoogleDrive
+            MyNewModuletorageType.GoogleDrive
                 => await _serviceProvider.GetRequiredService<GoogleDriveStorage>().CreateFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.AwsS3Bucket
+            MyNewModuletorageType.AwsS3Bucket
                 => await _serviceProvider.GetRequiredService<AwsS3BucketStorage>().CreateFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.Sharepoint
+            MyNewModuletorageType.Sharepoint
                 => await _serviceProvider.GetRequiredService<SharepointStorage>().CreateFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
             _ => throw new NotSupportedException($"Storage type {storageType} is not supported."),
         };
     }
 
     /// <inheritdoc/>
-    public async Task<IReadableFile> OpenFileAsync(DocumentStorageType storageType, string? connectionString, string path, string fileName, CancellationToken cancellationToken)
+    public async Task<IReadableFile> OpenFileAsync(MyNewModuletorageType storageType, string? connectionString, string path, string fileName, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(connectionString);
         ArgumentException.ThrowIfNullOrWhiteSpace(path);
         ArgumentException.ThrowIfNullOrWhiteSpace(fileName);
         return storageType switch
         {
-            DocumentStorageType.AzureStorageContainer
+            MyNewModuletorageType.AzureStorageContainer
                 => await _serviceProvider.GetRequiredService<AzureContainerStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.OneDrive
+            MyNewModuletorageType.OneDrive
                 => await _serviceProvider.GetRequiredService<OneDriveStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.FileSystem
+            MyNewModuletorageType.FileSystem
                 => await _serviceProvider.GetRequiredService<FileSystemStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.Dropbox
+            MyNewModuletorageType.Dropbox
                 => await _serviceProvider.GetRequiredService<DropboxStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.GoogleDrive
+            MyNewModuletorageType.GoogleDrive
                 => await _serviceProvider.GetRequiredService<GoogleDriveStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.AwsS3Bucket
+            MyNewModuletorageType.AwsS3Bucket
                 => await _serviceProvider.GetRequiredService<AwsS3BucketStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
-            DocumentStorageType.Sharepoint
+            MyNewModuletorageType.Sharepoint
                 => await _serviceProvider.GetRequiredService<SharepointStorage>().ReadFileAsync(connectionString, path, fileName, cancellationToken).ConfigureAwait(false),
             _ => throw new NotSupportedException($"Storage type {storageType} is not supported."),
         };

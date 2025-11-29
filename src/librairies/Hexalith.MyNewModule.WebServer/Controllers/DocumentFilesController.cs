@@ -7,14 +7,14 @@ namespace Hexalith.MyNewModule.WebServer.Controllers;
 
 using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
-using Hexalith.Documents.Application.Services;
-using Hexalith.Documents.DocumentContainers;
-using Hexalith.Documents.Documents;
-using Hexalith.Documents.DocumentStorages;
-using Hexalith.Documents.Requests.DocumentContainers;
-using Hexalith.Documents.Requests.Documents;
-using Hexalith.Documents.Requests.DocumentStorages;
-using Hexalith.Documents.ValueObjects;
+using Hexalith.MyNewModule.Application.Services;
+using Hexalith.MyNewModule.DocumentContainers;
+using Hexalith.MyNewModule.MyNewModule;
+using Hexalith.MyNewModule.MyNewModuletorages;
+using Hexalith.MyNewModule.Requests.DocumentContainers;
+using Hexalith.MyNewModule.Requests.MyNewModule;
+using Hexalith.MyNewModule.Requests.MyNewModuletorages;
+using Hexalith.MyNewModule.ValueObjects;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -24,7 +24,7 @@ using Microsoft.AspNetCore.Mvc;
 /// Controller for handling document file operations.
 /// </summary>
 [ApiController]
-[Route("documents")]
+[Route("MyNewModule")]
 [Authorize]
 public class DocumentFilesController : ControllerBase
 {
@@ -94,18 +94,18 @@ public class DocumentFilesController : ControllerBase
             return NotFound($"Document container with ID {document.Description.DocumentContainerId} not found.");
         }
 
-        if (string.IsNullOrWhiteSpace(container.DocumentStorageId))
+        if (string.IsNullOrWhiteSpace(container.MyNewModuletorageId))
         {
             return BadRequest($"Document container with ID {document.Description.DocumentContainerId} storage is not defined.");
         }
 
-        DocumentStorageDetailsViewModel? storage = (await _requestService
-            .SubmitAsync(user, new GetDocumentStorageDetails(container.DocumentStorageId), CancellationToken.None)
+        MyNewModuletorageDetailsViewModel? storage = (await _requestService
+            .SubmitAsync(user, new GetMyNewModuletorageDetails(container.MyNewModuletorageId), CancellationToken.None)
             .ConfigureAwait(false))?.Result;
 
         if (storage == null)
         {
-            return NotFound($"Document storage with ID {container.DocumentStorageId} not found. Check container {document.Description.DocumentContainerId} configuration.");
+            return NotFound($"Document storage with ID {container.MyNewModuletorageId} not found. Check container {document.Description.DocumentContainerId} configuration.");
         }
 
         FileDescription fileDescription = document.Files.First();
@@ -188,18 +188,18 @@ public class DocumentFilesController : ControllerBase
             return NotFound($"Document container {document.Description.DocumentContainerId} not found.");
         }
 
-        if (string.IsNullOrWhiteSpace(container.DocumentStorageId))
+        if (string.IsNullOrWhiteSpace(container.MyNewModuletorageId))
         {
             return NotFound("The document storage ID is not defined for this document. A valid storage ID is required to retrieve the document file.");
         }
 
-        DocumentStorage? storage = await aggregateService
-            .FindAsync(new DocumentStorage() with { Id = container.DocumentStorageId }, partitionId, CancellationToken.None)
+        MyNewModuletorage? storage = await aggregateService
+            .FindAsync(new MyNewModuletorage() with { Id = container.MyNewModuletorageId }, partitionId, CancellationToken.None)
             .ConfigureAwait(false);
 
         if (storage is null)
         {
-            return NotFound($"Document storage {container.DocumentStorageId} not found.");
+            return NotFound($"Document storage {container.MyNewModuletorageId} not found.");
         }
 
         FileDescription fileDescription = document.Files.First();

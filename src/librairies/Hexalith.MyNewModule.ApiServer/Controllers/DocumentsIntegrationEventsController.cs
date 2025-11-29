@@ -1,4 +1,4 @@
-﻿// <copyright file="DocumentsIntegrationEventsController.cs" company="ITANEO">
+﻿// <copyright file="MyNewModuleIntegrationEventsController.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -30,13 +30,13 @@ using Swashbuckle.AspNetCore.Annotations;
 /// <param name="hostEnvironment">The host environment providing runtime environment information.</param>
 /// <param name="logger">The logger instance for recording diagnostic information.</param>
 [ApiController]
-[Route("/api/documents/events")]
+[Route("/api/MyNewModule/events")]
 [SwaggerTag("Document Integration Events Receiver")]
-public class DocumentsIntegrationEventsController(
+public class MyNewModuleIntegrationEventsController(
     IIntegrationEventProcessor eventProcessor,
     IProjectionUpdateProcessor projectionProcessor,
     IHostEnvironment hostEnvironment,
-    ILogger<DocumentsIntegrationEventsController> logger)
+    ILogger<MyNewModuleIntegrationEventsController> logger)
     : EventIntegrationController(eventProcessor, projectionProcessor, hostEnvironment, logger)
 {
     /// <summary>
@@ -147,19 +147,19 @@ public class DocumentsIntegrationEventsController(
     /// - 200 OK if the event was processed successfully
     /// - 400 Bad Request if the event data is invalid
     /// - 500 Internal Server Error if processing fails.</returns>
-    [EventBusTopic(DocumentDomainHelper.DocumentStorageAggregateName)]
+    [EventBusTopic(DocumentDomainHelper.MyNewModuletorageAggregateName)]
     [TopicMetadata("requireSessions", "true")]
     [TopicMetadata("sessionIdleTimeoutInSec ", "15")]
     [TopicMetadata("maxConcurrentSessions", "32")]
-    [HttpPost("documentstorage")]
+    [HttpPost("MyNewModuletorage")]
     [SwaggerOperation(Summary = "Handles document storage events", Description = "Processes document storage events and updates projections accordingly.")]
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]
     [SwaggerResponse(StatusCodes.Status500InternalServerError, "An error occurred while processing the event.")]
-    public async Task<ActionResult> HandleDocumentStorageEventsAsync(MessageState eventState)
+    public async Task<ActionResult> HandleMyNewModuletorageEventsAsync(MessageState eventState)
          => await HandleEventAsync(
                 eventState,
-                DocumentDomainHelper.DocumentStorageAggregateName,
+                DocumentDomainHelper.MyNewModuletorageAggregateName,
                 CancellationToken.None)
              .ConfigureAwait(false);
 

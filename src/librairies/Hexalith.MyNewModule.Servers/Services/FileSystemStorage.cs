@@ -10,8 +10,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Threading;
 
-using Hexalith.Documents.Application.Services;
-using Hexalith.Documents.Servers.Services;
+using Hexalith.MyNewModule.Application.Services;
+using Hexalith.MyNewModule.Servers.Services;
 
 using Microsoft.Extensions.Logging;
 

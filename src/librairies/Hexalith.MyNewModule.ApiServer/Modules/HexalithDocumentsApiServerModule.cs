@@ -1,4 +1,4 @@
-﻿// <copyright file="HexalithDocumentsApiServerModule.cs" company="ITANEO">
+﻿// <copyright file="HexalithMyNewModuleApiServerModule.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -11,26 +11,26 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Services;
-using Hexalith.Documents.Abstractions.Extensions;
-using Hexalith.Documents.Application.Documents;
-using Hexalith.Documents.Application.Helpers;
-using Hexalith.Documents.Commands.Extensions;
-using Hexalith.Documents.DataManagements;
-using Hexalith.Documents.DocumentContainers;
-using Hexalith.Documents.DocumentInformationExtractions;
-using Hexalith.Documents.Documents;
-using Hexalith.Documents.DocumentStorages;
-using Hexalith.Documents.DocumentTypes;
-using Hexalith.Documents.FileTypes;
-using Hexalith.Documents.Requests.DataManagements;
-using Hexalith.Documents.Requests.DocumentContainers;
-using Hexalith.Documents.Requests.DocumentInformationExtractions;
-using Hexalith.Documents.Requests.Documents;
-using Hexalith.Documents.Requests.DocumentStorages;
-using Hexalith.Documents.Requests.DocumentTypes;
-using Hexalith.Documents.Requests.Extensions;
-using Hexalith.Documents.Requests.FileTypes;
-using Hexalith.Documents.Servers.Helpers;
+using Hexalith.MyNewModule.Abstractions.Extensions;
+using Hexalith.MyNewModule.Application.MyNewModule;
+using Hexalith.MyNewModule.Application.Helpers;
+using Hexalith.MyNewModule.Commands.Extensions;
+using Hexalith.MyNewModule.DataManagements;
+using Hexalith.MyNewModule.DocumentContainers;
+using Hexalith.MyNewModule.DocumentInformationExtractions;
+using Hexalith.MyNewModule.MyNewModule;
+using Hexalith.MyNewModule.MyNewModuletorages;
+using Hexalith.MyNewModule.DocumentTypes;
+using Hexalith.MyNewModule.FileTypes;
+using Hexalith.MyNewModule.Requests.DataManagements;
+using Hexalith.MyNewModule.Requests.DocumentContainers;
+using Hexalith.MyNewModule.Requests.DocumentInformationExtractions;
+using Hexalith.MyNewModule.Requests.MyNewModule;
+using Hexalith.MyNewModule.Requests.MyNewModuletorages;
+using Hexalith.MyNewModule.Requests.DocumentTypes;
+using Hexalith.MyNewModule.Requests.Extensions;
+using Hexalith.MyNewModule.Requests.FileTypes;
+using Hexalith.MyNewModule.Servers.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -45,7 +45,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// <summary>
 /// The document construction site client module.
 /// </summary>
-public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModule, IDocumentModule
+public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationModule, IDocumentModule
 {
     /// <inheritdoc/>
     public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => DocumentModulePolicies.AuthorizationPolicies;
@@ -57,7 +57,7 @@ public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModu
     public string Description => "Hexalith Document API Server module";
 
     /// <inheritdoc/>
-    public string Id => "Hexalith.Documents.ApiServer";
+    public string Id => "Hexalith.MyNewModule.ApiServer";
 
     /// <inheritdoc/>
     public string Name => "Hexalith Document API Server";
@@ -71,7 +71,7 @@ public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModu
     /// <inheritdoc/>
     string IApplicationModule.Path => Path;
 
-    private static string Path => nameof(Documents);
+    private static string Path => nameof(MyNewModule);
 
     /// <summary>
     /// Adds services to the service collection.
@@ -84,22 +84,22 @@ public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModu
         _ = services
             .ConfigureSettings<CosmosDbSettings>(configuration);
 
-        HexalithDocumentsAbstractionsSerialization.RegisterPolymorphicMappers();
-        HexalithDocumentsCommandsSerialization.RegisterPolymorphicMappers();
-        HexalithDocumentsRequestsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleAbstractionsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleCommandsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IDocumentModule, HexalithDocumentsApiServerModule>();
+        services.TryAddSingleton<IDocumentModule, HexalithMyNewModuleApiServerModule>();
 
         // Add command handlers
         _ = services
             .AddDocumentManagement()
-            .AddDocumentStorage()
-            .AddDocumentsProjectionActorFactories();
+            .AddMyNewModuletorage()
+            .AddMyNewModuleProjectionActorFactories();
 
         _ = services
          .AddControllers()
-         .AddApplicationPart(typeof(DocumentsIntegrationEventsController).Assembly);
+         .AddApplicationPart(typeof(MyNewModuleIntegrationEventsController).Assembly);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModu
         actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentAggregateName.ToAggregateActorName());
         actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentContainerAggregateName.ToAggregateActorName());
         actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentInformationExtractionAggregateName.ToAggregateActorName());
-        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentStorageAggregateName.ToAggregateActorName());
+        actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.MyNewModuletorageAggregateName.ToAggregateActorName());
         actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.DocumentTypeAggregateName.ToAggregateActorName());
         actorRegistrations.RegisterActor<DomainAggregateActor>(DocumentDomainHelper.FileTypeAggregateName.ToAggregateActorName());
         actorRegistrations.RegisterAggregateRelationActor<DocumentContainer, Document>();
@@ -128,19 +128,19 @@ public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModu
         actorRegistrations.RegisterProjectionActor<Document>();
         actorRegistrations.RegisterProjectionActor<DocumentContainer>();
         actorRegistrations.RegisterProjectionActor<DocumentInformationExtraction>();
-        actorRegistrations.RegisterProjectionActor<DocumentStorage>();
+        actorRegistrations.RegisterProjectionActor<MyNewModuletorage>();
         actorRegistrations.RegisterProjectionActor<DocumentType>();
         actorRegistrations.RegisterProjectionActor<FileType>();
         actorRegistrations.RegisterProjectionActor<DataManagementSummaryViewModel>();
         actorRegistrations.RegisterProjectionActor<DataManagementDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentSummaryViewModel>();
+        actorRegistrations.RegisterProjectionActor<MyNewModuleummaryViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentDetailsViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentContainerSummaryViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentContainerDetailsViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentInformationExtractionSummaryViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentInformationExtractionDetailsViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentStorageSummaryViewModel>();
-        actorRegistrations.RegisterProjectionActor<DocumentStorageDetailsViewModel>();
+        actorRegistrations.RegisterProjectionActor<MyNewModuletorageSummaryViewModel>();
+        actorRegistrations.RegisterProjectionActor<MyNewModuletorageDetailsViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentTypeSummaryViewModel>();
         actorRegistrations.RegisterProjectionActor<DocumentTypeDetailsViewModel>();
         actorRegistrations.RegisterProjectionActor<FileTypeSummaryViewModel>();
@@ -149,7 +149,7 @@ public sealed class HexalithDocumentsApiServerModule : IApiServerApplicationModu
         actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentAggregateName));
         actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentContainerAggregateName));
         actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentInformationExtractionAggregateName));
-        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentStorageAggregateName));
+        actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.MyNewModuletorageAggregateName));
         actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.DocumentTypeAggregateName));
         actorRegistrations.RegisterActor<SequentialStringListActor>(IIdCollectionFactory.GetAggregateCollectionName(DocumentDomainHelper.FileTypeAggregateName));
     }
