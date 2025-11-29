@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Projections;
 using Hexalith.MyNewModule.Events.MyNewModules;
-using Hexalith.MyNewModule.Requests.Timesheets;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 /// <summary>
 /// Handles the projection update when a warehouse is added.
@@ -23,6 +23,6 @@ public class MyNewModuleAddedOnSummaryProjectionHandler(IProjectionFactory<MyNew
     protected override Task<MyNewModuleSummaryViewModel?> ApplyEventAsync([NotNull] MyNewModuleAdded baseEvent, MyNewModuleSummaryViewModel? summary, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
-        return Task.FromResult<MyNewModuleSummaryViewModel?>(new MyNewModuleSummaryViewModel(baseEvent.Id, baseEvent.Name, baseEvent.PriorityWeight, false));
+        return Task.FromResult<MyNewModuleSummaryViewModel?>(new MyNewModuleSummaryViewModel(baseEvent.Id, baseEvent.Name, false));
     }
 }

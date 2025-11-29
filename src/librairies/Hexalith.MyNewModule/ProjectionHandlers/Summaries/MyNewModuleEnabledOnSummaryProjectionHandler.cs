@@ -8,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Application.Projections;
 using Hexalith.MyNewModule.Events.MyNewModules;
-using Hexalith.MyNewModule.Requests.Timesheets;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 /// <summary>
 /// Handles the projection update when a warehouse is enabled.

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Projections;
 using Hexalith.MyNewModule.Events.MyNewModules;
-using Hexalith.MyNewModule.Requests.Timesheets;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 /// <summary>
 /// Handles the projection update when a warehouse description is changed.
@@ -31,7 +31,6 @@ public class MyNewModuleDescriptionChangedOnDetailsProjectionHandler(IProjection
                 baseEvent.Id,
                 baseEvent.Name,
                 baseEvent.Comments,
-                0,
                 false))
             : Task.FromResult<MyNewModuleDetailsViewModel?>(model with { Name = baseEvent.Name, Comments = baseEvent.Comments });
     }

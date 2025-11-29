@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Projections;
 using Hexalith.MyNewModule.Events.MyNewModules;
-using Hexalith.MyNewModule.Requests.Timesheets;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 /// <summary>
 /// Handles the projection update when a warehouse is added.
@@ -27,7 +27,6 @@ public class MyNewModuleAddedOnDetailsProjectionHandler(IProjectionFactory<MyNew
             baseEvent.Id,
             baseEvent.Name,
             baseEvent.Comments,
-            baseEvent.PriorityWeight,
-            false));
+            true));
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Requests;
-using Hexalith.MyNewModule.Requests.Timesheets;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 using Manhole.Requests.MyNewModules;
 

@@ -12,7 +12,7 @@ using Hexalith.MyNewModule.Events.MyNewModules;
 using Hexalith.MyNewModule.ProjectionHandlers.Details;
 using Hexalith.MyNewModule.ProjectionHandlers.Summaries;
 using Hexalith.MyNewModule.RequestHandlers;
-using Hexalith.MyNewModule.Requests.Timesheets;
+using Hexalith.MyNewModule.Requests.MyNewModule;
 
 using Manhole.Requests.MyNewModules;
 
@@ -37,7 +37,6 @@ public static class MyNewModuleProjectionHelper
 
             // Summary projections
             .AddScoped<IProjectionUpdateHandler<MyNewModuleAdded>, MyNewModuleAddedOnSummaryProjectionHandler>()
-            .AddScoped<IProjectionUpdateHandler<MyNewModulePriorityWeightChanged>, MyNewModulePriorityWeightChangedOnSummaryProjectionHandler>()
             .AddScoped<IProjectionUpdateHandler<MyNewModuleDescriptionChanged>, MyNewModuleDescriptionChangedOnSummaryProjectionHandler>()
             .AddScoped<IProjectionUpdateHandler<MyNewModuleDisabled>, MyNewModuleDisabledOnSummaryProjectionHandler>()
             .AddScoped<IProjectionUpdateHandler<MyNewModuleEnabled>, MyNewModuleEnabledOnSummaryProjectionHandler>()
@@ -47,8 +46,7 @@ public static class MyNewModuleProjectionHelper
             .AddScoped<IProjectionUpdateHandler<MyNewModuleAdded>, MyNewModuleAddedOnDetailsProjectionHandler>()
             .AddScoped<IProjectionUpdateHandler<MyNewModuleDescriptionChanged>, MyNewModuleDescriptionChangedOnDetailsProjectionHandler>()
             .AddScoped<IProjectionUpdateHandler<MyNewModuleDisabled>, MyNewModuleDisabledOnDetailsProjectionHandler>()
-            .AddScoped<IProjectionUpdateHandler<MyNewModuleEnabled>, MyNewModuleEnabledOnDetailsProjectionHandler>()
-            .AddScoped<IProjectionUpdateHandler<MyNewModulePriorityWeightChanged>, MyNewModulePriorityWeightChangedOnDetailsProjectionHandler>();
+            .AddScoped<IProjectionUpdateHandler<MyNewModuleEnabled>, MyNewModuleEnabledOnDetailsProjectionHandler>();
 
     /// <summary>
     /// Adds the mynewmodule request handlers to the service collection.

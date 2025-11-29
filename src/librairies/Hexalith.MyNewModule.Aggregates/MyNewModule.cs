@@ -10,8 +10,6 @@ using System.Runtime.Serialization;
 
 using Hexalith.Domains;
 using Hexalith.Domains.Results;
-using Hexalith.MyNewModule.Aggregates.Enums;
-using Hexalith.MyNewModule.Aggregates.ValueObjects;
 using Hexalith.MyNewModule.Events.MyNewModules;
 
 /// <summary>
@@ -45,9 +43,6 @@ public sealed record MyNewModule(
             (added ?? throw new ArgumentNullException(nameof(added))).Id,
             added.Name,
             added.Comments,
-            string.Empty,
-            new SubmissionPeriod(DateOnly.MinValue, DateOnly.MaxValue),
-            TimeSheetStatus.Draft,
             false)
     {
     }
