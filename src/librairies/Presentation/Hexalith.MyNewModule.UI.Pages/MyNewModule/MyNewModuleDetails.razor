@@ -1,0 +1,133 @@
+﻿@page "/MyNewModule/Add/FileType"
+@page "/MyNewModule/FileType/{Id}"
+@using Hexalith.UI.Components.Pages
+@rendermode InteractiveAuto
+<HexEntityDetailsPage AddTitle="@Labels.AddTitle"
+                      EditTitle="@Labels.Title"
+                      ViewModel="_data"
+                      EntityId="@Id"
+                      IndexPath="/MyNewModule/FileType"
+                      ValidationResult="_validationResult"
+                      OnSave="OnSave"
+                      OnLoadData="OnLoadDataAsync">
+
+    @if (_data is not null)
+    {
+        <FluentGrid Style="width:100%;">
+            <FluentGridItem md="12">
+                <FluentLabel Typo="Typography.PaneHeader">@Labels.Targets</FluentLabel>
+            </FluentGridItem>
+            <FluentGridItem xs="12" md="6">
+                <FluentTextField Style="width:100%;" @bind-Value="_newTarget" Label="@Labels.NewTarget"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" md="12">
+                <HexAddButton OnClick="AddTarget" />
+            </FluentGridItem>
+            @foreach (string target in _data.OtherContentTypes)
+            {
+                <FluentGridItem xs="12" xl="6">
+
+                    <FluentStack Orientation="Orientation.Horizontal" Style="margin: 4px 0;">
+                        <FluentTextField Style="width:75%;" Value="@target" Readonly="true"></FluentTextField>
+                        <HexRemoveButton OnClick="@(() =>RemoveTarget(target))" />
+                    </FluentStack>
+                </FluentGridItem>
+            }
+
+        </FluentGrid>
+    }
+</HexEntityDetailsPage>
+
+@code {
+    [CascadingParameter]
+    public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+    [Parameter]
+    public string? Id { get; set; }
+
+    private ClaimsPrincipal? _user;
+    private FileTypeEditViewModel _data = new();
+    private string _newTarget = string.Empty;
+
+    private ValidationResult? _validationResult; 
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthenticationStateTask is not null)
+        {
+            var authState = await AuthenticationStateTask;
+            if (!authState.User.Identity?.IsAuthenticated == true)
+            {
+                NavigationManager.NavigateTo(Application.LoginPath);
+            }
+            _user = authState.User;
+        }
+        if (_user is null)
+        {
+            return;
+        }
+        if (Id is not null)
+        {
+            var details = await RequestService.SubmitAsync(_user, new GetFileTypeDetails(Id), CancellationToken.None);
+            if (details.Result is not null)
+            {
+                _data = new FileTypeEditViewModel(details.Result);
+            }
+        }
+        await base.OnInitializedAsync();
+    }
+
+    protected async Task OnLoadDataAsync()
+    {
+        if (_user is null)
+        {
+            return;
+        }
+        if (Id is not null)
+        {
+            var details = await RequestService.SubmitAsync(_user, new GetFileTypeDetails(Id), CancellationToken.None);
+            if (details.Result is not null)
+            {
+                _data = new FileTypeEditViewModel(details.Result);
+            }
+        }
+    }
+
+    private async Task<SaveResult> OnSave()
+    {
+        var result = _data.ValidateSave(_user, (d) =>
+        {
+            _validationResult = new FileTypeEditValidation().Validate(d);
+            if (_validationResult.IsValid)
+            {
+                return true;
+            }
+            return false;
+        });
+        if (result.Result == ExecuteSaveResult.Success)
+        {
+            await _data!.SaveAsync(_user!, CommandService, Id is null, CancellationToken.None);
+            if (Id is null)
+            {
+                _data = new ();
+            }
+        }
+        StateHasChanged();
+        return result;
+    }
+
+
+    private void AddTarget()
+    {
+        if (!string.IsNullOrWhiteSpace(_newTarget))
+        {
+            _data.OtherContentTypes.Add(_newTarget);
+            StateHasChanged();
+            _newTarget = string.Empty;
+        }
+    }
+    private void RemoveTarget(string target)
+    {
+        _data.OtherContentTypes.Remove(target);
+        StateHasChanged();
+    }
+}

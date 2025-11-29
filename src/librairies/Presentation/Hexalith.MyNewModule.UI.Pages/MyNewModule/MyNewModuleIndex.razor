@@ -1,0 +1,86 @@
+﻿@page "/MyNewModule/FileType"
+@rendermode InteractiveAuto
+@using Hexalith.MyNewModule.Commands.DataManagements
+<HexEntityIndexPage OnLoadData="LoadSummaries"
+                    OnImport="ImportAsync"
+                    OnExport="ExportAsync"
+                    OnDatabaseSynchronize="SynchronizeDatabaseAsync"
+                    AddPagePath="/MyNewModule/Add/FileType"
+                    Title="@Labels.ListTitle">
+    <FileTypeSummaryGrid Items="_summariesQuery" EntityDetailsPath="/MyNewModule/FileType" OnDisabledChanged="OnDisabledChangedAsync" />
+</HexEntityIndexPage>
+
+@code {
+    private IEnumerable<FileTypeSummaryViewModel>? _summaries;
+    private IQueryable<FileTypeSummaryViewModel>? _summariesQuery;
+
+    [CascadingParameter]
+    public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+    private ClaimsPrincipal? _user;
+    private ClaimsPrincipal User => _user ?? throw new InvalidOperationException("User not initialized");
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthenticationStateTask is not null)
+        {
+            var authState = await AuthenticationStateTask;
+            _user = authState.User;
+        }
+        await base.OnInitializedAsync();
+    }
+
+    private async Task LoadSummaries()
+    {
+        _summaries = [..(await RequestService
+            .SubmitAsync(User, new GetFileTypeSummaries(), CancellationToken.None))
+            .Results
+            .OrderBy(p => p.Id)];
+        _summariesQuery = _summaries.AsQueryable();
+        if (!_summaries.Any())
+        {
+            await CommandService.SubmitCommandsAsync(User, FileTypeQuickStartData.Data, CancellationToken.None);
+        }
+    }
+    private static Task SynchronizeDatabaseAsync()
+    {
+        return Task.CompletedTask;
+    }
+    private async Task OnDisabledChangedAsync(string id)
+    {
+        var item = _summaries?.FirstOrDefault(s => s.Id == id);
+        if (item is null)
+        {
+            return;
+        }
+        if (item.Disabled)
+        {
+            await CommandService.SubmitCommandAsync(User, new DisableFileType(item.Id), CancellationToken.None);
+        }
+        else
+        {
+            await CommandService.SubmitCommandAsync(User, new EnableFileType(item.Id), CancellationToken.None);
+        }
+        if (_summaries is not null)
+        {
+            // Update the disabled value of the item in the collection
+            _summaries = [.. _summaries.Select(s => s.Id == item.Id ? s with { Disabled = item.Disabled } : s)];
+            _summariesQuery = _summaries.AsQueryable();
+        }
+    }
+
+    private static async Task ImportAsync()
+    {
+        await Task.CompletedTask;
+    }
+    private async Task ExportAsync()
+    {
+        string documentId = GetImportExportDocumentId();
+        var command = new ExportRequestDataToDocument(documentId, new GetFileTypeExports(0, 100));
+        await CommandService.SubmitCommandAsync(User, command, CancellationToken.None);
+    }
+    private string GetImportExportDocumentId()
+    {
+        return string.Format(Labels.DataFileName, UniqueIdHelper.GenerateDateTimeId());
+    }
+}
