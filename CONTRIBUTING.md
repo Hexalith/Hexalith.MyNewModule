@@ -1,6 +1,6 @@
-# Contributing to Hexalith.MyNewModule
+# Contributing to Hexalith.MyToDo
 
-Thank you for considering contributing to Hexalith.MyNewModule! This document provides guidelines and instructions for contributing.
+Thank you for considering contributing to Hexalith.MyToDo! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -36,12 +36,12 @@ Before contributing, ensure you have:
 1. Fork the repository on GitHub
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/Hexalith.MyNewModule.git
-   cd Hexalith.MyNewModule
+   git clone https://github.com/YOUR-USERNAME/Hexalith.MyToDo.git
+   cd Hexalith.MyToDo
    ```
 3. Add upstream remote:
    ```bash
-   git remote add upstream https://github.com/Hexalith/Hexalith.MyNewModule.git
+   git remote add upstream https://github.com/Hexalith/Hexalith.MyToDo.git
    ```
 4. Initialize submodules:
    ```bash
@@ -116,8 +116,8 @@ public record ModuleConfiguration(
 
 | Element | Convention | Example |
 |---------|------------|---------|
-| Classes/Records | PascalCase | `MyNewModule` |
-| Interfaces | IPascalCase | `IMyNewModuleService` |
+| Classes/Records | PascalCase | `MyToDo` |
+| Interfaces | IPascalCase | `IMyToDoService` |
 | Methods | PascalCase | `GetDetailsAsync` |
 | Parameters | camelCase | `moduleName` |
 | Private fields | _camelCase | `_repository` |
@@ -156,11 +156,11 @@ public record ModuleConfiguration(
 ### Examples
 
 ```
-feat(domain): add MyNewModule aggregate
+feat(domain): add MyToDo aggregate
 
-Add the MyNewModule aggregate with support for:
+Add the MyToDo aggregate with support for:
 - Add, update, and delete operations
-- Event sourcing with MyNewModuleAdded event
+- Event sourcing with MyToDoAdded event
 - Validation for all properties
 
 Closes #123
@@ -250,11 +250,11 @@ Fixes #456
 
 ```csharp
 [Fact]
-public void Apply_MyNewModuleAdded_ShouldInitializeAggregate()
+public void Apply_MyToDoAdded_ShouldInitializeAggregate()
 {
     // Arrange
-    var aggregate = new MyNewModule();
-    var added = new MyNewModuleAdded("id", "name", "comments");
+    var aggregate = new MyToDo();
+    var added = new MyToDoAdded("id", "name", "comments");
 
     // Act
     var result = aggregate.Apply(added);
@@ -294,8 +294,8 @@ Required for:
 ## Need Help?
 
 - **Discord**: [Join our community](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
-- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyNewModule/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Hexalith/Hexalith.MyNewModule/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyToDo/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Hexalith/Hexalith.MyToDo/discussions)
 
 Thank you for contributing! 🎉
 

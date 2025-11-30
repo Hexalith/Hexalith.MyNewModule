@@ -1,28 +1,28 @@
-# Hexalith.MyNewModule
+# Hexalith.MyToDo
 
 A comprehensive template repository for creating new Hexalith modules following Domain-Driven Design (DDD), CQRS (Command Query Responsibility Segregation), and Event Sourcing architectural patterns.
 
 ## Build Status
 
-[![License: MIT](https://img.shields.io/github/license/hexalith/hexalith.MyNewModule)](https://github.com/hexalith/hexalith/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/github/license/hexalith/hexalith.MyToDo)](https://github.com/hexalith/hexalith/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1063152441819942922?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
 
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/31529/badge.svg)](https://scan.coverity.com/projects/hexalith-hexalith-MyNewModule)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d48f6d9ab9fb4776b6b4711fc556d1c4)](https://app.codacy.com/gh/Hexalith/Hexalith.MyNewModule/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/31529/badge.svg)](https://scan.coverity.com/projects/hexalith-hexalith-MyToDo)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d48f6d9ab9fb4776b6b4711fc556d1c4)](https://app.codacy.com/gh/Hexalith/Hexalith.MyToDo/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
 
-[![Build status](https://github.com/Hexalith/Hexalith.MyNewModule/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.MyNewModule/actions)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModules.svg)](https://www.nuget.org/packages/Hexalith.MyNewModule)
-[![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.MyNewModule?include_prereleases&label=latest)](https://github.com/Hexalith/Hexalith.MyNewModule/pkgs/nuget/Hexalith.MyNewModule)
+[![Build status](https://github.com/Hexalith/Hexalith.MyToDo/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.MyToDo/actions)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModule.svg)](https://www.nuget.org/packages/Hexalith.MyToDo)
+[![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.MyToDo?include_prereleases&label=latest)](https://github.com/Hexalith/Hexalith.MyToDo/pkgs/nuget/Hexalith.MyToDo)
 
 ## Table of Contents
 
@@ -130,7 +130,7 @@ Before getting started, ensure you have the following installed:
 **Option B: Clone the Repository**
 
 ```bash
-git clone https://github.com/Hexalith/Hexalith.MyNewModule.git YourModuleName
+git clone https://github.com/Hexalith/Hexalith.MyToDo.git YourModuleName
 cd YourModuleName
 ```
 
@@ -151,8 +151,8 @@ Run the initialization script to customize the template for your module:
 This creates a module named `Hexalith.Inventory`.
 
 The initialization script will:
-- Replace all occurrences of `MyNewModule` with your package name
-- Rename directories and files containing `MyNewModule`
+- Replace all occurrences of `MyToDo` with your package name
+- Rename directories and files containing `MyToDo`
 - Initialize and update Git submodules (Hexalith.Builds and HexalithApp)
 - Set up the project structure for your new module
 
@@ -181,51 +181,51 @@ dotnet test
 ## Project Structure
 
 ```
-Hexalith.MyNewModule/
+Hexalith.MyToDo/
 ├── AspireHost/                          # .NET Aspire orchestration
 │   ├── Program.cs                       # Aspire app configuration
 │   ├── Components/                      # Aspire component configurations
 │   └── appsettings.json                # Application settings
 │
 ├── src/                                 # Source code root
-│   ├── HexalithMyNewModulesApiServerApplication.cs
-│   ├── HexalithMyNewModulesWebAppApplication.cs
-│   ├── HexalithMyNewModulesWebServerApplication.cs
+│   ├── HexalithMyNewModuleApiServerApplication.cs
+│   ├── HexalithMyNewModuleWebAppApplication.cs
+│   ├── HexalithMyNewModuleWebServerApplication.cs
 │   │
 │   └── libraries/                       # NuGet package projects
 │       │
 │       ├── Application/                 # Application layer
-│       │   ├── Hexalith.MyNewModules/              # Main application logic
-│       │   ├── Hexalith.MyNewModules.Abstractions/ # Interfaces & contracts
-│       │   ├── Hexalith.MyNewModules.Commands/     # Command definitions
-│       │   ├── Hexalith.MyNewModules.Projections/  # Read model projections
-│       │   └── Hexalith.MyNewModules.Requests/     # Query requests
+│       │   ├── Hexalith.MyNewModule/              # Main application logic
+│       │   ├── Hexalith.MyNewModule.Abstractions/ # Interfaces & contracts
+│       │   ├── Hexalith.MyNewModule.Commands/     # Command definitions
+│       │   ├── Hexalith.MyNewModule.Projections/  # Read model projections
+│       │   └── Hexalith.MyNewModule.Requests/     # Query requests
 │       │
 │       ├── Domain/                      # Domain layer
-│       │   ├── Hexalith.MyNewModules.Aggregates/             # Domain aggregates
-│       │   ├── Hexalith.MyNewModules.Aggregates.Abstractions/# Domain helpers
-│       │   ├── Hexalith.MyNewModules.Events/                 # Domain events
-│       │   └── Hexalith.MyNewModules.Localizations/          # Resource files
+│       │   ├── Hexalith.MyNewModule.Aggregates/             # Domain aggregates
+│       │   ├── Hexalith.MyNewModule.Aggregates.Abstractions/# Domain helpers
+│       │   ├── Hexalith.MyNewModule.Events/                 # Domain events
+│       │   └── Hexalith.MyNewModule.Localizations/          # Resource files
 │       │
 │       ├── Infrastructure/              # Infrastructure layer
-│       │   ├── Hexalith.MyNewModules.ApiServer/   # REST API server
-│       │   ├── Hexalith.MyNewModules.Servers/     # Server helpers
-│       │   ├── Hexalith.MyNewModules.WebApp/      # WASM client module
-│       │   └── Hexalith.MyNewModules.WebServer/   # SSR web server module
+│       │   ├── Hexalith.MyNewModule.ApiServer/   # REST API server
+│       │   ├── Hexalith.MyNewModule.Servers/     # Server helpers
+│       │   ├── Hexalith.MyNewModule.WebApp/      # WASM client module
+│       │   └── Hexalith.MyNewModule.WebServer/   # SSR web server module
 │       │
 │       └── Presentation/                # Presentation layer
-│           ├── Hexalith.MyNewModules.UI.Components/ # Blazor components
-│           └── Hexalith.MyNewModules.UI.Pages/      # Blazor pages
+│           ├── Hexalith.MyNewModule.UI.Components/ # Blazor components
+│           └── Hexalith.MyNewModule.UI.Pages/      # Blazor pages
 │
 ├── test/                                # Test projects
-│   └── Hexalith.MyNewModules.Tests/     # Unit & integration tests
+│   └── Hexalith.MyNewModule.Tests/     # Unit & integration tests
 │
 ├── HexalithApp/                         # Hexalith application (submodule)
 ├── Hexalith.Builds/                     # Build configurations (submodule)
 │
 ├── Directory.Build.props                # MSBuild properties
 ├── Directory.Packages.props             # Central package management
-├── Hexalith.MyNewModules.sln           # Solution file
+├── Hexalith.MyNewModule.sln           # Solution file
 └── initialize.ps1                       # Initialization script
 ```
 
@@ -237,18 +237,18 @@ The domain layer contains the core business logic and is framework-agnostic.
 
 Aggregates are the core domain entities that encapsulate business rules and state changes.
 
-**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Aggregates/`
+**Location**: `src/libraries/Domain/Hexalith.MyNewModule.Aggregates/`
 
 ```csharp
 /// <summary>
-/// Represents a mynewmodule aggregate.
+/// Represents a mytodo aggregate.
 /// </summary>
-/// <param name="Id">The mynewmodule identifier.</param>
-/// <param name="Name">The mynewmodule name.</param>
-/// <param name="Comments">The mynewmodule description.</param>
-/// <param name="Disabled">The mynewmodule disabled status.</param>
+/// <param name="Id">The mytodo identifier.</param>
+/// <param name="Name">The mytodo name.</param>
+/// <param name="Comments">The mytodo description.</param>
+/// <param name="Disabled">The mytodo disabled status.</param>
 [DataContract]
-public sealed record MyNewModule(
+public sealed record MyToDo(
     [property: DataMember(Order = 1)] string Id,
     [property: DataMember(Order = 2)] string Name,
     [property: DataMember(Order = 3)] string? Comments,
@@ -271,42 +271,42 @@ Key features:
 
 Events represent facts that have happened in the domain.
 
-**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Events/MyNewModule/`
+**Location**: `src/libraries/Domain/Hexalith.MyNewModule.Events/MyToDo/`
 
 Available events:
-- `MyNewModuleAdded` - When a new module is created
-- `MyNewModuleDescriptionChanged` - When name or description changes
-- `MyNewModuleDisabled` - When the module is disabled
-- `MyNewModuleEnabled` - When the module is enabled
+- `MyToDoAdded` - When a new module is created
+- `MyToDoDescriptionChanged` - When name or description changes
+- `MyToDoDisabled` - When the module is disabled
+- `MyToDoEnabled` - When the module is enabled
 
 ```csharp
 /// <summary>
-/// Event raised when a new mynewmodule is added.
+/// Event raised when a new mytodo is added.
 /// </summary>
 [PolymorphicSerialization]
-public partial record MyNewModuleAdded(
+public partial record MyToDoAdded(
     string Id,
     [property: DataMember(Order = 2)] string Name,
     [property: DataMember(Order = 3)] string? Comments)
-    : MyNewModuleEvent(Id);
+    : MyToDoEvent(Id);
 ```
 
 ### Value Objects
 
 Value objects are immutable domain concepts with no identity.
 
-**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Aggregates.Abstractions/ValueObjects/`
+**Location**: `src/libraries/Domain/Hexalith.MyNewModule.Aggregates.Abstractions/ValueObjects/`
 
 ### Localizations
 
 Resource files for internationalization (i18n) support.
 
-**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Localizations/`
+**Location**: `src/libraries/Domain/Hexalith.MyNewModule.Localizations/`
 
 Files:
-- `MyNewModule.resx` - English (default)
-- `MyNewModule.fr.resx` - French
-- `MyNewModulesMenu.resx` - Menu labels
+- `MyToDo.resx` - English (default)
+- `MyToDo.fr.resx` - French
+- `MyNewModuleMenu.resx` - Menu labels
 
 ## Application Layer
 
@@ -314,23 +314,23 @@ The application layer coordinates domain operations and implements use cases.
 
 ### Abstractions
 
-**Location**: `src/libraries/Application/Hexalith.MyNewModules.Abstractions/`
+**Location**: `src/libraries/Application/Hexalith.MyNewModule.Abstractions/`
 
 Key files:
-- `IMyNewModuleModule.cs` - Module interface
-- `IMyNewModuleService.cs` - Service interface
-- `MyNewModulePolicies.cs` - Authorization policies
-- `MyNewModuleRoles.cs` - Security roles
+- `IMyToDoModule.cs` - Module interface
+- `IMyToDoService.cs` - Service interface
+- `MyToDoPolicies.cs` - Authorization policies
+- `MyToDoRoles.cs` - Security roles
 
 ```csharp
 /// <summary>
-/// Defines the roles for MyNewModule security.
+/// Defines the roles for MyToDo security.
 /// </summary>
-public static class MyNewModuleRoles
+public static class MyToDoRoles
 {
-    public const string Owner = nameof(MyNewModules) + nameof(Owner);
-    public const string Contributor = nameof(MyNewModules) + nameof(Contributor);
-    public const string Reader = nameof(MyNewModules) + nameof(Reader);
+    public const string Owner = nameof(MyNewModule) + nameof(Owner);
+    public const string Contributor = nameof(MyNewModule) + nameof(Contributor);
+    public const string Reader = nameof(MyNewModule) + nameof(Reader);
 }
 ```
 
@@ -338,61 +338,61 @@ public static class MyNewModuleRoles
 
 Commands represent intent to change the system state.
 
-**Location**: `src/libraries/Application/Hexalith.MyNewModules.Commands/MyNewModule/`
+**Location**: `src/libraries/Application/Hexalith.MyNewModule.Commands/MyToDo/`
 
 Available commands:
-- `AddMyNewModule` - Create a new module
-- `ChangeMyNewModuleDescription` - Update name/description
-- `DisableMyNewModule` - Disable a module
-- `EnableMyNewModule` - Enable a module
+- `AddMyToDo` - Create a new module
+- `ChangeMyToDoDescription` - Update name/description
+- `DisableMyToDo` - Disable a module
+- `EnableMyToDo` - Enable a module
 
 ```csharp
 /// <summary>
-/// Command to add a new mynewmodule.
+/// Command to add a new mytodo.
 /// </summary>
 [PolymorphicSerialization]
-public partial record AddMyNewModule(
+public partial record AddMyToDo(
     string Id,
     [property: DataMember(Order = 2)] string Name,
     [property: DataMember(Order = 3)] string? Comments)
-    : MyNewModuleCommand(Id);
+    : MyToDoCommand(Id);
 ```
 
 ### Requests (Queries)
 
 Requests represent queries for data retrieval.
 
-**Location**: `src/libraries/Application/Hexalith.MyNewModules.Requests/MyNewModule/`
+**Location**: `src/libraries/Application/Hexalith.MyNewModule.Requests/MyToDo/`
 
 Available requests:
-- `GetMyNewModuleDetails` - Get full details of a module
-- `GetMyNewModuleSummaries` - Get list of module summaries
-- `GetMyNewModuleIds` - Get list of all module IDs
-- `GetMyNewModuleExports` - Export module data
+- `GetMyToDoDetails` - Get full details of a module
+- `GetMyToDoSummaries` - Get list of module summaries
+- `GetMyToDoIds` - Get list of all module IDs
+- `GetMyToDoExports` - Export module data
 
 ### View Models
 
 View models for presenting data to the UI.
 
-- `MyNewModuleDetailsViewModel` - Full module details
-- `MyNewModuleSummaryViewModel` - Summary for lists
+- `MyToDoDetailsViewModel` - Full module details
+- `MyToDoSummaryViewModel` - Summary for lists
 
 ### Projections
 
 Projections handle event processing to update read models.
 
-**Location**: `src/libraries/Application/Hexalith.MyNewModules.Projections/`
+**Location**: `src/libraries/Application/Hexalith.MyNewModule.Projections/`
 
 ```csharp
-public static class MyNewModuleProjectionHelper
+public static class MyToDoProjectionHelper
 {
-    public static IServiceCollection AddMyNewModuleProjectionHandlers(
+    public static IServiceCollection AddMyToDoProjectionHandlers(
         this IServiceCollection services)
         => services
-            .AddScoped<IProjectionUpdateHandler<MyNewModuleAdded>, 
-                MyNewModuleAddedOnSummaryProjectionHandler>()
-            .AddScoped<IProjectionUpdateHandler<MyNewModuleDescriptionChanged>, 
-                MyNewModuleDescriptionChangedOnSummaryProjectionHandler>()
+            .AddScoped<IProjectionUpdateHandler<MyToDoAdded>, 
+                MyToDoAddedOnSummaryProjectionHandler>()
+            .AddScoped<IProjectionUpdateHandler<MyToDoDescriptionChanged>, 
+                MyToDoDescriptionChangedOnSummaryProjectionHandler>()
             // ... more handlers
 }
 ```
@@ -403,7 +403,7 @@ The infrastructure layer contains technical implementations and hosting concerns
 
 ### API Server Module
 
-**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModules.ApiServer/`
+**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModule.ApiServer/`
 
 Provides:
 - REST API controllers
@@ -412,26 +412,26 @@ Provides:
 - Integration event handling
 
 ```csharp
-public sealed class HexalithMyNewModulesApiServerModule : 
-    IApiServerApplicationModule, IMyNewModuleModule
+public sealed class HexalithMyNewModuleApiServerModule : 
+    IApiServerApplicationModule, IMyToDoModule
 {
     public static void AddServices(IServiceCollection services, 
         IConfiguration configuration)
     {
         // Register serialization mappers
-        HexalithMyNewModulesEventsSerialization.RegisterPolymorphicMappers();
-        HexalithMyNewModulesCommandsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleEventsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModuleCommandsSerialization.RegisterPolymorphicMappers();
         
         // Add module services
-        services.AddMyNewModule();
-        services.AddMyNewModuleProjectionActorFactories();
+        services.AddMyToDo();
+        services.AddMyToDoProjectionActorFactories();
     }
 
     public static void RegisterActors(object actorCollection)
     {
         var actorRegistrations = (ActorRegistrationCollection)actorCollection;
         actorRegistrations.RegisterActor<DomainAggregateActor>(
-            MyNewModuleDomainHelper.MyNewModuleAggregateName.ToAggregateActorName());
+            MyToDoDomainHelper.MyToDoAggregateName.ToAggregateActorName());
         // ... more actor registrations
     }
 }
@@ -439,13 +439,13 @@ public sealed class HexalithMyNewModulesApiServerModule :
 
 ### Web Server Module
 
-**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModules.WebServer/`
+**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModule.WebServer/`
 
 Provides server-side rendering (SSR) support for Blazor.
 
 ### Web App Module
 
-**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModules.WebApp/`
+**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModule.WebApp/`
 
 Provides WebAssembly (WASM) client support for Blazor.
 
@@ -455,45 +455,45 @@ The presentation layer contains Blazor UI components and pages.
 
 ### UI Components
 
-**Location**: `src/libraries/Presentation/Hexalith.MyNewModules.UI.Components/`
+**Location**: `src/libraries/Presentation/Hexalith.MyNewModule.UI.Components/`
 
 Reusable Blazor components:
-- `MyNewModuleIdField.razor` - ID input field
-- `MyNewModuleSummaryGrid.razor` - Data grid for summaries
+- `MyToDoIdField.razor` - ID input field
+- `MyToDoSummaryGrid.razor` - Data grid for summaries
 
 ### UI Pages
 
-**Location**: `src/libraries/Presentation/Hexalith.MyNewModules.UI.Pages/`
+**Location**: `src/libraries/Presentation/Hexalith.MyNewModule.UI.Pages/`
 
 Blazor pages:
 - `Home.razor` - Module home page
-- `MyNewModuleIndex.razor` - List/index page
-- `MyNewModuleDetails.razor` - Add/edit page
+- `MyToDoIndex.razor` - List/index page
+- `MyToDoDetails.razor` - Add/edit page
 
 **Index Page Example:**
 
 ```razor
-@page "/MyNewModule/MyNewModule"
+@page "/MyToDo/MyToDo"
 @rendermode InteractiveAuto
 
 <HexEntityIndexPage 
     OnLoadData="LoadSummaries"
     OnImport="ImportAsync"
     OnExport="ExportAsync"
-    AddPagePath="/MyNewModule/Add/MyNewModule"
+    AddPagePath="/MyToDo/Add/MyToDo"
     Title="@Labels.ListTitle">
-    <MyNewModuleSummaryGrid Items="_summariesQuery" 
-        EntityDetailsPath="/MyNewModule/MyNewModule" 
+    <MyToDoSummaryGrid Items="_summariesQuery" 
+        EntityDetailsPath="/MyToDo/MyToDo" 
         OnDisabledChanged="OnDisabledChangedAsync" />
 </HexEntityIndexPage>
 ```
 
 ### Edit View Model
 
-**Location**: `src/libraries/Presentation/Hexalith.MyNewModules.UI.Pages/MyNewModule/`
+**Location**: `src/libraries/Presentation/Hexalith.MyNewModule.UI.Pages/MyToDo/`
 
 ```csharp
-public sealed class MyNewModuleEditViewModel : IIdDescription, IEntityViewModel
+public sealed class MyToDoEditViewModel : IIdDescription, IEntityViewModel
 {
     public string Id { get; set; }
     public string Name { get; set; }
@@ -514,7 +514,7 @@ public sealed class MyNewModuleEditViewModel : IIdDescription, IEntityViewModel
 
 ### Test Project
 
-**Location**: `test/Hexalith.MyNewModules.Tests/`
+**Location**: `test/Hexalith.MyNewModule.Tests/`
 
 The project uses:
 - **xUnit** - Testing framework
@@ -525,32 +525,32 @@ The project uses:
 
 ```
 test/
-└── Hexalith.MyNewModules.Tests/
+└── Hexalith.MyNewModule.Tests/
     ├── Domains/
     │   ├── Aggregates/    # Aggregate tests
     │   ├── Commands/      # Command tests
     │   └── Events/        # Event tests
-    └── Hexalith.MyNewModules.Tests.csproj
+    └── Hexalith.MyNewModule.Tests.csproj
 ```
 
 ### Writing Tests
 
 ```csharp
-public class MyNewModuleAggregateTests
+public class MyToDoAggregateTests
 {
     [Fact]
-    public void Apply_MyNewModuleAdded_ShouldInitializeAggregate()
+    public void Apply_MyToDoAdded_ShouldInitializeAggregate()
     {
         // Arrange
-        var aggregate = new MyNewModule();
-        var added = new MyNewModuleAdded("test-id", "Test Name", "Comments");
+        var aggregate = new MyToDo();
+        var added = new MyToDoAdded("test-id", "Test Name", "Comments");
 
         // Act
         var result = aggregate.Apply(added);
 
         // Assert
         result.Succeeded.ShouldBeTrue();
-        var newAggregate = result.Aggregate as MyNewModule;
+        var newAggregate = result.Aggregate as MyToDo;
         newAggregate.ShouldNotBeNull();
         newAggregate.Id.ShouldBe("test-id");
         newAggregate.Name.ShouldBe("Test Name");
@@ -568,7 +568,7 @@ dotnet test
 dotnet test --collect:"XPlat Code Coverage"
 
 # Run specific test project
-dotnet test test/Hexalith.MyNewModules.Tests/
+dotnet test test/Hexalith.MyNewModule.Tests/
 ```
 
 ## Configuration
@@ -597,11 +597,11 @@ Build configuration is defined in `Directory.Build.props`:
 ```xml
 <Project>
   <PropertyGroup>
-    <Product>Hexalith.MyNewModule</Product>
-    <RepositoryUrl>https://github.com/Hexalith/Hexalith.MyNewModules.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Hexalith/Hexalith.MyNewModule</PackageProjectUrl>
+    <Product>Hexalith.MyToDo</Product>
+    <RepositoryUrl>https://github.com/Hexalith/Hexalith.MyNewModule.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Hexalith/Hexalith.MyToDo</PackageProjectUrl>
     <PackageTags>hexalith;</PackageTags>
-    <Description>Hexalith MyNewModule Module</Description>
+    <Description>Hexalith MyToDo Module</Description>
   </PropertyGroup>
 </Project>
 ```
@@ -631,7 +631,7 @@ HexalithDistributedApplication app = new(args);
 
 if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 {
-    app.AddProject<Projects.HexalithApp_WebServer>("mynewmodulesweb")
+    app.AddProject<Projects.HexalithApp_WebServer>("MyNewModuleweb")
         .WithEnvironmentFromConfiguration("APP_API_TOKEN")
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Id")
         // ... more configuration
@@ -639,7 +639,7 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 
 if (app.IsProjectEnabled<Projects.HexalithApp_ApiServer>())
 {
-    app.AddProject<Projects.HexalithApp_ApiServer>("mynewmodulesapi")
+    app.AddProject<Projects.HexalithApp_ApiServer>("MyNewModuleapi")
         // ... configuration
 }
 
@@ -674,9 +674,9 @@ Components/
 │   ├── Integration/
 │   ├── Production/
 │   └── Staging/
-├── MyNewModulesApi/
+├── MyNewModuleApi/
 │   └── Development/
-└── MyNewModulesWeb/
+└── MyNewModuleWeb/
     └── Development/
 ```
 
@@ -684,12 +684,12 @@ Components/
 
 ### 1. Create a New Feature
 
-1. **Define domain events** in `Domain/Hexalith.MyNewModules.Events/`
-2. **Update aggregate** in `Domain/Hexalith.MyNewModules.Aggregates/`
-3. **Create commands** in `Application/Hexalith.MyNewModules.Commands/`
-4. **Add request handlers** in `Application/Hexalith.MyNewModules.Projections/`
-5. **Create/update UI** in `Presentation/Hexalith.MyNewModules.UI.Pages/`
-6. **Write tests** in `test/Hexalith.MyNewModules.Tests/`
+1. **Define domain events** in `Domain/Hexalith.MyNewModule.Events/`
+2. **Update aggregate** in `Domain/Hexalith.MyNewModule.Aggregates/`
+3. **Create commands** in `Application/Hexalith.MyNewModule.Commands/`
+4. **Add request handlers** in `Application/Hexalith.MyNewModule.Projections/`
+5. **Create/update UI** in `Presentation/Hexalith.MyNewModule.UI.Pages/`
+6. **Write tests** in `test/Hexalith.MyNewModule.Tests/`
 
 ### 2. Adding a New Entity
 
@@ -753,5 +753,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - **Discord**: [Join our community](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
-- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyNewModule/issues)
-- **Documentation**: [Wiki](https://github.com/Hexalith/Hexalith.MyNewModule/wiki)
+- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyToDo/issues)
+- **Documentation**: [Wiki](https://github.com/Hexalith/Hexalith.MyToDo/wiki)

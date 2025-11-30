@@ -1,13 +1,13 @@
 <Project>
   <PropertyGroup>
-    <HexalithAppName>MyNewModules</HexalithAppName>
+    <HexalithAppName>MyNewModule</HexalithAppName>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Application\Hexalith.MyNewModules\Hexalith.MyNewModules.csproj" />
-    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Infrastructure\Hexalith.MyNewModules.ApiServer\Hexalith.MyNewModules.ApiServer.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Application\Hexalith.MyNewModule\Hexalith.MyNewModule.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)src\libraries\Infrastructure\Hexalith.MyNewModule.ApiServer\Hexalith.MyNewModule.ApiServer.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)src\HexalithMyNewModulesApiServerApplication.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)src\HexalithMyNewModuleApiServerApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Hexalith.Security.ApiServer" />

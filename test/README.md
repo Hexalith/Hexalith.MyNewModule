@@ -1,6 +1,6 @@
 # Test Projects
 
-This directory contains all test projects for the Hexalith.MyNewModule solution.
+This directory contains all test projects for the Hexalith.MyToDo solution.
 
 ## Overview
 
@@ -14,18 +14,18 @@ The test projects follow these conventions:
 
 ```
 test/
-└── Hexalith.MyNewModules.Tests/
+└── Hexalith.MyNewModule.Tests/
     ├── Domains/
     │   ├── Aggregates/    # Aggregate unit tests
     │   ├── Commands/      # Command validation tests
     │   └── Events/        # Event serialization tests
-    ├── Hexalith.MyNewModules.Tests.csproj
+    ├── Hexalith.MyNewModule.Tests.csproj
     └── README.md
 ```
 
 ## Test Project
 
-### Hexalith.MyNewModules.Tests
+### Hexalith.MyNewModule.Tests
 
 Main test project covering:
 - Domain aggregate behavior
@@ -46,7 +46,7 @@ dotnet test
 dotnet test --logger "console;verbosity=detailed"
 
 # Run specific test class
-dotnet test --filter "FullyQualifiedName~MyNewModuleAggregateTests"
+dotnet test --filter "FullyQualifiedName~MyToDoAggregateTests"
 
 # Run tests with coverage
 dotnet test --collect:"XPlat Code Coverage"
@@ -74,14 +74,14 @@ dotnet test --collect:"XPlat Code Coverage" --results-directory ./coverage
 Test aggregate behavior and domain logic:
 
 ```csharp
-public class MyNewModuleAggregateTests
+public class MyToDoAggregateTests
 {
     [Fact]
-    public void Apply_MyNewModuleAdded_ShouldInitializeAggregate()
+    public void Apply_MyToDoAdded_ShouldInitializeAggregate()
     {
         // Arrange
-        var aggregate = new MyNewModule();
-        var added = new MyNewModuleAdded("id", "name", "comments");
+        var aggregate = new MyToDo();
+        var added = new MyToDoAdded("id", "name", "comments");
 
         // Act
         var result = aggregate.Apply(added);
@@ -97,15 +97,15 @@ public class MyNewModuleAggregateTests
 Test command validation:
 
 ```csharp
-public class AddMyNewModuleValidatorTests
+public class AddMyToDoValidatorTests
 {
-    private readonly AddMyNewModuleValidator _validator = new();
+    private readonly AddMyToDoValidator _validator = new();
 
     [Fact]
     public void Validate_EmptyId_ShouldFail()
     {
         // Arrange
-        var command = new AddMyNewModule("", "name", null);
+        var command = new AddMyToDo("", "name", null);
 
         // Act
         var result = _validator.Validate(command);
@@ -122,17 +122,17 @@ public class AddMyNewModuleValidatorTests
 Test event serialization:
 
 ```csharp
-public class MyNewModuleEventSerializationTests
+public class MyToDoEventSerializationTests
 {
     [Fact]
-    public void MyNewModuleAdded_ShouldRoundTripSerialize()
+    public void MyToDoAdded_ShouldRoundTripSerialize()
     {
         // Arrange
-        var original = new MyNewModuleAdded("id", "name", "comments");
+        var original = new MyToDoAdded("id", "name", "comments");
 
         // Act
         var json = JsonSerializer.Serialize(original);
-        var deserialized = JsonSerializer.Deserialize<MyNewModuleAdded>(json);
+        var deserialized = JsonSerializer.Deserialize<MyToDoAdded>(json);
 
         // Assert
         deserialized.ShouldNotBeNull();
@@ -151,9 +151,9 @@ public class MyNewModuleEventSerializationTests
 ```
 
 Examples:
-- `Apply_MyNewModuleAdded_ShouldInitializeAggregate`
+- `Apply_MyToDoAdded_ShouldInitializeAggregate`
 - `Validate_EmptyId_ShouldReturnValidationError`
-- `Serialize_MyNewModuleEvent_ShouldRoundTrip`
+- `Serialize_MyToDoEvent_ShouldRoundTrip`
 
 ### Arrange-Act-Assert Pattern
 

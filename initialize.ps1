@@ -5,8 +5,11 @@
 
 .DESCRIPTION
     This script converts the Hexalith.MyNewModule template to a custom module.
-    It replaces "MyNewModules" with the module name and "MyNewModule" with the entity name
+    It replaces "MyNewModule" with the module name and "MyToDo" with the entity name
     in all files and renames files/directories accordingly.
+
+    Note: The template uses "MyToDo" as the entity placeholder (instead of "MyNewModule")
+    to avoid replacement conflicts with the module name "MyNewModule".
 
 .PARAMETER ModuleName
     The name of the module (plural form). Example: "Customers", "GitStorages", "Orders"
@@ -32,8 +35,8 @@ param (
 )
 
 Write-Output "Initializing module: $ModuleName with entity: $EntityName"
-Write-Verbose "Replacing 'MyNewModules' with '$ModuleName' in all files..."
-Write-Verbose "Replacing 'MyNewModule' with '$EntityName' in all files..."
+Write-Verbose "Replacing 'MyNewModule' with '$ModuleName' in all files..."
+Write-Verbose "Replacing 'MyToDo' with '$EntityName' in all files..."
 Write-Verbose "Also replacing lowercase variants..."
 
 # Directories and files to exclude from processing (names only, no path separators)
@@ -100,30 +103,28 @@ function ProcessFile {
         
         $hasChanges = $false
         
-        # IMPORTANT: Replace "MyNewModules" (plural) FIRST, then "MyNewModule" (singular)
-        # This prevents partial replacements
-        
-        # Replace MyNewModules (plural) with ModuleName
-        if ($content -match "MyNewModules") {
-            $content = $content -replace "MyNewModules", $ModuleName
-            $hasChanges = $true
-        }
-        
-        # Replace mynewmodules (lowercase plural) with lowercase ModuleName
-        if ($content -match "mynewmodules") {
-            $content = $content -replace "mynewmodules", $ModuleName.ToLower()
-            $hasChanges = $true
-        }
-        
-        # Replace MyNewModule (singular) with EntityName
+        # Replace MyNewModule with ModuleName
         if ($content -match "MyNewModule") {
-            $content = $content -replace "MyNewModule", $EntityName
+            $content = $content -replace "MyNewModule", $ModuleName
             $hasChanges = $true
         }
         
-        # Replace mynewmodule (lowercase singular) with lowercase EntityName
+        # Replace mynewmodule (lowercase) with lowercase ModuleName
         if ($content -match "mynewmodule") {
-            $content = $content -replace "mynewmodule", $EntityName.ToLower()
+            $content = $content -replace "mynewmodule", $ModuleName.ToLower()
+            $hasChanges = $true
+        }
+        
+        # Replace MyToDo (singular entity) with EntityName
+        # Note: Uses "MyToDo" to avoid conflicts with "MyNewModule" replacements
+        if ($content -match "MyToDo") {
+            $content = $content -replace "MyToDo", $EntityName
+            $hasChanges = $true
+        }
+        
+        # Replace mytodo (lowercase singular entity) with lowercase EntityName
+        if ($content -match "mytodo") {
+            $content = $content -replace "mytodo", $EntityName.ToLower()
             $hasChanges = $true
         }
         
@@ -197,24 +198,22 @@ foreach ($file in $files) {
     ProcessFile -FilePath $file.FullName
 }
 
-# IMPORTANT: Rename "MyNewModules" (plural) items FIRST, then "MyNewModule" (singular)
-# This prevents partial renames
+# Rename directories with MyNewModule to ModuleName
+Rename-ProjectItems -SearchPattern "MyNewModule" -Replacement $ModuleName -ItemType Directory
+Rename-ProjectItems -SearchPattern "MyNewModule" -Replacement $ModuleName -ItemType File
 
-# Rename directories with MyNewModules (plural) to ModuleName
-Rename-ProjectItems -SearchPattern "MyNewModules" -Replacement $ModuleName -ItemType Directory
-Rename-ProjectItems -SearchPattern "MyNewModules" -Replacement $ModuleName -ItemType File
+# Rename directories with mynewmodule (lowercase) to lowercase ModuleName
+Rename-ProjectItems -SearchPattern "mynewmodule" -Replacement $ModuleName.ToLower() -ItemType Directory
+Rename-ProjectItems -SearchPattern "mynewmodule" -Replacement $ModuleName.ToLower() -ItemType File
 
-# Rename directories with mynewmodules (lowercase plural) to lowercase ModuleName
-Rename-ProjectItems -SearchPattern "mynewmodules" -Replacement $ModuleName.ToLower() -ItemType Directory
-Rename-ProjectItems -SearchPattern "mynewmodules" -Replacement $ModuleName.ToLower() -ItemType File
+# Rename directories with MyToDo (singular entity) to EntityName
+# Note: Uses "MyToDo" to avoid conflicts with "MyNewModule" renames
+Rename-ProjectItems -SearchPattern "MyToDo" -Replacement $EntityName -ItemType Directory
+Rename-ProjectItems -SearchPattern "MyToDo" -Replacement $EntityName -ItemType File
 
-# Rename directories with MyNewModule (singular) to EntityName
-Rename-ProjectItems -SearchPattern "MyNewModule" -Replacement $EntityName -ItemType Directory
-Rename-ProjectItems -SearchPattern "MyNewModule" -Replacement $EntityName -ItemType File
-
-# Rename directories with mynewmodule (lowercase singular) to lowercase EntityName
-Rename-ProjectItems -SearchPattern "mynewmodule" -Replacement $EntityName.ToLower() -ItemType Directory
-Rename-ProjectItems -SearchPattern "mynewmodule" -Replacement $EntityName.ToLower() -ItemType File
+# Rename directories with mytodo (lowercase singular entity) to lowercase EntityName
+Rename-ProjectItems -SearchPattern "mytodo" -Replacement $EntityName.ToLower() -ItemType Directory
+Rename-ProjectItems -SearchPattern "mytodo" -Replacement $EntityName.ToLower() -ItemType File
 
 # Initialize and update Git submodules
 Write-Output "`nInitializing Git submodules..."
@@ -261,8 +260,8 @@ catch {
 }
 
 Write-Output "`nInitialization complete!"
-Write-Output "Module name: 'MyNewModules' -> '$ModuleName'"
-Write-Output "Entity name: 'MyNewModule' -> '$EntityName'"
+Write-Output "Module name: 'MyNewModule' -> '$ModuleName'"
+Write-Output "Entity name: 'MyToDo' -> '$EntityName'"
 Write-Output "`nYour new module structure:"
 Write-Output "  - Hexalith.$ModuleName (module namespace)"
 Write-Output "  - $EntityName (main aggregate/entity)"

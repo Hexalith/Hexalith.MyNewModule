@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-AI assistant guidance for **Hexalith.MyNewModule** - a DDD/CQRS/Event Sourcing module template.
+AI assistant guidance for **Hexalith.MyToDo** - a DDD/CQRS/Event Sourcing module template.
 
 ## Critical Rules (Always Follow)
 
@@ -51,20 +51,20 @@ public sealed record MyEntity(
 ### Domain Event
 ```csharp
 [PolymorphicSerialization]
-public partial record MyNewModuleAdded(
+public partial record MyToDoAdded(
     string Id,
     [property: DataMember(Order = 2)] string Name,
     [property: DataMember(Order = 3)] string? Comments)
-    : MyNewModuleEvent(Id);
+    : MyToDoEvent(Id);
 ```
 
 ### Command (same pattern as Event)
 ```csharp
 [PolymorphicSerialization]
-public abstract partial record MyNewModuleCommand(string Id)
+public abstract partial record MyToDoCommand(string Id)
 {
     public string AggregateId => Id;
-    public static string AggregateName => MyNewModuleDomainHelper.MyNewModuleAggregateName;
+    public static string AggregateName => MyToDoDomainHelper.MyToDoAggregateName;
 }
 ```
 
@@ -75,25 +75,25 @@ public ApplyResult Apply([NotNull] object domainEvent)
     ArgumentNullException.ThrowIfNull(domainEvent);
     return domainEvent switch
     {
-        MyNewModuleAdded e => ApplyEvent(e),
-        MyNewModuleDescriptionChanged e => ApplyEvent(e),
-        MyNewModuleEvent => ApplyResult.NotImplemented(this),
+        MyToDoAdded e => ApplyEvent(e),
+        MyToDoDescriptionChanged e => ApplyEvent(e),
+        MyToDoEvent => ApplyResult.NotImplemented(this),
         _ => ApplyResult.InvalidEvent(this, domainEvent),
     };
 }
 
-private ApplyResult ApplyEvent(MyNewModuleAdded e) => !(this as IDomainAggregate).IsInitialized()
-    ? ApplyResult.Success(new MyNewModule(e), [e])
-    : ApplyResult.Error(this, "The MyNewModule already exists.");
+private ApplyResult ApplyEvent(MyToDoAdded e) => !(this as IDomainAggregate).IsInitialized()
+    ? ApplyResult.Success(new MyToDo(e), [e])
+    : ApplyResult.Error(this, "The MyToDo already exists.");
 ```
 
 ### Request with Result
 ```csharp
 [PolymorphicSerialization]
-public partial record GetMyNewModuleDetails(
+public partial record GetMyToDoDetails(
     string Id,
-    [property: DataMember(Order = 2)] MyNewModuleDetailsViewModel? Result = null)
-    : MyNewModuleRequest(Id), IRequest
+    [property: DataMember(Order = 2)] MyToDoDetailsViewModel? Result = null)
+    : MyToDoRequest(Id), IRequest
 {
     object? IRequest.Result => Result;
 }
@@ -103,10 +103,10 @@ public partial record GetMyNewModuleDetails(
 
 | Type | Pattern | Example |
 |------|---------|---------|
-| Events | `{Entity}{PastTenseVerb}` | `MyNewModuleAdded`, `MyNewModuleDisabled` |
-| Commands | `{Verb}{Entity}` | `AddMyNewModule`, `DisableMyNewModule` |
-| Requests | `Get{Entity}{Details\|Summaries}` | `GetMyNewModuleDetails` |
-| Handlers | `{Command\|Request}Handler` | `AddMyNewModuleHandler` |
+| Events | `{Entity}{PastTenseVerb}` | `MyToDoAdded`, `MyToDoDisabled` |
+| Commands | `{Verb}{Entity}` | `AddMyToDo`, `DisableMyToDo` |
+| Requests | `Get{Entity}{Details\|Summaries}` | `GetMyToDoDetails` |
+| Handlers | `{Command\|Request}Handler` | `AddMyToDoHandler` |
 | Private fields | `_camelCase` | `_repository` |
 
 ## Key Attributes
@@ -117,30 +117,30 @@ public partial record GetMyNewModuleDetails(
 
 ## Entity Creation Order
 
-1. **Events** → `src/libraries/Domain/Hexalith.MyNewModules.Events/{Entity}/`
-2. **Aggregate** → `src/libraries/Domain/Hexalith.MyNewModules.Aggregates/`
-3. **Commands** → `src/libraries/Application/Hexalith.MyNewModules.Commands/{Entity}/`
-4. **Requests** → `src/libraries/Application/Hexalith.MyNewModules.Requests/{Entity}/`
-5. **Projections** → `src/libraries/Application/Hexalith.MyNewModules.Projections/`
-6. **UI Components** → `src/libraries/Presentation/Hexalith.MyNewModules.UI.Components/`
-7. **UI Pages** → `src/libraries/Presentation/Hexalith.MyNewModules.UI.Pages/`
+1. **Events** → `src/libraries/Domain/Hexalith.MyNewModule.Events/{Entity}/`
+2. **Aggregate** → `src/libraries/Domain/Hexalith.MyNewModule.Aggregates/`
+3. **Commands** → `src/libraries/Application/Hexalith.MyNewModule.Commands/{Entity}/`
+4. **Requests** → `src/libraries/Application/Hexalith.MyNewModule.Requests/{Entity}/`
+5. **Projections** → `src/libraries/Application/Hexalith.MyNewModule.Projections/`
+6. **UI Components** → `src/libraries/Presentation/Hexalith.MyNewModule.UI.Components/`
+7. **UI Pages** → `src/libraries/Presentation/Hexalith.MyNewModule.UI.Pages/`
 
 ## Testing
 
 ```csharp
 [Fact]
-public void Apply_MyNewModuleAdded_ShouldInitializeAggregate()
+public void Apply_MyToDoAdded_ShouldInitializeAggregate()
 {
     // Arrange
-    var aggregate = new MyNewModule();
-    var added = new MyNewModuleAdded("test-id", "Test Name", null);
+    var aggregate = new MyToDo();
+    var added = new MyToDoAdded("test-id", "Test Name", null);
 
     // Act
     var result = aggregate.Apply(added);
 
     // Assert
     result.Succeeded.ShouldBeTrue();
-    result.Aggregate.ShouldBeOfType<MyNewModule>()
+    result.Aggregate.ShouldBeOfType<MyToDo>()
         .Id.ShouldBe("test-id");
 }
 ```

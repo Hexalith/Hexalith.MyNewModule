@@ -9,36 +9,36 @@ The libraries follow a clean architecture approach with four main layers:
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                   Presentation                          │
-│  (Hexalith.MyNewModules.UI.Components)                 │
-│  (Hexalith.MyNewModules.UI.Pages)                      │
+│  (Hexalith.MyNewModule.UI.Components)                 │
+│  (Hexalith.MyNewModule.UI.Pages)                      │
 └─────────────────────────────────────────────────────────┘
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────┐
 │                   Infrastructure                        │
-│  (Hexalith.MyNewModules.ApiServer)                     │
-│  (Hexalith.MyNewModules.WebServer)                     │
-│  (Hexalith.MyNewModules.WebApp)                        │
-│  (Hexalith.MyNewModules.Servers)                       │
+│  (Hexalith.MyNewModule.ApiServer)                     │
+│  (Hexalith.MyNewModule.WebServer)                     │
+│  (Hexalith.MyNewModule.WebApp)                        │
+│  (Hexalith.MyNewModule.Servers)                       │
 └─────────────────────────────────────────────────────────┘
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────┐
 │                    Application                          │
-│  (Hexalith.MyNewModules)                               │
-│  (Hexalith.MyNewModules.Abstractions)                  │
-│  (Hexalith.MyNewModules.Commands)                      │
-│  (Hexalith.MyNewModules.Requests)                      │
-│  (Hexalith.MyNewModules.Projections)                   │
+│  (Hexalith.MyNewModule)                               │
+│  (Hexalith.MyNewModule.Abstractions)                  │
+│  (Hexalith.MyNewModule.Commands)                      │
+│  (Hexalith.MyNewModule.Requests)                      │
+│  (Hexalith.MyNewModule.Projections)                   │
 └─────────────────────────────────────────────────────────┘
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────┐
 │                      Domain                             │
-│  (Hexalith.MyNewModules.Aggregates)                    │
-│  (Hexalith.MyNewModules.Aggregates.Abstractions)       │
-│  (Hexalith.MyNewModules.Events)                        │
-│  (Hexalith.MyNewModules.Localizations)                 │
+│  (Hexalith.MyNewModule.Aggregates)                    │
+│  (Hexalith.MyNewModule.Aggregates.Abstractions)       │
+│  (Hexalith.MyNewModule.Events)                        │
+│  (Hexalith.MyNewModule.Localizations)                 │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -50,10 +50,10 @@ The domain layer contains the core business logic and is completely independent 
 
 | Project | Description |
 |---------|-------------|
-| `Hexalith.MyNewModules.Aggregates` | Domain aggregate implementations with event sourcing |
-| `Hexalith.MyNewModules.Aggregates.Abstractions` | Domain helpers, enums, and value objects |
-| `Hexalith.MyNewModules.Events` | Domain event definitions |
-| `Hexalith.MyNewModules.Localizations` | Localization resource files |
+| `Hexalith.MyNewModule.Aggregates` | Domain aggregate implementations with event sourcing |
+| `Hexalith.MyNewModule.Aggregates.Abstractions` | Domain helpers, enums, and value objects |
+| `Hexalith.MyNewModule.Events` | Domain event definitions |
+| `Hexalith.MyNewModule.Localizations` | Localization resource files |
 
 ### Application Layer (`Application/`)
 
@@ -61,11 +61,11 @@ The application layer implements use cases and orchestrates domain operations.
 
 | Project | Description |
 |---------|-------------|
-| `Hexalith.MyNewModules` | Main application logic, command handlers, event handlers |
-| `Hexalith.MyNewModules.Abstractions` | Module interfaces, policies, roles, service contracts |
-| `Hexalith.MyNewModules.Commands` | Command definitions for write operations |
-| `Hexalith.MyNewModules.Requests` | Query/request definitions and view models |
-| `Hexalith.MyNewModules.Projections` | Projection handlers for updating read models |
+| `Hexalith.MyNewModule` | Main application logic, command handlers, event handlers |
+| `Hexalith.MyNewModule.Abstractions` | Module interfaces, policies, roles, service contracts |
+| `Hexalith.MyNewModule.Commands` | Command definitions for write operations |
+| `Hexalith.MyNewModule.Requests` | Query/request definitions and view models |
+| `Hexalith.MyNewModule.Projections` | Projection handlers for updating read models |
 
 ### Infrastructure Layer (`Infrastructure/`)
 
@@ -73,10 +73,10 @@ The infrastructure layer provides technical implementations for hosting and inte
 
 | Project | Description |
 |---------|-------------|
-| `Hexalith.MyNewModules.ApiServer` | REST API controllers, Dapr actor registration |
-| `Hexalith.MyNewModules.WebServer` | Server-side Blazor hosting |
-| `Hexalith.MyNewModules.WebApp` | WebAssembly client module |
-| `Hexalith.MyNewModules.Servers` | Shared server utilities |
+| `Hexalith.MyNewModule.ApiServer` | REST API controllers, Dapr actor registration |
+| `Hexalith.MyNewModule.WebServer` | Server-side Blazor hosting |
+| `Hexalith.MyNewModule.WebApp` | WebAssembly client module |
+| `Hexalith.MyNewModule.Servers` | Shared server utilities |
 
 ### Presentation Layer (`Presentation/`)
 
@@ -84,43 +84,43 @@ The presentation layer contains all UI-related code.
 
 | Project | Description |
 |---------|-------------|
-| `Hexalith.MyNewModules.UI.Components` | Reusable Blazor components |
-| `Hexalith.MyNewModules.UI.Pages` | Blazor pages and view models |
+| `Hexalith.MyNewModule.UI.Components` | Reusable Blazor components |
+| `Hexalith.MyNewModule.UI.Pages` | Blazor pages and view models |
 
 ## Package Dependencies
 
 ### Domain Layer Dependencies
 
 ```
-Hexalith.MyNewModules.Aggregates
-├── Hexalith.MyNewModules.Aggregates.Abstractions
-└── Hexalith.MyNewModules.Events
+Hexalith.MyNewModule.Aggregates
+├── Hexalith.MyNewModule.Aggregates.Abstractions
+└── Hexalith.MyNewModule.Events
 
-Hexalith.MyNewModules.Events
-└── Hexalith.MyNewModules.Aggregates.Abstractions
+Hexalith.MyNewModule.Events
+└── Hexalith.MyNewModule.Aggregates.Abstractions
 
-Hexalith.MyNewModules.Localizations
+Hexalith.MyNewModule.Localizations
 └── (no internal dependencies)
 ```
 
 ### Application Layer Dependencies
 
 ```
-Hexalith.MyNewModules
-├── Hexalith.MyNewModules.Abstractions
-├── Hexalith.MyNewModules.Aggregates
-├── Hexalith.MyNewModules.Commands
-├── Hexalith.MyNewModules.Events
-├── Hexalith.MyNewModules.Projections
-└── Hexalith.MyNewModules.Requests
+Hexalith.MyNewModule
+├── Hexalith.MyNewModule.Abstractions
+├── Hexalith.MyNewModule.Aggregates
+├── Hexalith.MyNewModule.Commands
+├── Hexalith.MyNewModule.Events
+├── Hexalith.MyNewModule.Projections
+└── Hexalith.MyNewModule.Requests
 
-Hexalith.MyNewModules.Commands
-├── Hexalith.MyNewModules.Aggregates.Abstractions
-└── Hexalith.MyNewModules.Abstractions
+Hexalith.MyNewModule.Commands
+├── Hexalith.MyNewModule.Aggregates.Abstractions
+└── Hexalith.MyNewModule.Abstractions
 
-Hexalith.MyNewModules.Requests
-├── Hexalith.MyNewModules.Aggregates.Abstractions
-└── Hexalith.MyNewModules.Abstractions
+Hexalith.MyNewModule.Requests
+├── Hexalith.MyNewModule.Aggregates.Abstractions
+└── Hexalith.MyNewModule.Abstractions
 ```
 
 ## Building Packages

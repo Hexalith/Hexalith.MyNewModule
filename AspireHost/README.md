@@ -1,6 +1,6 @@
 # AspireHost
 
-This project contains the .NET Aspire orchestration for the MyNewModule distributed application.
+This project contains the .NET Aspire orchestration for the MyToDo distributed application.
 
 ## Overview
 
@@ -20,9 +20,9 @@ AspireHost/
 │   │   ├── Integration/      # Integration environment configs
 │   │   ├── Production/       # Production environment configs
 │   │   └── Staging/          # Staging environment configs
-│   ├── MyNewModulesApi/
+│   ├── MyNewModuleApi/
 │   │   └── Development/      # API-specific dev configs
-│   └── MyNewModulesWeb/
+│   └── MyNewModuleWeb/
 │       └── Development/      # Web-specific dev configs
 ├── Properties/
 │   └── launchSettings.json
@@ -76,7 +76,7 @@ app.Builder.Configuration.AddUserSecrets<Program>();
 // Add Web Server
 if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 {
-    app.AddProject<Projects.HexalithApp_WebServer>("mynewmodulesweb")
+    app.AddProject<Projects.HexalithApp_WebServer>("MyNewModuleweb")
         .WithEnvironmentFromConfiguration("APP_API_TOKEN")
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Id")
         .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Secret")
@@ -86,7 +86,7 @@ if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
 // Add API Server
 if (app.IsProjectEnabled<Projects.HexalithApp_ApiServer>())
 {
-    app.AddProject<Projects.HexalithApp_ApiServer>("mynewmodulesapi")
+    app.AddProject<Projects.HexalithApp_ApiServer>("MyNewModuleapi")
         .WithEnvironmentFromConfiguration("EmailServer__ApplicationSecret")
         // ... more configuration
 }
@@ -139,13 +139,13 @@ spec:
 
 ## Services
 
-### mynewmodulesweb (Web Server)
+### MyNewModuleweb (Web Server)
 
 - **Purpose**: Server-side rendered Blazor application
 - **Ports**: 5001 (HTTPS)
 - **Dependencies**: API Server
 
-### mynewmodulesapi (API Server)
+### MyNewModuleapi (API Server)
 
 - **Purpose**: REST API and event processing
 - **Ports**: 5002 (HTTPS)
