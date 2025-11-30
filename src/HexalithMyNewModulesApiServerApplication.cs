@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.MyNewModules;
 using Hexalith.MyNewModules.ApiServer.Modules;
+using Hexalith.Security.ApiServer;
 using Hexalith.UI.ApiServer;
 
 /// <summary>
@@ -21,6 +22,7 @@ public class HexalithMyNewModulesApiServerApplication : HexalithApiServerApplica
     /// <inheritdoc/>
     public override IEnumerable<Type> ApiServerModules => [
         typeof(HexalithUIComponentsApiServerModule),
+        typeof(HexalithSecurityApiServerModule),
         typeof(HexalithMyNewModulesApiServerModule)];
 
     /// <inheritdoc/>

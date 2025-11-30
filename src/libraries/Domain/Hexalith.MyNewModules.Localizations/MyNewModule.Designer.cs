@@ -61,7 +61,7 @@ namespace Hexalith.MyNewModules.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add new .
+        ///   Looks up a localized string similar to Add new.
         /// </summary>
         public static string AddTitle {
             get {

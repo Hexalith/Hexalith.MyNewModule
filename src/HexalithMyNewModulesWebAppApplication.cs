@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.MyNewModules;
 using Hexalith.MyNewModules.WebApp.Modules;
+using Hexalith.Security.WebApp;
 using Hexalith.UI.WebApp;
 
 /// <summary>
@@ -31,5 +32,6 @@ public class HexalithMyNewModulesWebAppApplication : HexalithWebAppApplication
     public override IEnumerable<Type> WebAppModules
         => [
             typeof(HexalithUIComponentsWebAppModule),
+            typeof(HexalithSecurityWebAppModule),
             typeof(HexalithMyNewModulesWebAppModule)];
 }
