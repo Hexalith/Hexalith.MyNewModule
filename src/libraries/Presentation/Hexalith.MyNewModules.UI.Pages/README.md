@@ -289,3 +289,4 @@ Labels are sourced from localization resources for i18n support.
 5. **Use localization** - Support multiple languages
 6. **Follow naming conventions** - Consistent page and route naming
 
+

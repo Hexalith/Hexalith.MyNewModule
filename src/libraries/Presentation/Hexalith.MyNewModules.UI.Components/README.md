@@ -172,3 +172,4 @@ Custom styles can be added in `wwwroot/`:
 5. **Add documentation** - XML comments for IntelliSense
 6. **Use semantic HTML** - Accessibility first
 
+
