@@ -1,6 +1,6 @@
 # Hexalith.MyNewModule
 
-This is a template repository for creating new Hexalith packages. The repository provides a structured starting point for developing new packages within the Hexalith ecosystem.
+A comprehensive template repository for creating new Hexalith modules following Domain-Driven Design (DDD), CQRS (Command Query Responsibility Segregation), and Event Sourcing architectural patterns.
 
 ## Build Status
 
@@ -24,67 +24,734 @@ This is a template repository for creating new Hexalith packages. The repository
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModules.svg)](https://www.nuget.org/packages/Hexalith.MyNewModule)
 [![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.MyNewModule?include_prereleases&label=latest)](https://github.com/Hexalith/Hexalith.MyNewModule/pkgs/nuget/Hexalith.MyNewModule)
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Domain Layer](#domain-layer)
+- [Application Layer](#application-layer)
+- [Infrastructure Layer](#infrastructure-layer)
+- [Presentation Layer](#presentation-layer)
+- [Testing](#testing)
+- [Configuration](#configuration)
+- [Running with .NET Aspire](#running-with-net-aspire)
+- [Development Workflow](#development-workflow)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Overview
 
-This repository provides a template for creating new Hexalith packages. It includes all the necessary configuration files, directory structure, and GitHub workflow configurations to ensure consistency across Hexalith packages.
+This repository provides a production-ready template for creating new Hexalith modules. It implements a clean architecture with clear separation of concerns across multiple layers:
 
-## Repository Structure
+- **Domain Layer**: Contains domain aggregates, events, and value objects
+- **Application Layer**: Contains commands, command handlers, requests, and projections
+- **Infrastructure Layer**: Contains API servers, web servers, and integration services
+- **Presentation Layer**: Contains Blazor UI components and pages
 
-The repository is organized as follows:
+The module follows CQRS and Event Sourcing patterns, using Dapr for distributed application runtime and Azure Cosmos DB for persistence.
 
-- [src](./src/README.md) Is the source code directory of your project.
-- [src/libraries](./src/libraries/README.md) Is the source code directory where you will add your Nuget package projects.
-- [src/examples](./src/examples/README.md) Contains example implementations of your projects.
-- [src/servers](./src/servers/README.md) Is the source code directory where you will add your Docker container projects.
-- [src/aspire](./src/aspire/README.md) Is the source code directory where you will add your Aspire project.
-- [test](./test/README.md) Contains test projects for your packages.
-- [Hexalith.Builds](./Hexalith.Builds/README.md) Contains shared build configurations and tools.
-- [HexalithApp](./HexalithApp/README.md) Contains hexalith application and servers.
+## Architecture
+
+### Architectural Patterns
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Presentation Layer                          │
+│  ┌─────────────────────┐  ┌──────────────────────────────────┐ │
+│  │   UI.Components     │  │         UI.Pages                 │ │
+│  │  (Blazor Components)│  │    (Blazor Pages & Views)        │ │
+│  └─────────────────────┘  └──────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    Infrastructure Layer                         │
+│  ┌─────────────────┐ ┌──────────────┐ ┌─────────────────────┐  │
+│  │   ApiServer     │ │  WebServer   │ │      WebApp         │  │
+│  │  (REST API)     │ │ (SSR Host)   │ │  (WASM Client)      │  │
+│  └─────────────────┘ └──────────────┘ └─────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     Application Layer                           │
+│  ┌────────────┐ ┌───────────┐ ┌───────────┐ ┌───────────────┐  │
+│  │  Commands  │ │ Requests  │ │Projections│ │   Handlers    │  │
+│  │            │ │ (Queries) │ │           │ │               │  │
+│  └────────────┘ └───────────┘ └───────────┘ └───────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                       Domain Layer                              │
+│  ┌────────────┐ ┌───────────┐ ┌───────────┐ ┌───────────────┐  │
+│  │ Aggregates │ │  Events   │ │  Value    │ │ Localizations │  │
+│  │            │ │           │ │  Objects  │ │               │  │
+│  └────────────┘ └───────────┘ └───────────┘ └───────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Key Design Principles
+
+1. **Domain-Driven Design (DDD)**: Domain logic is encapsulated in aggregates with clear boundaries
+2. **CQRS**: Commands (writes) and Queries (reads) are separated into different models
+3. **Event Sourcing**: State changes are captured as a sequence of events
+4. **Clean Architecture**: Dependencies flow inward, with the domain layer at the core
+5. **Modular Design**: Each module is self-contained and can be deployed independently
+
+## Prerequisites
+
+Before getting started, ensure you have the following installed:
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later (currently targeting .NET 10.0)
+- [PowerShell 7](https://github.com/PowerShell/PowerShell) or later
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/) (for running with Aspire)
+- [Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/) (optional, for local development)
+
+### Optional Tools
+
+- [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
+- [Cursor](https://cursor.sh/) (recommended for AI-assisted development)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) (for Azure deployments)
 
 ## Getting Started
 
-### Prerequisites
+### 1. Clone or Use as Template
 
-- [Hexalith.Builds](https://github.com/Hexalith/Hexalith.Builds)
-- [HexalithApp](https://github.com/Hexalith/HexalithApp)
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
-- [PowerShell 7](https://github.com/PowerShell/PowerShell) or later
-- [Git](https://git-scm.com/)
+**Option A: Use as GitHub Template**
 
-### Initializing the Package
+1. Click "Use this template" on GitHub
+2. Create a new repository with your desired name
 
-To use this template to create a new Hexalith package:
+**Option B: Clone the Repository**
 
-1. Clone this repository or use it as a template when creating a new repository on GitHub.
-2. Run the initialization script with your desired package name:
+```bash
+git clone https://github.com/Hexalith/Hexalith.MyNewModule.git YourModuleName
+cd YourModuleName
+```
+
+### 2. Initialize Your Package
+
+Run the initialization script to customize the template for your module:
 
 ```powershell
 ./initialize.ps1 -PackageName "YourPackageName"
 ```
 
-The package name will be "Hexalith.YourPackageName"
+**Example:**
 
-This script will:
+```powershell
+./initialize.ps1 -PackageName "Inventory"
+```
 
-- Replace all occurrences of "MyNewModule" with your package name
-- Replace all occurrences of "MyNewModule" with the lowercase version of your package name
-- Rename directories and files that contain "MyNewModule" in their name
-- Initialize and update Git submodules
-- Set up the project structure for your new package
+This creates a module named `Hexalith.Inventory`.
 
-### Git Submodules
+The initialization script will:
+- Replace all occurrences of `MyNewModule` with your package name
+- Rename directories and files containing `MyNewModule`
+- Initialize and update Git submodules (Hexalith.Builds and HexalithApp)
+- Set up the project structure for your new module
 
-This template uses the Hexalith.Builds repository as a Git submodule. For information about the build system and configuration, refer to the README files in the Hexalith.Builds directory.
+### 3. Initialize Git Submodules
 
-## Development
+The template uses Git submodules for shared build configurations:
 
-After initializing your package, you can start developing by:
+```powershell
+git submodule init
+git submodule update
+```
 
-1. Opening the solution file in your preferred IDE
-2. Adding your implementation to the src/ directory
-3. Writing tests in the test/ directory
-4. Building and testing your package
+### 4. Build the Solution
+
+```bash
+dotnet restore
+dotnet build
+```
+
+### 5. Run Tests
+
+```bash
+dotnet test
+```
+
+## Project Structure
+
+```
+Hexalith.MyNewModule/
+├── AspireHost/                          # .NET Aspire orchestration
+│   ├── Program.cs                       # Aspire app configuration
+│   ├── Components/                      # Aspire component configurations
+│   └── appsettings.json                # Application settings
+│
+├── src/                                 # Source code root
+│   ├── HexalithMyNewModulesApiServerApplication.cs
+│   ├── HexalithMyNewModulesWebAppApplication.cs
+│   ├── HexalithMyNewModulesWebServerApplication.cs
+│   │
+│   └── libraries/                       # NuGet package projects
+│       │
+│       ├── Application/                 # Application layer
+│       │   ├── Hexalith.MyNewModules/              # Main application logic
+│       │   ├── Hexalith.MyNewModules.Abstractions/ # Interfaces & contracts
+│       │   ├── Hexalith.MyNewModules.Commands/     # Command definitions
+│       │   ├── Hexalith.MyNewModules.Projections/  # Read model projections
+│       │   └── Hexalith.MyNewModules.Requests/     # Query requests
+│       │
+│       ├── Domain/                      # Domain layer
+│       │   ├── Hexalith.MyNewModules.Aggregates/             # Domain aggregates
+│       │   ├── Hexalith.MyNewModules.Aggregates.Abstractions/# Domain helpers
+│       │   ├── Hexalith.MyNewModules.Events/                 # Domain events
+│       │   └── Hexalith.MyNewModules.Localizations/          # Resource files
+│       │
+│       ├── Infrastructure/              # Infrastructure layer
+│       │   ├── Hexalith.MyNewModules.ApiServer/   # REST API server
+│       │   ├── Hexalith.MyNewModules.Servers/     # Server helpers
+│       │   ├── Hexalith.MyNewModules.WebApp/      # WASM client module
+│       │   └── Hexalith.MyNewModules.WebServer/   # SSR web server module
+│       │
+│       └── Presentation/                # Presentation layer
+│           ├── Hexalith.MyNewModules.UI.Components/ # Blazor components
+│           └── Hexalith.MyNewModules.UI.Pages/      # Blazor pages
+│
+├── test/                                # Test projects
+│   └── Hexalith.MyNewModules.Tests/     # Unit & integration tests
+│
+├── HexalithApp/                         # Hexalith application (submodule)
+├── Hexalith.Builds/                     # Build configurations (submodule)
+│
+├── Directory.Build.props                # MSBuild properties
+├── Directory.Packages.props             # Central package management
+├── Hexalith.MyNewModules.sln           # Solution file
+└── initialize.ps1                       # Initialization script
+```
+
+## Domain Layer
+
+The domain layer contains the core business logic and is framework-agnostic.
+
+### Aggregates
+
+Aggregates are the core domain entities that encapsulate business rules and state changes.
+
+**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Aggregates/`
+
+```csharp
+/// <summary>
+/// Represents a mynewmodule aggregate.
+/// </summary>
+/// <param name="Id">The mynewmodule identifier.</param>
+/// <param name="Name">The mynewmodule name.</param>
+/// <param name="Comments">The mynewmodule description.</param>
+/// <param name="Disabled">The mynewmodule disabled status.</param>
+[DataContract]
+public sealed record MyNewModule(
+    [property: DataMember(Order = 1)] string Id,
+    [property: DataMember(Order = 2)] string Name,
+    [property: DataMember(Order = 3)] string? Comments,
+    [property: DataMember(Order = 7)] bool Disabled) : IDomainAggregate
+{
+    public ApplyResult Apply(object domainEvent)
+    {
+        // Event handling logic
+    }
+}
+```
+
+Key features:
+- Implements `IDomainAggregate` interface
+- Uses C# records for immutability
+- Primary constructors for clean initialization
+- `Apply` method handles domain events and returns new state
+
+### Domain Events
+
+Events represent facts that have happened in the domain.
+
+**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Events/MyNewModule/`
+
+Available events:
+- `MyNewModuleAdded` - When a new module is created
+- `MyNewModuleDescriptionChanged` - When name or description changes
+- `MyNewModuleDisabled` - When the module is disabled
+- `MyNewModuleEnabled` - When the module is enabled
+
+```csharp
+/// <summary>
+/// Event raised when a new mynewmodule is added.
+/// </summary>
+[PolymorphicSerialization]
+public partial record MyNewModuleAdded(
+    string Id,
+    [property: DataMember(Order = 2)] string Name,
+    [property: DataMember(Order = 3)] string? Comments)
+    : MyNewModuleEvent(Id);
+```
+
+### Value Objects
+
+Value objects are immutable domain concepts with no identity.
+
+**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Aggregates.Abstractions/ValueObjects/`
+
+### Localizations
+
+Resource files for internationalization (i18n) support.
+
+**Location**: `src/libraries/Domain/Hexalith.MyNewModules.Localizations/`
+
+Files:
+- `MyNewModule.resx` - English (default)
+- `MyNewModule.fr.resx` - French
+- `MyNewModulesMenu.resx` - Menu labels
+
+## Application Layer
+
+The application layer coordinates domain operations and implements use cases.
+
+### Abstractions
+
+**Location**: `src/libraries/Application/Hexalith.MyNewModules.Abstractions/`
+
+Key files:
+- `IMyNewModuleModule.cs` - Module interface
+- `IMyNewModuleService.cs` - Service interface
+- `MyNewModulePolicies.cs` - Authorization policies
+- `MyNewModuleRoles.cs` - Security roles
+
+```csharp
+/// <summary>
+/// Defines the roles for MyNewModule security.
+/// </summary>
+public static class MyNewModuleRoles
+{
+    public const string Owner = nameof(MyNewModules) + nameof(Owner);
+    public const string Contributor = nameof(MyNewModules) + nameof(Contributor);
+    public const string Reader = nameof(MyNewModules) + nameof(Reader);
+}
+```
+
+### Commands
+
+Commands represent intent to change the system state.
+
+**Location**: `src/libraries/Application/Hexalith.MyNewModules.Commands/MyNewModule/`
+
+Available commands:
+- `AddMyNewModule` - Create a new module
+- `ChangeMyNewModuleDescription` - Update name/description
+- `DisableMyNewModule` - Disable a module
+- `EnableMyNewModule` - Enable a module
+
+```csharp
+/// <summary>
+/// Command to add a new mynewmodule.
+/// </summary>
+[PolymorphicSerialization]
+public partial record AddMyNewModule(
+    string Id,
+    [property: DataMember(Order = 2)] string Name,
+    [property: DataMember(Order = 3)] string? Comments)
+    : MyNewModuleCommand(Id);
+```
+
+### Requests (Queries)
+
+Requests represent queries for data retrieval.
+
+**Location**: `src/libraries/Application/Hexalith.MyNewModules.Requests/MyNewModule/`
+
+Available requests:
+- `GetMyNewModuleDetails` - Get full details of a module
+- `GetMyNewModuleSummaries` - Get list of module summaries
+- `GetMyNewModuleIds` - Get list of all module IDs
+- `GetMyNewModuleExports` - Export module data
+
+### View Models
+
+View models for presenting data to the UI.
+
+- `MyNewModuleDetailsViewModel` - Full module details
+- `MyNewModuleSummaryViewModel` - Summary for lists
+
+### Projections
+
+Projections handle event processing to update read models.
+
+**Location**: `src/libraries/Application/Hexalith.MyNewModules.Projections/`
+
+```csharp
+public static class MyNewModuleProjectionHelper
+{
+    public static IServiceCollection AddMyNewModuleProjectionHandlers(
+        this IServiceCollection services)
+        => services
+            .AddScoped<IProjectionUpdateHandler<MyNewModuleAdded>, 
+                MyNewModuleAddedOnSummaryProjectionHandler>()
+            .AddScoped<IProjectionUpdateHandler<MyNewModuleDescriptionChanged>, 
+                MyNewModuleDescriptionChangedOnSummaryProjectionHandler>()
+            // ... more handlers
+}
+```
+
+## Infrastructure Layer
+
+The infrastructure layer contains technical implementations and hosting concerns.
+
+### API Server Module
+
+**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModules.ApiServer/`
+
+Provides:
+- REST API controllers
+- Dapr actor registrations
+- Service registrations
+- Integration event handling
+
+```csharp
+public sealed class HexalithMyNewModulesApiServerModule : 
+    IApiServerApplicationModule, IMyNewModuleModule
+{
+    public static void AddServices(IServiceCollection services, 
+        IConfiguration configuration)
+    {
+        // Register serialization mappers
+        HexalithMyNewModulesEventsSerialization.RegisterPolymorphicMappers();
+        HexalithMyNewModulesCommandsSerialization.RegisterPolymorphicMappers();
+        
+        // Add module services
+        services.AddMyNewModule();
+        services.AddMyNewModuleProjectionActorFactories();
+    }
+
+    public static void RegisterActors(object actorCollection)
+    {
+        var actorRegistrations = (ActorRegistrationCollection)actorCollection;
+        actorRegistrations.RegisterActor<DomainAggregateActor>(
+            MyNewModuleDomainHelper.MyNewModuleAggregateName.ToAggregateActorName());
+        // ... more actor registrations
+    }
+}
+```
+
+### Web Server Module
+
+**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModules.WebServer/`
+
+Provides server-side rendering (SSR) support for Blazor.
+
+### Web App Module
+
+**Location**: `src/libraries/Infrastructure/Hexalith.MyNewModules.WebApp/`
+
+Provides WebAssembly (WASM) client support for Blazor.
+
+## Presentation Layer
+
+The presentation layer contains Blazor UI components and pages.
+
+### UI Components
+
+**Location**: `src/libraries/Presentation/Hexalith.MyNewModules.UI.Components/`
+
+Reusable Blazor components:
+- `MyNewModuleIdField.razor` - ID input field
+- `MyNewModuleSummaryGrid.razor` - Data grid for summaries
+
+### UI Pages
+
+**Location**: `src/libraries/Presentation/Hexalith.MyNewModules.UI.Pages/`
+
+Blazor pages:
+- `Home.razor` - Module home page
+- `MyNewModuleIndex.razor` - List/index page
+- `MyNewModuleDetails.razor` - Add/edit page
+
+**Index Page Example:**
+
+```razor
+@page "/MyNewModule/MyNewModule"
+@rendermode InteractiveAuto
+
+<HexEntityIndexPage 
+    OnLoadData="LoadSummaries"
+    OnImport="ImportAsync"
+    OnExport="ExportAsync"
+    AddPagePath="/MyNewModule/Add/MyNewModule"
+    Title="@Labels.ListTitle">
+    <MyNewModuleSummaryGrid Items="_summariesQuery" 
+        EntityDetailsPath="/MyNewModule/MyNewModule" 
+        OnDisabledChanged="OnDisabledChangedAsync" />
+</HexEntityIndexPage>
+```
+
+### Edit View Model
+
+**Location**: `src/libraries/Presentation/Hexalith.MyNewModules.UI.Pages/MyNewModule/`
+
+```csharp
+public sealed class MyNewModuleEditViewModel : IIdDescription, IEntityViewModel
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string? Comments { get; set; }
+    public bool Disabled { get; set; }
+    public bool HasChanges => /* change detection logic */;
+
+    internal async Task SaveAsync(ClaimsPrincipal user, 
+        ICommandService commandService, bool create, 
+        CancellationToken cancellationToken)
+    {
+        // Command submission logic
+    }
+}
+```
+
+## Testing
+
+### Test Project
+
+**Location**: `test/Hexalith.MyNewModules.Tests/`
+
+The project uses:
+- **xUnit** - Testing framework
+- **Shouldly** - Assertion library
+- **Moq** - Mocking framework
+
+### Project Structure
+
+```
+test/
+└── Hexalith.MyNewModules.Tests/
+    ├── Domains/
+    │   ├── Aggregates/    # Aggregate tests
+    │   ├── Commands/      # Command tests
+    │   └── Events/        # Event tests
+    └── Hexalith.MyNewModules.Tests.csproj
+```
+
+### Writing Tests
+
+```csharp
+public class MyNewModuleAggregateTests
+{
+    [Fact]
+    public void Apply_MyNewModuleAdded_ShouldInitializeAggregate()
+    {
+        // Arrange
+        var aggregate = new MyNewModule();
+        var added = new MyNewModuleAdded("test-id", "Test Name", "Comments");
+
+        // Act
+        var result = aggregate.Apply(added);
+
+        // Assert
+        result.Succeeded.ShouldBeTrue();
+        var newAggregate = result.Aggregate as MyNewModule;
+        newAggregate.ShouldNotBeNull();
+        newAggregate.Id.ShouldBe("test-id");
+        newAggregate.Name.ShouldBe("Test Name");
+    }
+}
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+dotnet test
+
+# Run with coverage
+dotnet test --collect:"XPlat Code Coverage"
+
+# Run specific test project
+dotnet test test/Hexalith.MyNewModules.Tests/
+```
+
+## Configuration
+
+### Central Package Management
+
+Package versions are managed centrally in `Directory.Packages.props`:
+
+```xml
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Hexalith.Application" Version="1.71.1" />
+    <PackageVersion Include="Hexalith.Infrastructure.DaprRuntime" Version="1.71.1" />
+    <!-- ... more packages -->
+  </ItemGroup>
+</Project>
+```
+
+### Build Properties
+
+Build configuration is defined in `Directory.Build.props`:
+
+```xml
+<Project>
+  <PropertyGroup>
+    <Product>Hexalith.MyNewModule</Product>
+    <RepositoryUrl>https://github.com/Hexalith/Hexalith.MyNewModules.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Hexalith/Hexalith.MyNewModule</PackageProjectUrl>
+    <PackageTags>hexalith;</PackageTags>
+    <Description>Hexalith MyNewModule Module</Description>
+  </PropertyGroup>
+</Project>
+```
+
+### Application Settings
+
+**API Server** (`HexalithApp/src/HexalithApp.ApiServer/appsettings.json`):
+- CosmosDB connection settings
+- Dapr configuration
+- Logging settings
+
+**Web Server** (`HexalithApp/src/HexalithApp.WebServer/appsettings.json`):
+- Identity provider settings
+- Email server configuration
+- Session settings
+
+## Running with .NET Aspire
+
+### Aspire Host
+
+**Location**: `AspireHost/`
+
+The Aspire host orchestrates all application components:
+
+```csharp
+HexalithDistributedApplication app = new(args);
+
+if (app.IsProjectEnabled<Projects.HexalithApp_WebServer>())
+{
+    app.AddProject<Projects.HexalithApp_WebServer>("mynewmodulesweb")
+        .WithEnvironmentFromConfiguration("APP_API_TOKEN")
+        .WithEnvironmentFromConfiguration("Hexalith__IdentityStores__Microsoft__Id")
+        // ... more configuration
+}
+
+if (app.IsProjectEnabled<Projects.HexalithApp_ApiServer>())
+{
+    app.AddProject<Projects.HexalithApp_ApiServer>("mynewmodulesapi")
+        // ... configuration
+}
+
+await app.Builder.Build().RunAsync();
+```
+
+### Running the Application
+
+1. **Start the Aspire host:**
+
+```bash
+cd AspireHost
+dotnet run
+```
+
+2. **Access the dashboard:**
+
+Open the Aspire dashboard URL shown in the console (typically `https://localhost:17225`).
+
+3. **Access the application:**
+- Web Server: `https://localhost:5001`
+- API Server: `https://localhost:5002`
+
+### Environment-Specific Configuration
+
+Configuration files are organized by environment in `AspireHost/Components/`:
+
+```
+Components/
+├── Common/
+│   ├── Development/
+│   ├── Integration/
+│   ├── Production/
+│   └── Staging/
+├── MyNewModulesApi/
+│   └── Development/
+└── MyNewModulesWeb/
+    └── Development/
+```
+
+## Development Workflow
+
+### 1. Create a New Feature
+
+1. **Define domain events** in `Domain/Hexalith.MyNewModules.Events/`
+2. **Update aggregate** in `Domain/Hexalith.MyNewModules.Aggregates/`
+3. **Create commands** in `Application/Hexalith.MyNewModules.Commands/`
+4. **Add request handlers** in `Application/Hexalith.MyNewModules.Projections/`
+5. **Create/update UI** in `Presentation/Hexalith.MyNewModules.UI.Pages/`
+6. **Write tests** in `test/Hexalith.MyNewModules.Tests/`
+
+### 2. Adding a New Entity
+
+1. Create the aggregate record
+2. Define domain events (Added, Updated, Deleted, etc.)
+3. Create commands for each operation
+4. Add request definitions and view models
+5. Create projection handlers
+6. Register in the module's `AddServices` method
+7. Create UI components and pages
+8. Add localization resources
+
+### 3. Code Style
+
+The project uses:
+- StyleCop for code analysis
+- Global configuration in `Hexalith.globalconfig`
+- XML documentation for public APIs
+
+### 4. Branching Strategy
+
+- `main` - Production-ready code
+- `develop` - Integration branch
+- `feature/*` - Feature branches
+- `bugfix/*` - Bug fix branches
+
+## Contributing
+
+### Prerequisites
+
+1. Fork the repository
+2. Clone your fork
+3. Set up the development environment
+
+### Submitting Changes
+
+1. Create a feature branch
+2. Make your changes
+3. Write/update tests
+4. Ensure all tests pass
+5. Submit a pull request
+
+### Code Review Checklist
+
+- [ ] Code follows project conventions
+- [ ] Tests are included and passing
+- [ ] Documentation is updated
+- [ ] No breaking changes (or documented if necessary)
+- [ ] XML documentation for public APIs
+
+## Related Repositories
+
+- [Hexalith.Builds](./Hexalith.Builds/README.md) - Shared build configurations
+- [HexalithApp](./HexalithApp/README.md) - Base application framework
+- [Hexalith](https://github.com/Hexalith/Hexalith) - Core Hexalith libraries
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **Discord**: [Join our community](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
+- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyNewModule/issues)
+- **Documentation**: [Wiki](https://github.com/Hexalith/Hexalith.MyNewModule/wiki)

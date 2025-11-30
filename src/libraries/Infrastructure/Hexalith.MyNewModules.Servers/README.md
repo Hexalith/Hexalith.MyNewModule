@@ -1,38 +1,102 @@
-# MyNewModule Commands
-This project contains the application commands for the MyNewModule application.
+# Hexalith.MyNewModules.Servers
 
-## Structure
+This project provides shared server utilities and services for the MyNewModule bounded context.
 
-### MyNewModule Commands
-The MyNewModule commands handle operations related to MyNewModule management:
-- MyNewModule creation and modification
-- MyNewModule metadata updates
-- MyNewModule state changes
-- File attachments and uploads
+## Overview
 
-[Learn more about MyNewModule commands](./MyNewModule/README.md)
+The Servers project contains:
+- Shared helper classes for server projects
+- Common server-side service implementations
+- Actor factory registrations
+- Server configuration utilities
 
-### MyNewModule Types Commands
-The MyNewModule Types commands handle operations related to MyNewModule type definitions:
-- MyNewModule type creation and modification
-- Field definitions and validations
-- MyNewModule type metadata management
-- MyNewModule type state workflows
+## Directory Structure
 
-[Learn more about MyNewModule Types commands](./MyNewModuleTypes/README.md)
+```
+Hexalith.MyNewModules.Servers/
+├── Helpers/
+│   └── MyNewModuleServerHelper.cs
+├── Services/
+│   └── (shared services)
+└── Hexalith.MyNewModules.Servers.csproj
+```
 
-## Command Structure
-Each command in this project follows the CQRS pattern and includes:
-- Command properties for the operation parameters
-- Validation rules
-- Command handlers that process the business logic
-- Integration with the domain events
+## Helper Classes
+
+### MyNewModuleServerHelper
+
+Provides extension methods for server-side service registration:
+
+```csharp
+public static class MyNewModuleServerHelper
+{
+    /// <summary>
+    /// Adds MyNewModule projection actor factories to the service collection.
+    /// </summary>
+    public static IServiceCollection AddMyNewModuleProjectionActorFactories(
+        this IServiceCollection services)
+    {
+        // Register actor factories for projections
+        services.AddSingleton<IProjectionActorFactory<MyNewModule>, 
+            ProjectionActorFactory<MyNewModule>>();
+        services.AddSingleton<IProjectionActorFactory<MyNewModuleSummaryViewModel>, 
+            ProjectionActorFactory<MyNewModuleSummaryViewModel>>();
+        services.AddSingleton<IProjectionActorFactory<MyNewModuleDetailsViewModel>, 
+            ProjectionActorFactory<MyNewModuleDetailsViewModel>>();
+            
+        return services;
+    }
+}
+```
+
+## Actor Factory Registration
+
+Actor factories are registered for:
+
+| Projection Type | Purpose |
+|-----------------|---------|
+| `MyNewModule` | Aggregate snapshots |
+| `MyNewModuleSummaryViewModel` | List/grid displays |
+| `MyNewModuleDetailsViewModel` | Detail views |
 
 ## Usage
-These commands are used through the command bus and can be invoked from:
-- Web API endpoints
-- UI components
-- Background services
-- Integration processes
 
-The commands ensure consistency and maintain the business rules while performing operations on MyNewModule and MyNewModule types.
+### In API Server
+
+```csharp
+public static void AddServices(IServiceCollection services, IConfiguration configuration)
+{
+    // ... other registrations
+
+    // Add projection actor factories
+    services.AddMyNewModuleProjectionActorFactories();
+}
+```
+
+### In Web Server
+
+```csharp
+public static void AddServices(IServiceCollection services, IConfiguration configuration)
+{
+    // ... other registrations
+
+    // Add projection actor factories (if needed)
+    services.AddMyNewModuleProjectionActorFactories();
+}
+```
+
+## Dependencies
+
+- `Hexalith.Infrastructure.DaprRuntime` - Dapr integration
+- `Hexalith.MyNewModules.Projections` - Projection definitions
+- `Hexalith.MyNewModules.Requests` - View model definitions
+
+## Design Guidelines
+
+This project should contain:
+- ✅ Shared server utilities
+- ✅ Actor registration helpers
+- ✅ Common service implementations
+- ❌ Business logic (belongs in Application layer)
+- ❌ UI components (belongs in Presentation layer)
+- ❌ Domain code (belongs in Domain layer)
