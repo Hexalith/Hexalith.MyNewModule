@@ -30,7 +30,7 @@ public static class MyNewModulesMenu
                     [
                         new MenuItemInformation(
                             Labels.MyNewModuleMenuItem,
-                            "MyNewModule",
+                            "MyNewModule/MyNewModule",
                             new IconInformation("AppsAddIn", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
                             false,
                             30,
