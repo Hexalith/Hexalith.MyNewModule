@@ -10,4 +10,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)src/HexalithMyNewModulesWebServerApplication.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Security.WebServer" />
+  </ItemGroup>
 </Project>

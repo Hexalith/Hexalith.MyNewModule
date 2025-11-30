@@ -9,4 +9,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)src\HexalithMyNewModulesApiServerApplication.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Hexalith.Security.ApiServer" />
+  </ItemGroup>
 </Project>
