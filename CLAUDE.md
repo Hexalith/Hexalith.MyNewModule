@@ -5,6 +5,7 @@ AI assistant guidance for **Hexalith.MyNewModule** - a DDD/CQRS/Event Sourcing m
 ## Critical Rules (Always Follow)
 
 ### File Header (Required on ALL .cs files)
+
 ```csharp
 // <copyright file="{FileName}.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
@@ -13,12 +14,14 @@ AI assistant guidance for **Hexalith.MyNewModule** - a DDD/CQRS/Event Sourcing m
 ```
 
 ### C# Style Requirements
+
 - **Primary constructors** - Use for classes and records; NEVER duplicate properties in body
 - **File-scoped namespaces** - Always use `namespace X;` not `namespace X { }`
 - **XML documentation** - Required on all public/protected/internal members
 - **Record params** - Document with `<param>` tags, not `<property>`
 
 ### Record Documentation Pattern
+
 ```csharp
 /// <summary>
 /// Represents a domain entity.
@@ -32,6 +35,7 @@ public sealed record MyEntity(
 ```
 
 ## Tech Stack
+
 - **.NET 10** / **C# 13** (use latest features)
 - **Blazor InteractiveAuto** (SSR + WebAssembly)
 - **Dapr** / **.NET Aspire** / **Azure Cosmos DB**
@@ -49,6 +53,7 @@ public sealed record MyEntity(
 ## Code Patterns
 
 ### Domain Event
+
 ```csharp
 [PolymorphicSerialization]
 public partial record MyToDoAdded(
@@ -59,6 +64,7 @@ public partial record MyToDoAdded(
 ```
 
 ### Command (same pattern as Event)
+
 ```csharp
 [PolymorphicSerialization]
 public abstract partial record MyToDoCommand(string Id)
@@ -69,6 +75,7 @@ public abstract partial record MyToDoCommand(string Id)
 ```
 
 ### Aggregate Apply Pattern
+
 ```csharp
 public ApplyResult Apply([NotNull] object domainEvent)
 {
@@ -88,6 +95,7 @@ private ApplyResult ApplyEvent(MyToDoAdded e) => !(this as IDomainAggregate).IsI
 ```
 
 ### Request with Result
+
 ```csharp
 [PolymorphicSerialization]
 public partial record GetMyToDoDetails(
