@@ -6,22 +6,22 @@
 namespace Hexalith.MyNewModule;
 
 /// <summary>
-/// Provides information about the Hexalith MyToDo Application.
+/// Provides information about the Hexalith MyNewModule Application.
 /// </summary>
 public static class HexalithMyNewModuleInformation
 {
     /// <summary>
     /// Gets the application identifier.
     /// </summary>
-    public static string Id => "Hexalith.MyToDo";
+    public static string Id => "Hexalith.MyNewModule";
 
     /// <summary>
     /// Gets the application name.
     /// </summary>
-    public static string Name => "Hexalith MyToDo";
+    public static string Name => "Hexalith MyNewModule";
 
     /// <summary>
     /// Gets the application short name.
     /// </summary>
-    public static string ShortName => "MyToDo";
+    public static string ShortName => "MyNewModule";
 }

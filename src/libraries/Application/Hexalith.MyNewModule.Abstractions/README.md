@@ -20,9 +20,9 @@ Static class providing module identification:
 ```csharp
 public static class HexalithMyNewModuleInformation
 {
-    public static string Id => "Hexalith.MyToDo";
-    public static string Name => "Hexalith MyToDo";
-    public static string ShortName => "MyToDo";
+    public static string Id => "Hexalith.MyNewModule";
+    public static string Name => "Hexalith MyNewModule";
+    public static string ShortName => "MyNewModule";
 }
 ```
 

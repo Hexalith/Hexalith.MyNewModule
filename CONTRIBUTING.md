@@ -1,6 +1,6 @@
-# Contributing to Hexalith.MyToDo
+# Contributing to Hexalith.MyNewModule
 
-Thank you for considering contributing to Hexalith.MyToDo! This document provides guidelines and instructions for contributing.
+Thank you for considering contributing to Hexalith.MyNewModule! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -36,12 +36,12 @@ Before contributing, ensure you have:
 1. Fork the repository on GitHub
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/Hexalith.MyToDo.git
-   cd Hexalith.MyToDo
+   git clone https://github.com/YOUR-USERNAME/Hexalith.MyNewModule.git
+   cd Hexalith.MyNewModule
    ```
 3. Add upstream remote:
    ```bash
-   git remote add upstream https://github.com/Hexalith/Hexalith.MyToDo.git
+   git remote add upstream https://github.com/Hexalith/Hexalith.MyNewModule.git
    ```
 4. Initialize submodules:
    ```bash
@@ -294,8 +294,8 @@ Required for:
 ## Need Help?
 
 - **Discord**: [Join our community](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
-- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyToDo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Hexalith/Hexalith.MyToDo/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyNewModule/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Hexalith/Hexalith.MyNewModule/discussions)
 
 Thank you for contributing! 🎉
 

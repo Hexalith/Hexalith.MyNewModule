@@ -1,28 +1,28 @@
-# Hexalith.MyToDo
+# Hexalith.MyNewModule
 
 A comprehensive template repository for creating new Hexalith modules following Domain-Driven Design (DDD), CQRS (Command Query Responsibility Segregation), and Event Sourcing architectural patterns.
 
 ## Build Status
 
-[![License: MIT](https://img.shields.io/github/license/hexalith/hexalith.MyToDo)](https://github.com/hexalith/hexalith/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/github/license/hexalith/hexalith.MyNewModule)](https://github.com/hexalith/hexalith/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1063152441819942922?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
 
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/31529/badge.svg)](https://scan.coverity.com/projects/hexalith-hexalith-MyToDo)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d48f6d9ab9fb4776b6b4711fc556d1c4)](https://app.codacy.com/gh/Hexalith/Hexalith.MyToDo/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyToDo&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyToDo)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/31529/badge.svg)](https://scan.coverity.com/projects/hexalith-hexalith-MyNewModule)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d48f6d9ab9fb4776b6b4711fc556d1c4)](https://app.codacy.com/gh/Hexalith/Hexalith.MyNewModule/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.MyNewModule&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.MyNewModule)
 
-[![Build status](https://github.com/Hexalith/Hexalith.MyToDo/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.MyToDo/actions)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModule.svg)](https://www.nuget.org/packages/Hexalith.MyToDo)
-[![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.MyToDo?include_prereleases&label=latest)](https://github.com/Hexalith/Hexalith.MyToDo/pkgs/nuget/Hexalith.MyToDo)
+[![Build status](https://github.com/Hexalith/Hexalith.MyNewModule/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.MyNewModule/actions)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.MyNewModule.svg)](https://www.nuget.org/packages/Hexalith.MyNewModule)
+[![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.MyNewModule?include_prereleases&label=latest)](https://github.com/Hexalith/Hexalith.MyNewModule/pkgs/nuget/Hexalith.MyNewModule)
 
 ## Table of Contents
 
@@ -130,7 +130,7 @@ Before getting started, ensure you have the following installed:
 **Option B: Clone the Repository**
 
 ```bash
-git clone https://github.com/Hexalith/Hexalith.MyToDo.git YourModuleName
+git clone https://github.com/Hexalith/Hexalith.MyNewModule.git YourModuleName
 cd YourModuleName
 ```
 
@@ -181,7 +181,7 @@ dotnet test
 ## Project Structure
 
 ```
-Hexalith.MyToDo/
+Hexalith.MyNewModule/
 ├── AspireHost/                          # .NET Aspire orchestration
 │   ├── Program.cs                       # Aspire app configuration
 │   ├── Components/                      # Aspire component configurations
@@ -597,11 +597,11 @@ Build configuration is defined in `Directory.Build.props`:
 ```xml
 <Project>
   <PropertyGroup>
-    <Product>Hexalith.MyToDo</Product>
+    <Product>Hexalith.MyNewModule</Product>
     <RepositoryUrl>https://github.com/Hexalith/Hexalith.MyNewModule.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Hexalith/Hexalith.MyToDo</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Hexalith/Hexalith.MyNewModule</PackageProjectUrl>
     <PackageTags>hexalith;</PackageTags>
-    <Description>Hexalith MyToDo Module</Description>
+    <Description>Hexalith MyNewModule</Description>
   </PropertyGroup>
 </Project>
 ```
@@ -753,5 +753,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - **Discord**: [Join our community](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
-- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyToDo/issues)
-- **Documentation**: [Wiki](https://github.com/Hexalith/Hexalith.MyToDo/wiki)
+- **Issues**: [GitHub Issues](https://github.com/Hexalith/Hexalith.MyNewModule/issues)
+- **Documentation**: [Wiki](https://github.com/Hexalith/Hexalith.MyNewModule/wiki)

@@ -1,6 +1,6 @@
 # Test Projects
 
-This directory contains all test projects for the Hexalith.MyToDo solution.
+This directory contains all test projects for the Hexalith.MyNewModule solution.
 
 ## Overview
 

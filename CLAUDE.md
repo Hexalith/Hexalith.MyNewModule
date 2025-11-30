@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-AI assistant guidance for **Hexalith.MyToDo** - a DDD/CQRS/Event Sourcing module template.
+AI assistant guidance for **Hexalith.MyNewModule** - a DDD/CQRS/Event Sourcing module template.
 
 ## Critical Rules (Always Follow)
 
