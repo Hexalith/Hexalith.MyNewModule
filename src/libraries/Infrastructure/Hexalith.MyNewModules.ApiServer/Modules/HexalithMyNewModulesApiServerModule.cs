@@ -23,6 +23,7 @@ using Hexalith.MyNewModules.Events.Extensions;
 using Hexalith.MyNewModules.Helpers;
 using Hexalith.MyNewModules.Requests.Extensions;
 using Hexalith.MyNewModules.Requests.MyNewModule;
+using Hexalith.MyNewModules.Servers.Helpers;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -80,6 +81,9 @@ public sealed class HexalithMyNewModulesApiServerModule : IApiServerApplicationM
 
         // Add command handlers
         _ = services.AddMyNewModule();
+
+        // Add projection handlers and actor factories for event processing
+        _ = services.AddMyNewModuleProjectionActorFactories();
 
         _ = services
          .AddControllers()

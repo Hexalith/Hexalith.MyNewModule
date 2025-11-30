@@ -31,8 +31,8 @@ using Swashbuckle.AspNetCore.Annotations;
 /// <param name="hostEnvironment">The host environment providing runtime environment information.</param>
 /// <param name="logger">The logger instance for recording diagnostic information.</param>
 [ApiController]
-[Route("/api/MyNewModule/events")]
-[SwaggerTag("MyNewModule Integration Events Receiver")]
+[Route("/api/mynewmodules/events")]
+[SwaggerTag("MyNewModules Integration Events Receiver")]
 public class MyNewModuleIntegrationEventsController(
     IIntegrationEventProcessor eventProcessor,
     IProjectionUpdateProcessor projectionProcessor,
@@ -52,7 +52,7 @@ public class MyNewModuleIntegrationEventsController(
     [TopicMetadata("requireSessions", "true")]
     [TopicMetadata("sessionIdleTimeoutInSec ", "15")]
     [TopicMetadata("maxConcurrentSessions", "32")]
-    [HttpPost("MyNewModule")]
+    [HttpPost("mynewmodule")]
     [SwaggerOperation(Summary = "Handles file type events", Description = "Processes file type events and updates projections accordingly.")]
     [SwaggerResponse(StatusCodes.Status200OK, "Event processed successfully.")]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid event data.")]

@@ -2,21 +2,17 @@
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-namespace Hexalith.MyNewModules.Helpers;
-
-using FluentValidation;
+namespace Hexalith.MyNewModules.Projections.Helpers;
 
 using Hexalith.Application.Aggregates;
-using Hexalith.Application.Commands;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Requests;
 using Hexalith.Domain.Events;
 using Hexalith.MyNewModules.Aggregates;
-using Hexalith.MyNewModules.Commands.MyNewModule;
 using Hexalith.MyNewModules.Events.MyNewModules;
-using Hexalith.MyNewModules.ProjectionHandlers.Details;
-using Hexalith.MyNewModules.ProjectionHandlers.Summaries;
-using Hexalith.MyNewModules.RequestHandlers;
+using Hexalith.MyNewModules.Projections.ProjectionHandlers.Details;
+using Hexalith.MyNewModules.Projections.ProjectionHandlers.Summaries;
+using Hexalith.MyNewModules.Projections.RequestHandlers;
 using Hexalith.MyNewModules.Requests.MyNewModule;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -28,19 +24,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public static class MyNewModuleProjectionHelper
 {
     /// <summary>
-    /// Adds the mynewmodule module to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddMyNewModule(this IServiceCollection services)
-    {
-        _ = services.AddMyNewModuleCommandHandlers();
-        _ = services.AddMyNewModuleAggregateProviders();
-        _ = services.AddMyNewModuleEventValidators();
-        return services;
-    }
-
-    /// <summary>
     /// Adds the mynewmodule aggregate providers to the service collection.
     /// </summary>
     /// <param name="services">The service collection.</param>
@@ -51,30 +34,6 @@ public static class MyNewModuleProjectionHelper
             .AddSingleton<IDomainAggregateProvider, DomainAggregateProvider<MyNewModule>>();
         return services;
     }
-
-    /// <summary>
-    /// Adds the mynewmodule command handlers to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddMyNewModuleCommandHandlers(this IServiceCollection services)
-    {
-        _ = services.TryAddSimpleInitializationCommandHandler<AddMyNewModule>(
-            c => new MyNewModuleAdded(
-                c.Id,
-                c.Name,
-                c.Comments),
-            ev => new MyNewModule((MyNewModuleAdded)ev));
-        return services;
-    }
-
-    /// <summary>
-    /// Adds the mynewmodule event validators to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddMyNewModuleEventValidators(this IServiceCollection services)
-            => services.AddTransient<IValidator<AddMyNewModule>, AddMyNewModuleValidator>();
 
     /// <summary>
     /// Adds the mynewmodule projections to the service collection.

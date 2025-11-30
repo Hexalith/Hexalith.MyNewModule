@@ -22,4 +22,7 @@ public sealed record MyNewModuleSummaryViewModel(
 {
     /// <inheritdoc/>
     string IIdDescription.Description => Name;
+
+    /// <inheritdoc/>
+    string IIdDescription.Search => $"{Id} {Name}";
 }

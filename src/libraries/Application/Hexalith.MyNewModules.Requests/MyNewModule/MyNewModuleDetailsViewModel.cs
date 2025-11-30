@@ -7,6 +7,7 @@ namespace Hexalith.MyNewModules.Requests.MyNewModule;
 using System.Runtime.Serialization;
 
 using Hexalith.Domains.ValueObjects;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Represents the details of a warehouse.
@@ -24,4 +25,18 @@ public sealed record MyNewModuleDetailsViewModel(
 {
     /// <inheritdoc/>
     string IIdDescription.Description => Name;
+
+    /// <summary>
+    /// Gets an empty warehouse details view model.
+    /// </summary>
+    /// <returns>An empty warehouse details view model.</returns>
+    public static MyNewModuleDetailsViewModel Empty => new(string.Empty, string.Empty, string.Empty, false);
+
+    /// <summary>
+    /// Creates a new warehouse details view model.
+    /// </summary>
+    /// <param name="id">The warehouse identifier.</param>
+    /// <returns>A new warehouse details view model.</returns>
+    public static MyNewModuleDetailsViewModel Create(string? id)
+    => new(string.IsNullOrWhiteSpace(id) ? UniqueIdHelper.GenerateUniqueStringId() : id, string.Empty, string.Empty, false);
 }

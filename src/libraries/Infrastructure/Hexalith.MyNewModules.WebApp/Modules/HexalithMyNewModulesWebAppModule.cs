@@ -13,6 +13,7 @@ using Hexalith.MyNewModules;
 using Hexalith.MyNewModules.Commands.Extensions;
 using Hexalith.MyNewModules.Events.Extensions;
 using Hexalith.MyNewModules.Helpers;
+using Hexalith.MyNewModules.Projections.Helpers;
 using Hexalith.MyNewModules.Requests.Extensions;
 using Hexalith.MyNewModules.UI.Pages.Modules;
 

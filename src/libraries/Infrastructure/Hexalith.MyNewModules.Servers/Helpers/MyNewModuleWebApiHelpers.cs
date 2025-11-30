@@ -7,7 +7,7 @@ namespace Hexalith.MyNewModules.Servers.Helpers;
 
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.MyNewModules.Aggregates;
-using Hexalith.MyNewModules.Helpers;
+using Hexalith.MyNewModules.Projections.Helpers;
 using Hexalith.MyNewModules.Requests.MyNewModule;
 
 using Microsoft.Extensions.DependencyInjection;

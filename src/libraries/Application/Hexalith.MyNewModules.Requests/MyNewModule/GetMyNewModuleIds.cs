@@ -46,5 +46,5 @@ public partial record GetMyNewModuleIds(
     public IChunkableRequest CreateNextChunkRequest() => this with { Skip = Skip + Take, Results = [] };
 
     /// <inheritdoc/>
-    public ICollectionRequest CreateResults(IEnumerable<object> results) => this with { Results = [] };
+    public ICollectionRequest CreateResults(IEnumerable<object> results) => this with { Results = results.Cast<string>() };
 }

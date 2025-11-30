@@ -6,6 +6,7 @@ namespace Hexalith.MyNewModules.Requests.MyNewModule;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Application.Requests;
 using Hexalith.MyNewModules.Requests.MyNewModules;
 using Hexalith.PolymorphicSerializations;
 
@@ -16,4 +17,8 @@ using Hexalith.PolymorphicSerializations;
 /// <param name="Result">The warehouse details view model result.</param>
 [PolymorphicSerialization]
 public partial record GetMyNewModuleDetails(string Id, [property: DataMember(Order = 2)] MyNewModuleDetailsViewModel? Result = null)
-    : MyNewModuleRequest(Id);
+    : MyNewModuleRequest(Id), IRequest
+{
+    /// <inheritdoc/>
+    object? IRequest.Result => Result;
+}

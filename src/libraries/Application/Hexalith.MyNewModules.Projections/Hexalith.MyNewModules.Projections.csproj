@@ -19,7 +19,6 @@
     <ProjectReference Include="..\Hexalith.MyNewModules.Abstractions\Hexalith.MyNewModules.Abstractions.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModules.Commands\Hexalith.MyNewModules.Commands.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.MyNewModules.Events\Hexalith.MyNewModules.Events.csproj" />
-    <ProjectReference Include="..\Hexalith.MyNewModules.Projections\Hexalith.MyNewModules.Projections.csproj" />
     <ProjectReference Include="..\Hexalith.MyNewModules.Requests\Hexalith.MyNewModules.Requests.csproj" />
   </ItemGroup>
 </Project>
