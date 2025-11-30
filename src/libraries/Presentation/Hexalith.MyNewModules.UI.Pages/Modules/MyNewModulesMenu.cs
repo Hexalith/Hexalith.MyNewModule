@@ -23,7 +23,7 @@ public static class MyNewModulesMenu
     public static MenuItemInformation Menu => new(
                     Labels.MyNewModulesMenuItem,
                     string.Empty,
-                    new IconInformation("MyNewModuleDatabase", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
+                    new IconInformation("Apps", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
                     true,
                     10,
                     MyNewModuleRoles.Reader,
@@ -31,7 +31,7 @@ public static class MyNewModulesMenu
                         new MenuItemInformation(
                             Labels.MyNewModuleMenuItem,
                             "MyNewModule",
-                            new IconInformation("MyNewModuleBulletListMultiple", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
+                            new IconInformation("AppsAddIn", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
                             false,
                             30,
                             MyNewModuleRoles.Reader,
