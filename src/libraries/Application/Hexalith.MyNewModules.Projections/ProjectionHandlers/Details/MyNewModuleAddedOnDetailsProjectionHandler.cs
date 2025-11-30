@@ -27,6 +27,6 @@ public class MyNewModuleAddedOnDetailsProjectionHandler(IProjectionFactory<MyNew
             baseEvent.Id,
             baseEvent.Name,
             baseEvent.Comments,
-            true));
+            false));
     }
 }

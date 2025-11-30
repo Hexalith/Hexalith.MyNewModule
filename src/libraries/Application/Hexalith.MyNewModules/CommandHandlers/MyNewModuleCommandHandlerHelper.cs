@@ -29,6 +29,19 @@ public static class MyNewModuleCommandHandlerHelper
                 c.Name,
                 c.Comments),
             ev => new MyNewModule((MyNewModuleAdded)ev));
+
+        _ = services.TryAddSimpleCommandHandler<ChangeMyNewModuleDescription>(
+            c => new MyNewModuleDescriptionChanged(
+                c.Id,
+                c.Name,
+                c.Comments));
+
+        _ = services.TryAddSimpleCommandHandler<DisableMyNewModule>(
+            c => new MyNewModuleDisabled(c.Id));
+
+        _ = services.TryAddSimpleCommandHandler<EnableMyNewModule>(
+            c => new MyNewModuleEnabled(c.Id));
+
         return services;
     }
 }

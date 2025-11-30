@@ -16,7 +16,7 @@ using Hexalith.UI.Components;
 /// <summary>
 /// ViewModel for editing file types.
 /// </summary>
-internal sealed class MyNewModuleEditViewModel : IIdDescription, IEntityViewModel
+public sealed class MyNewModuleEditViewModel : IIdDescription, IEntityViewModel
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MyNewModuleEditViewModel"/> class.
