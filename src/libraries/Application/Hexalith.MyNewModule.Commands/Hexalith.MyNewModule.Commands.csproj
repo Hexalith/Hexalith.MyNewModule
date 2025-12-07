@@ -3,9 +3,12 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation" />
     <PackageReference Include="Hexalith.PolymorphicSerializations.CodeGenerators" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Hexalith.MyNewModule.Aggregates.Abstractions\Hexalith.MyNewModule.Aggregates.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Domain\Hexalith.MyNewModule.Localizations\Hexalith.MyNewModule.Localizations.csproj" />
   </ItemGroup>
 </Project>
