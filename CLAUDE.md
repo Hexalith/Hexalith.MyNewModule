@@ -45,9 +45,9 @@ public sealed record MyEntity(
 
 | Layer | Projects | Purpose |
 |-------|----------|---------|
-| **Domain** | `*.Aggregates`, `*.Events`, `*.Localizations` | Core business logic |
-| **Application** | `*.Commands`, `*.Requests`, `*.Projections` | CQRS handlers |
-| **Infrastructure** | `*.ApiServer`, `*.WebServer`, `*.WebApp` | Technical implementation |
+| **Domain** | `*.Aggregates`, `*.Aggregates.Abstractions`, `*.Events`, `*.Localizations` | Core business logic |
+| **Application** | `Hexalith.MyNewModule`, `*.Abstractions`, `*.Commands`, `*.Requests`, `*.Projections` | CQRS handlers |
+| **Infrastructure** | `*.ApiServer`, `*.WebServer`, `*.WebApp`, `*.Servers` | Technical implementation |
 | **Presentation** | `*.UI.Components`, `*.UI.Pages` | Blazor UI |
 
 ## Code Patterns
@@ -112,24 +112,35 @@ public partial record GetMyToDoDetails(
 public static class MyNewModuleRoles
 {
     /// <summary>
-    /// Role for users who can contribute to MyNewModule but can't manage it.
+    /// Role for users who can contribute to MyNewModule.
     /// </summary>
     public const string Contributor = nameof(MyNewModule) + nameof(Contributor);
 
     /// <summary>
-    /// Role for users who own MyNewModule. They can manage it.
+    /// Role for users who own MyNewModule.
     /// </summary>
     public const string Owner = nameof(MyNewModule) + nameof(Owner);
 
     /// <summary>
-    /// Role for users who can only read MyNewModule.
+    /// Role for users who can read MyNewModule.
     /// </summary>
     public const string Reader = nameof(MyNewModule) + nameof(Reader);
 }
 public static class MyNewModulePolicies
 {
+    /// <summary>
+    /// Policy for users who can contribute to MyNewModule.
+    /// </summary>
     public const string Contributor = MyNewModuleRoles.Contributor;
+
+    /// <summary>
+    /// Policy for users who own MyNewModule.
+    /// </summary>
     public const string Owner = MyNewModuleRoles.Owner;
+
+    /// <summary>
+    /// Policy for users who can read MyNewModule.
+    /// </summary>
     public const string Reader = MyNewModuleRoles.Reader;
 }
 public static class MyNewModuleModulePolicies
