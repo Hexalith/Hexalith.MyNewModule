@@ -32,10 +32,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// <summary>
 /// The MyNewModule construction site client module.
 /// </summary>
-public sealed class HexalithMyToDoWebServerModule : IWebServerApplicationModule, IMyToDoModule
+public sealed class HexalithMyToDoWebServerModule : IWebServerApplicationModule, IMyNewModuleModule
 {
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyToDoModulePolicies.AuthorizationPolicies;
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyNewModuleModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
@@ -90,7 +90,7 @@ public sealed class HexalithMyToDoWebServerModule : IWebServerApplicationModule,
         HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IMyToDoModule, HexalithMyToDoWebServerModule>();
+        services.TryAddSingleton<IMyNewModuleModule, HexalithMyToDoWebServerModule>();
 
         _ = services.AddTransient(_ => MyNewModuleMenu.Menu);
         _ = services.AddControllers().AddApplicationPart(typeof(MyNewModuleController).Assembly);

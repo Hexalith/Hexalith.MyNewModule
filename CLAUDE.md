@@ -107,6 +107,57 @@ public partial record GetMyToDoDetails(
 }
 ```
 
+### Module Security
+```csharp
+public static class MyNewModuleRoles
+{
+    /// <summary>
+    /// Role for users who can contribute to MyNewModule but can't manage it.
+    /// </summary>
+    public const string Contributor = nameof(MyNewModule) + nameof(Contributor);
+
+    /// <summary>
+    /// Role for users who own MyNewModule. They can manage it.
+    /// </summary>
+    public const string Owner = nameof(MyNewModule) + nameof(Owner);
+
+    /// <summary>
+    /// Role for users who can only read MyNewModule.
+    /// </summary>
+    public const string Reader = nameof(MyNewModule) + nameof(Reader);
+}
+public static class MyNewModulePolicies
+{
+    public const string Contributor = MyNewModuleRoles.Contributor;
+    public const string Owner = MyNewModuleRoles.Owner;
+    public const string Reader = MyNewModuleRoles.Reader;
+}
+public static class MyNewModuleModulePolicies
+{
+    public static IDictionary<string, AuthorizationPolicy> AuthorizationPolicies =>
+    new Dictionary<string, AuthorizationPolicy>
+    {
+        {
+            MyNewModulePolicies.Owner, new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .RequireRole(ApplicationRoles.GlobalAdministrator, MyNewModuleRoles.Owner)
+                .Build()
+        },
+        {
+            MyNewModulePolicies.Contributor, new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .RequireRole(ApplicationRoles.GlobalAdministrator, MyNewModuleRoles.Owner, MyNewModuleRoles.Contributor)
+                .Build()
+        },
+        {
+            MyNewModulePolicies.Reader, new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .RequireRole(ApplicationRoles.GlobalAdministrator, MyNewModuleRoles.Owner, MyNewModuleRoles.Contributor, MyNewModuleRoles.Reader)
+                .Build()
+        },
+    };
+```
+
 ## Naming Conventions
 
 | Type | Pattern | Example |
@@ -155,21 +206,8 @@ public void Apply_MyToDoAdded_ShouldInitializeAggregate()
 
 Test naming: `{Method}_{Scenario}_{ExpectedResult}`
 
-## Commands
-
-```bash
-dotnet build                    # Build solution
-dotnet test                     # Run tests
-cd AspireHost && dotnet run     # Start with Aspire orchestration
-./initialize.ps1 -PackageName "YourModule"  # Initialize from template
-```
-
 ## Do Not Modify
 
-- `DOCUMENTATION.ai.md` - AI prompts
 - `Hexalith.Builds/` - Build configs (submodule)
 - `HexalithApp/` - Base framework (submodule)
 
-## Hexalith Package Version
-
-Current: **1.71.1** (defined in `Directory.Packages.props`)

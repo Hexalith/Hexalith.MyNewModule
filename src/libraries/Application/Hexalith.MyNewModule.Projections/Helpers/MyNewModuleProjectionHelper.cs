@@ -1,4 +1,4 @@
-// <copyright file="MyToDoProjectionHelper.cs" company="ITANEO">
+// <copyright file="MyNewModuleProjectionHelper.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -19,12 +19,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
-/// Helper class for adding mytodo projections to the service collection.
+/// Helper class for adding MyNewModule projections to the service collection.
 /// </summary>
-public static class MyToDoProjectionHelper
+public static class MyNewModuleProjectionHelper
 {
     /// <summary>
-    /// Adds the mytodo aggregate providers to the service collection.
+    /// Adds the MyNewModule aggregate providers to the service collection.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <returns>The updated service collection.</returns>
@@ -36,7 +36,7 @@ public static class MyToDoProjectionHelper
     }
 
     /// <summary>
-    /// Adds the mytodo projections to the service collection.
+    /// Adds the MyNewModule projections to the service collection.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <returns>The updated service collection.</returns>
@@ -60,7 +60,7 @@ public static class MyToDoProjectionHelper
             .AddScoped<IProjectionUpdateHandler<MyToDoEnabled>, MyToDoEnabledOnDetailsProjectionHandler>();
 
     /// <summary>
-    /// Adds the mytodo projections and request handlers to the service collection.
+    /// Adds the MyNewModule projections and request handlers to the service collection.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <returns>The updated service collection.</returns>

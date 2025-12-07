@@ -1,4 +1,4 @@
-// <copyright file="MyToDoHelper.cs" company="ITANEO">
+// <copyright file="MyNewModuleHelper.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -11,16 +11,16 @@ using Hexalith.MyNewModule.Projections.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Helper class for adding mytodo projections to the service collection.
+/// Helper class for adding MyNewModule projections to the service collection.
 /// </summary>
-public static class MyToDoHelper
+public static class MyNewModuleHelper
 {
     /// <summary>
-    /// Adds the mytodo module to the service collection.
+    /// Adds the MyNewModule module to the service collection.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddMyToDo(this IServiceCollection services)
+    public static IServiceCollection AddMyNewModule(this IServiceCollection services)
     {
         _ = services.AddMyToDoCommandHandlers();
         _ = services.AddMyToDoAggregateProviders();

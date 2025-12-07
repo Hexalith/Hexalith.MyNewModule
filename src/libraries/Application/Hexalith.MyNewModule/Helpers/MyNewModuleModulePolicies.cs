@@ -1,4 +1,4 @@
-// <copyright file="MyToDoModulePolicies.cs" company="ITANEO">
+// <copyright file="MyNewModuleModulePolicies.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -13,43 +13,43 @@ using Hexalith.MyNewModule;
 using Microsoft.AspNetCore.Authorization;
 
 /// <summary>
-/// Provides authorization policies for the MyToDo module.
+/// Provides authorization policies for the MyNewModule module.
 /// </summary>
-public static class MyToDoModulePolicies
+public static class MyNewModuleModulePolicies
 {
     /// <summary>
-    /// Gets the authorization policies for the MyToDo module.
+    /// Gets the authorization policies for the MyNewModule module.
     /// </summary>
     public static IDictionary<string, AuthorizationPolicy> AuthorizationPolicies =>
     new Dictionary<string, AuthorizationPolicy>
     {
         {
-            MyToDoPolicies.Owner, new AuthorizationPolicyBuilder()
+            MyNewModulePolicies.Owner, new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
-                .RequireRole(ApplicationRoles.GlobalAdministrator, MyToDoRoles.Owner)
+                .RequireRole(ApplicationRoles.GlobalAdministrator, MyNewModuleRoles.Owner)
                 .Build()
         },
         {
-            MyToDoPolicies.Contributor, new AuthorizationPolicyBuilder()
+            MyNewModulePolicies.Contributor, new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
-                .RequireRole(ApplicationRoles.GlobalAdministrator, MyToDoRoles.Owner, MyToDoRoles.Contributor)
+                .RequireRole(ApplicationRoles.GlobalAdministrator, MyNewModuleRoles.Owner, MyNewModuleRoles.Contributor)
                 .Build()
         },
         {
-            MyToDoPolicies.Reader, new AuthorizationPolicyBuilder()
+            MyNewModulePolicies.Reader, new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
-                .RequireRole(ApplicationRoles.GlobalAdministrator, MyToDoRoles.Owner, MyToDoRoles.Contributor, MyToDoRoles.Reader)
+                .RequireRole(ApplicationRoles.GlobalAdministrator, MyNewModuleRoles.Owner, MyNewModuleRoles.Contributor, MyNewModuleRoles.Reader)
                 .Build()
         },
     };
 
     /// <summary>
-    /// Adds the MyToDo module policies to the specified authorization options.
+    /// Adds the MyNewModule module policies to the specified authorization options.
     /// </summary>
     /// <param name="options">The authorization options to add the policies to.</param>
     /// <returns>The updated authorization options.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the options parameter is null.</exception>
-    public static AuthorizationOptions AddMyToDoAuthorizationPolicies(this AuthorizationOptions options)
+    public static AuthorizationOptions AddMyNewModuleAuthorizationPolicies(this AuthorizationOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
         foreach (KeyValuePair<string, AuthorizationPolicy> policy in AuthorizationPolicies)

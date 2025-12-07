@@ -24,10 +24,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// <summary>
 /// The MyToDo construction site client module.
 /// </summary>
-public class HexalithMyNewModuleWebAppModule : IWebAppApplicationModule, IMyToDoModule
+public class HexalithMyNewModuleWebAppModule : IWebAppApplicationModule, IMyNewModuleModule
 {
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyToDoModulePolicies.AuthorizationPolicies;
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyNewModuleModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
@@ -68,7 +68,7 @@ public class HexalithMyNewModuleWebAppModule : IWebAppApplicationModule, IMyToDo
         HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IMyToDoModule, HexalithMyNewModuleWebAppModule>();
+        services.TryAddSingleton<IMyNewModuleModule, HexalithMyNewModuleWebAppModule>();
 
         _ = services
             .AddMyToDoQueryServices()

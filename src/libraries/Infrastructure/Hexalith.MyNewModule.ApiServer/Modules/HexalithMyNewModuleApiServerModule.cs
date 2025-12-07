@@ -33,10 +33,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// <summary>
 /// The MyToDo construction site client module.
 /// </summary>
-public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationModule, IMyToDoModule
+public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationModule, IMyNewModuleModule
 {
     /// <inheritdoc/>
-    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyToDoModulePolicies.AuthorizationPolicies;
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => MyNewModuleModulePolicies.AuthorizationPolicies;
 
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
@@ -77,10 +77,10 @@ public sealed class HexalithMyNewModuleApiServerModule : IApiServerApplicationMo
         HexalithMyNewModuleRequestsSerialization.RegisterPolymorphicMappers();
 
         // Add application module
-        services.TryAddSingleton<IMyToDoModule, HexalithMyNewModuleApiServerModule>();
+        services.TryAddSingleton<IMyNewModuleModule, HexalithMyNewModuleApiServerModule>();
 
         // Add command handlers
-        _ = services.AddMyToDo();
+        _ = services.AddMyNewModule();
 
         // Add projection handlers and actor factories for event processing
         _ = services.AddMyToDoProjectionActorFactories();

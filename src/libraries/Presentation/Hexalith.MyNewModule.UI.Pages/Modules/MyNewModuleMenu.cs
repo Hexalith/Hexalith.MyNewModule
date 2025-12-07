@@ -26,7 +26,7 @@ public static class MyNewModuleMenu
                     new IconInformation("Apps", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
                     true,
                     10,
-                    MyToDoRoles.Reader,
+                    MyNewModuleRoles.Reader,
                     [
                         new MenuItemInformation(
                             Labels.MyToDoMenuItem,
@@ -34,7 +34,7 @@ public static class MyNewModuleMenu
                             new IconInformation("AppsAddIn", 20, IconStyle.Regular, IconSource.Fluent, IconLibraryName),
                             false,
                             30,
-                            MyToDoRoles.Reader,
+                            MyNewModuleRoles.Reader,
                             []),
                     ]);
 
