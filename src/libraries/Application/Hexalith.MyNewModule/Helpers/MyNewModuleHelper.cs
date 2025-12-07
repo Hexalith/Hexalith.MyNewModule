@@ -24,7 +24,7 @@ public static class MyNewModuleHelper
     {
         _ = services.AddMyToDoCommandHandlers();
         _ = services.AddMyToDoAggregateProviders();
-        _ = services.AddMyToDoEventValidators();
+        _ = services.AddMyToDoValidators();
         return services;
     }
 }
